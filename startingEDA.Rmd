@@ -1,0 +1,108 @@
+---
+title: "EDA Playground"
+author: "Nicholas Mobley"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(data.table)
+library(tibble)
+library(GGally)
+library(kableExtra)
+library(ggpubr)
+transpose_df <- function(df) {
+  t_df <- data.table::transpose(df)
+  colnames(t_df) <- rownames(df)
+  rownames(t_df) <- colnames(df)
+  t_df <- t_df %>%
+    tibble::rownames_to_column(.data = .) %>%
+    tibble::as_tibble(.)
+  return(t_df)
+}
+```
+
+```{r}
+raw_data = read_csv("prac_data.csv") %>%
+  mutate(
+    price = unlist(read_csv("price.csv")),
+    job = as.factor(replace_na(job,"Unknown")),
+    education = replace_na(education,"Unknown"),
+    education = replace(education,which(education == "unknown"),"Unknown"),
+    contact = replace_na(contact,"Unknown"),
+    contact = replace(contact,which(contact == "unknown"),"Unknown"),
+    pdays = replace_na(pdays,-1),
+    previous = replace_na(previous,0),
+    poutcome = replace_na(poutcome,"Unknown"),
+    inPrevious = if_else(previous > 0,TRUE,FALSE),
+    numMissing = rowSums(across(everything(), ~is.na(.)))
+  )
+numericColumns = c(1,6,10,12,13,14,15,18)
+categoricalColumns = c(2,3,4,5,7,8,9)
+df_colnames = colnames(raw_data)
+```
+
+```{r}
+proportion_df = raw_data %>%
+  group_by(job) %>%
+  summarize(n = n())
+```
+
+
+
+```{r}
+mean_df = raw_data %>%
+  summarize(across(numericColumns,function(x) round(mean(x, na.rm = TRUE),2))) %>%
+  pivot_longer(everything(), names_to = "Variable",values_to = "mean") %>%
+  na.omit()
+sd_df = raw_data %>%
+  summarize(across(numericColumns,function(x) round(sd(x, na.rm = TRUE),2))) %>%
+  pivot_longer(everything(),names_to = "Variable",values_to = "sd") %>%
+  na.omit()
+median_df = raw_data %>%
+  summarize(across(numericColumns,function(x) median(x,na.rm = TRUE))) %>%
+  pivot_longer(everything(),names_to = "Variable", values_to = "median") %>%
+  na.omit()
+pecent_missing = raw_data %>%
+  summarize(across(numericColumns,function(x) round((sum(is.na(x))/nrow(raw_data))*100,2))) %>%
+  pivot_longer(everything(),names_to = "Variable", values_to = "Missing Number") %>%
+  na.omit()
+display = inner_join(mean_df,sd_df) %>%
+  inner_join(median_df) %>%
+  inner_join(pecent_missing)
+```
+
+
+```{r}
+ddf = transpose_df(display)
+ddf
+```
+
+\newpage
+\begin{verbatim}
+\begin{tabular}{|c |c |c |c |c |c |c |c |c|}
+\hline
+Variable & Age & Balance & Day & Duration & Campaign & Prev Days & Previous & Price \\
+\hline\hline
+Mean & `r ddf[2,2]` & `r ddf[2,3]` &`r ddf[2,4]` & `r ddf[2,5]` & `r ddf[2,6]` & `r ddf[2,7]` & `r ddf[2,8]` & `r ddf[2,9]` \\
+Std Dev & `r ddf[3,2]` & `r ddf[3,3]` &`r ddf[3,4]` & `r ddf[3,5]` & `r ddf[3,6]` & `r ddf[3,7]` & `r ddf[3,8]` & `r ddf[3,9]` \\
+Median & `r ddf[4,2]` & `r ddf[4,3]` &`r ddf[4,4]` & `r ddf[4,5]` & `r ddf[4,6]` & `r ddf[4,7]` & `r ddf[4,8]` & `r ddf[4,9]` \\
+Percent Missing & `r ddf[5,2]` & `r ddf[5,3]` &`r ddf[5,4]` & `r ddf[5,5]` & `r ddf[5,6]` & `r ddf[5,7]` & `r ddf[5,8]` & `r ddf[5,9]` \\
+\hline
+\end{tabular}
+
+\end{verbatim}
+
+
+```{r}
+bar_graphs <- function(variable) {
+  ggplot(raw_data, aes(x = fct_reorder(!!sym(variable),!!sym(variable),.fun='length'))) + 
+    geom_bar(stat = 'count') +
+    xlab(variable)
+}                                             #remove job
+graphs = lapply(df_colnames[categoricalColumns[2:length(categoricalColumns)]],bar_graphs)
+ggarrange(plotlist = graphs)
+```
+
+
