@@ -1,0 +1,15 @@
+- Comparion of the Analysis Populations
+	- You say there are anonmolies but what are they?
+	- After Table 2 I'm unsure what you mean by differnece of 
+	  the population from the random sample.
+	- what is bolding indicate in Table 2??
+	- For outcome variables and predictive variables consider 
+	  making the first 2 paragraphs a dat dictionary for an 
+	  appendix? It is a lot of text to take in and lists are
+	  reasonably difficult to read
+	- instead of a paranthetical "(likely selecting one from a lists
+	  of possibilites)" consider using commas instead for more formal writing.
+	- instead of saying discarded maybe just state the prelimary analysis shows
+	  they are clearly not useful? current phrasing seems like it just wastes data
+	
+	- overall great description of the data and what we we are working with!
