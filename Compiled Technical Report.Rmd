@@ -15,7 +15,6 @@ library(kableExtra)
 library(ggpubr)
 
 #Read in Data
-
 raw_data = read_csv("prac_data.csv") %>%
   mutate(
     price = unlist(read_csv("price.csv")),
