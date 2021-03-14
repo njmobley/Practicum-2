@@ -1,5 +1,5 @@
 ---
-title: "EDA Playground"
+title: "The first file we create"
 author: "Nicholas Mobley, Nijia Ke, Allison McCarty"
 output: pdf_document
 ---
