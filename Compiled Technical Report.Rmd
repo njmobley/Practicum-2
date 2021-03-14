@@ -38,6 +38,23 @@ numericColumns = c(1,6,10,12,13,14,15,18)
 categoricalColumns = c(2,3,4,5,7,8,9)
 df_colnames = colnames(raw_data)
 ```
-```
+
+## Abstract: wait until proof read
+
+## Introduction: Alli
+
+## The Data: Nick
+
+## Data Processing : Nick
+
+## SA1 (compare Samples 1 and 2): Nijia 
+
+## Exploratory Variable Analysis
+
+## SA2 (Modeling Process) : Alli
+
+## SA3 Application of Model to Determine MSRP : Nick
+
+## Conclusion: wait until proof read
 
 
