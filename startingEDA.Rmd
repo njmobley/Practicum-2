@@ -1,6 +1,6 @@
 ---
 title: "EDA Playground"
-author: "Nicholas Mobley"
+author: "Nicholas Mobley, Nijia Ke"
 output: pdf_document
 ---
 
