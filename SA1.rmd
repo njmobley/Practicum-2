@@ -1,0 +1,42 @@
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(data.table)
+library(tibble)
+library(GGally)
+#library(kableExtra) #can't load the package on my computer
+library(ggpubr)
+
+#Read in Data
+raw_data = read_csv("prac_data.csv") %>%
+  mutate(
+    price = unlist(read_csv("price.csv")),
+    job = as.factor(replace_na(job,"Unknown")),
+    education = replace_na(education,"Unknown"),
+    education = replace(education,which(education == "unknown"),"Unknown"),
+    contact = replace_na(contact,"Unknown"),
+    contact = replace(contact,which(contact == "unknown"),"Unknown"),
+    pdays = replace_na(pdays,-1),
+    default = replace_na(default,"Unknown"),
+    marital = replace_na(marital,"Unkown"),
+    housing = replace_na(housing,"Unkown"),
+    loan = replace_na(loan,"Unkown"),
+    previous = replace_na(previous,0),
+    poutcome = replace_na(poutcome,"Unknown"),
+    inPrevious = if_else(previous > 0,TRUE,FALSE),
+    numMissing = rowSums(across(everything(), ~is.na(.)))
+  )
+numericColumns = c(1,6,10,12,13,14,15,18)
+categoricalColumns = c(2,3,4,5,7,8,9)
+df_colnames = colnames(raw_data)
+```
+
+## Specific Aims 1: To compare the demographic features of the sample from the first study to that of the second study qualitatively and quantitatively.
+
+### 1.1. Gather descriptive statistics of all the variables in the first study
+
+```{r}
+
+```
+
