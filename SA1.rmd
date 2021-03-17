@@ -37,6 +37,198 @@ df_colnames = colnames(raw_data)
 ### 1.1. Gather descriptive statistics of all the variables in the first study
 
 ```{r}
+#gender vs response
+gender_table = data.frame(Yes = c(173, 39), No = c(148, 61), Total = c(321, 100))
+row.names(gender_table) = c("Male", "Female")
+y = as.matrix(gender_table)
+x = barplot(y, main = "Population Distribution by Gender and Response", xlab = "Response", ylim = c(0, 350), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(gender_table) - 0.1, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+y <- c(173,148,39,61)
+Response <- gl(2,1,4,labels=c("Yes","No"))
+Gender <- gl(2,2,labels=c("Male","Female"))
+gender_t2 <- data.frame(y,Response,Gender)
+ov = xtabs(y ~ Gender + Response)
+prop.test(ov) #Pearson's X2 test: p < 0.05, reject the H0 of independence, so response is significantly associated with gender
+mod1 = glm(y ~ Gender + Response, poisson)
+library(faraway)
+sumary(mod1)
+pchisq(deviance(mod1), df = 1, lower.tail = FALSE) #deviance based test generate similar results
+```
+
+
+
+
+```{r}
+race_table = data.frame(Yes = c(189, 23), No = c(172, 37), Total = c(361, 60))
+row.names(race_table) = c("White", "Not white")
+y = as.matrix(race_table)
+x = barplot(y, main = "Population Distribution by Race and Response", xlab = "Response", ylim = c(0, 400), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(race_table) + 0.2, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+y <- c(189, 172, 23, 37)
+Response <- gl(2,1,4,labels=c("Yes","No"))
+Race <- gl(2,2,labels=c("White","Not white"))
+race_t2 <- data.frame(y,Response,Race)
+ov = xtabs(y ~ Race + Response)
+prop.test(ov) #Pearson's X2 test: marginally significant
+mod2 = glm(y ~ Race + Response, poisson)
+sumary(mod2)
+pchisq(deviance(mod2), df = 1, lower.tail = FALSE) #deviance based test is preferred, p<0.05, so response is significantly associated with race
+```
+
+
+
+
+```{r}
+marital_table = data.frame(Yes = c(2, 210), No = c(56, 153), Total = c(58, 363))
+row.names(marital_table) = c("Married", "Other")
+y = as.matrix(marital_table)
+x = barplot(y, main = "Population Distribution by Marital Status and Response", xlab = "Response", ylim = c(0, 420), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(marital_table), bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+y <- c(2, 56, 210, 153)
+Response <- gl(2,1,4,labels=c("Yes","No"))
+Marital <- gl(2,2,labels=c("Married","Other"))
+marital_t2 <- data.frame(y,Response,Marital)
+ov = xtabs(y ~ Marital + Response)
+prop.test(ov) #Pearson's X2 test: significant
+mod3 = glm(y ~ Marital + Response, poisson)
+sumary(mod3)
+pchisq(deviance(mod3), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with marital status
+```
+
+
+
+```{r}
+job_table = data.frame(Yes = c(43, 6, 141, 2, 20), No = c(12, 2, 134, 61, 0), Total = c(55, 8, 275, 63, 20))
+row.names(job_table) = c("White collar", "Blue Collar", "Student", "House", "Unemployed/Unknown")
+y = as.matrix(job_table)
+x = barplot(y, main = "Population Distribution by Job and Response", xlab = "Response", ylim = c(0, 420), col = c("white", "blue", "yellow", "green", "red"), legend.text = TRUE, args.legend = list(x = ncol(job_table) + 7, y = 420, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+y <- c(43, 12, 6, 2, 141, 134, 2, 61, 20, 0)
+Response <- gl(2,1,10,labels=c("Yes","No"))
+Job <- gl(5,2,labels=c("White","Blue", "Student", "House", "Unemployed/Unknown"))
+job_t2 <- data.frame(y,Response,Job)
+ct= xtabs(y ~ Job + Response, job_t2)
+prop.test(ct)
+mod4 = glm(y ~ Job + Response, poisson, ct)
+sumary(mod4)
+pchisq(deviance(mod4), df = 4, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with job status
+mosaicplot(ct, color=TRUE, main=NULL, las=1) #mosaic plot
+```
+
+
+
+
+
+
+```{r}
+education_table = data.frame(Yes = c(197, 15), No = c(152, 57), Total = c(349, 72))
+row.names(education_table) = c("College and more", "Lower than college")
+y = as.matrix(education_table)
+x = barplot(y, main = "Population Distribution by Education and Response", xlab = "Response", ylim = c(0, 380), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(education_table) + 1.6, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+y <- c(197, 152, 15, 57)
+Response <- gl(2,1,4,labels=c("Yes","No"))
+Education <- gl(2,2,labels=c("College and more","Lower than college"))
+edu_t2 <- data.frame(y,Response,Education)
+ov = xtabs(y ~ Education + Response)
+prop.test(ov) #Pearson's X2 test: significant
+mod5 = glm(y ~ Education + Response, poisson)
+sumary(mod5)
+pchisq(deviance(mod5), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with education status
+```
+
+
+
+```{r}
+mortgage_table = data.frame(Yes = c(2, 210), No = c(21, 188), Total = c(23, 398))
+row.names(mortgage_table) = c("Mortgage", "No mortgage")
+y = as.matrix(mortgage_table)
+x = barplot(y, main = "Population Distribution by Mortgage Status and Response", xlab = "Response", ylim = c(0, 450), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(mortgage_table) + 0.8, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+```{r}
+y <- c(2, 21, 210, 188)
+Response <- gl(2,1,4,labels=c("Yes","No"))
+Mortgage <- gl(2,2,labels=c("Mortgage","No mortgage"))
+mortgage_t2 <- data.frame(y,Response,Mortgage)
+ov = xtabs(y ~ Mortgage + Response)
+prop.test(ov) #Pearson's X2 test: significant
+mod6 = glm(y ~ Mortgage + Response, poisson)
+sumary(mod6)
+pchisq(deviance(mod6), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with mortgage status
+```
+
+
+```{r}
+delinquency_table = data.frame(Yes = c(146, 66), No = c(39, 170), Total = c(185, 236))
+row.names(delinquency_table) = c("more than 60 days", "60 or less days")
+y = as.matrix(delinquency_table)
+x = barplot(y, main = "Population Distribution by Delinquency and Response", xlab = "Response", ylim = c(0, 450), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(delinquency_table) + 1.7, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+y <- c(146, 39, 66, 170)
+Response <- gl(2,1,4,labels=c("Yes","No"))
+Delinquency <- gl(2,2,labels=c("more than 60 days","60 or less days"))
+delinquency_t2 <- data.frame(y,Response,Delinquency)
+ov = xtabs(y ~ Delinquency + Response)
+prop.test(ov) #Pearson's X2 test: significant
+mod7 = glm(y ~ Delinquency + Response, poisson)
+sumary(mod7)
+pchisq(deviance(mod7), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with delinquency status
+```
+
+
+
+```{r}
+phone_table = data.frame(Yes = c(116, 96), No = c(35, 174), Total = c(151, 270))
+row.names(phone_table) = c("Cell phone", "Other")
+y = as.matrix(phone_table)
+x = barplot(y, main = "Population Distribution by Primary Phone and Response", xlab = "Response", ylim = c(0, 450), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(phone_table) - 0.4, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+y <- c(116,35,96,174)
+Response <- gl(2,1,4,labels=c("Yes","No"))
+Phone <- gl(2,2,labels=c("Cell phone","Other"))
+phone_t2 <- data.frame(y,Response,Phone)
+ov = xtabs(y ~ Phone + Response)
+prop.test(ov) #Pearson's X2 test: significant
+mod8 = glm(y ~ Phone + Response, poisson)
+sumary(mod8)
+pchisq(deviance(mod8), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with primary phone
+```
+
+
+### 1.2 Descriptive statistics of the nine variables representing demographic features in the second study
+
+```{r}
 
 ```
+
 
