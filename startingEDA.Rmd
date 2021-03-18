@@ -10,7 +10,7 @@ library(tidyverse)
 library(data.table)
 library(tibble)
 library(GGally)
-library(kableExtra)
+#library(kableExtra)
 library(ggpubr)
 transpose_df <- function(df) {
   t_df <- data.table::transpose(df)
