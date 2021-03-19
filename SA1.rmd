@@ -397,6 +397,95 @@ quantile(data2$balance[data2$y == "no"], c(0.025, 0.5, 0.975)) #compare to 1,250
 
 
 ```{r}
-
+#mortgage
+counts_housing2 = counts_housing[!(counts_housing$Var1 == "Unknown"),] 
+colnames(counts_housing2) = c("mortgage", "response", "Freq")
+counts_housing2 = arrange(counts_housing2, -order(mortgage))
+observed = mortgage_t2$y/421*sum(counts_housing2$Freq)
+observed
+G2 = 2*sum(observed*log(observed/counts_housing2$Freq)) #LRT
+G2
+1-pchisq(G2, df = 4-1) #proportion of people with mortgage in the 1st study is significantly different from that in the 2nd study
 ```
+
+
+```{r}
+#marital
+colnames(counts_marital) = c("marital", "response", "Freq")
+other_no = sum(counts_marital$Freq[which(counts_marital$response=="no" & (counts_marital$marital=="divorced"|counts_marital$marital=="single"|counts_marital$marital=="Unknown"))])
+other_yes = sum(counts_marital$Freq[which(counts_marital$response=="yes" & (counts_marital$marital=="divorced"|counts_marital$marital=="single"|counts_marital$marital=="Unknown"))])
+exp = c(counts_marital$Freq[6], counts_marital$Freq[2], other_yes, other_no)
+exp
+observed = marital_t2$y/421*sum(exp)
+observed
+G2 = 2*sum(observed*log(observed/exp)) #LRT
+G2
+1-pchisq(G2, df = 4-1)
+
+#without Unknown
+other_no2 = sum(counts_marital$Freq[which(counts_marital$response=="no" & (counts_marital$marital=="divorced"|counts_marital$marital=="single"))])
+other_yes2 = sum(counts_marital$Freq[which(counts_marital$response=="yes" & (counts_marital$marital=="divorced"|counts_marital$marital=="single"))])
+exp2 = c(counts_marital$Freq[6], counts_marital$Freq[2], other_yes2, other_no2)
+exp2
+observed2 = marital_t2$y/421*sum(exp2)
+observed2
+G2 = 2*sum(observed2*log(observed/exp2)) #LRT
+G2
+1-pchisq(G2, df = 4-1) #the proportion of people with different marital status in the 1st study is significantly different from that in the 2nd study
+```
+
+
+```{r}
+#primary phone or contact
+colnames(counts_contact) = c("contact", "response", "Freq")
+other_no = sum(counts_contact$Freq[which(counts_contact$response=="no" & (counts_contact$contact=="telephone"|counts_contact$contact=="Unknown"))])
+other_yes = sum(counts_contact$Freq[which(counts_contact$response=="yes" & (counts_contact$contact=="telephone"|counts_contact$contact=="Unknown"))])
+exp = c(counts_contact$Freq[4], counts_contact$Freq[1], other_yes, other_no)
+exp
+observed = phone_t2$y/421*sum(exp)
+observed
+G2 = 2*sum(observed*log(observed/exp)) #LRT
+G2
+1-pchisq(G2, df = 4-1)
+#the proportion of people with cell phone as primary phone in the 1st study is significantly different from that in the 2nd study
+```
+
+
+
+```{r}
+#education
+colnames(counts_education) = c("education", "response", "Freq")
+#Unknown is not included for the 2nd study
+other_no = sum(counts_education$Freq[which(counts_education$response=="no" & (counts_education$education=="primary"|counts_education$education=="secondary"))])
+other_yes = sum(counts_education$Freq[which(counts_education$response=="yes" & (counts_education$education=="primary"|counts_education$education=="secondary"))])
+exp = c(counts_education$Freq[7], counts_education$Freq[3], other_yes, other_no)
+exp
+observed = edu_t2$y/421*sum(exp)
+observed
+G2 = 2*sum(observed*log(observed/exp)) #LRT
+G2
+1-pchisq(G2, df = 4-1) #the proportion of people with education level college or higher in the 1st study is significantly different from that in the 2nd study
+```
+
+
+
+```{r}
+#job
+colnames(counts_job) = c("job", "response", "Freq")
+white_no = sum(counts_job$Freq[which(counts_job$response=="no" & (counts_job$job=="admin."|counts_job$job=="management"|counts_job$job=="entrepreneur"))])
+white_yes = sum(counts_job$Freq[which(counts_job$response=="yes" & (counts_job$job=="admin."|counts_job$job=="management"|counts_job$job=="entrepreneur"))])
+blue_no = sum(counts_job$Freq[which(counts_job$response=="no" & (counts_job$job=="blue-collar"|counts_job$job=="technician"))])
+blue_yes = sum(counts_job$Freq[which(counts_job$response=="yes" & (counts_job$job=="blue-collar"|counts_job$job=="technician"))])
+un_no = sum(counts_job$Freq[which(counts_job$response=="no" & (counts_job$job=="unemployed"|counts_job$job=="Unknown"))])
+un_yes = sum(counts_job$Freq[which(counts_job$response=="yes" & (counts_job$job=="unemployed"|counts_job$job=="Unknown"))])
+exp = c(white_yes, white_no, blue_yes, blue_no, counts_job$Freq[21], counts_job$Freq[9], counts_job$Freq[16], counts_job$Freq[4], un_yes, un_no)
+exp
+observed = job_t2$y/421*sum(exp)
+observed
+X2 = sum((observed - exp)^2/exp)
+X2
+1-pchisq(X2, df = 10-1)
+#significantly different
+```
+
 
