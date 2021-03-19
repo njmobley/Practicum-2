@@ -53,7 +53,6 @@ par(mfrow = c(2, 3))
 mapply(newfun, dat.cont, cont.labels)
 
 #Analysis of which variables have censored Values
-
 incomplete.cases <- function(x){as.numeric(count(dat.cont))-sum(complete.cases(dat.cont[x]))}
 lapply(seq(1, 8, 1), incomplete.cases)
 
@@ -62,6 +61,11 @@ library(reshape2)
 melt.dat.cont<- melt(dat.cont)
 ggplot(data = melt.dat.cont , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
 
+```
+
+## 2.2.  A  scatter  plot  matrix  of  all  the  continuous  variables  in  the  secondstudy will be generated to examine association amongst variables forany necessary transformation.
+
+```{r}
 # Scatterplot Matrix
 panel.cor <- function(x, y, ...)
 {
