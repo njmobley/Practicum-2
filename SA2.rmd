@@ -54,6 +54,9 @@ mapply(newfun, dat.cont, cont.labels)
 
 #Analysis of which variables have censored Values
 
+incomplete.cases <- function(x){as.numeric(count(dat.cont))-sum(complete.cases(dat.cont[x]))}
+lapply(seq(1, 8, 1), incomplete.cases)
+
 # Now let's make Densiy Plots for the variables
 library(reshape2)
 melt.dat.cont<- melt(dat.cont)
