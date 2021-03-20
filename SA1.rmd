@@ -74,6 +74,8 @@ prop.test(ov) #Pearson's X2 test: significant
 mod3 = glm(y ~ Marital + Response, poisson)
 sumary(mod3)
 pchisq(deviance(mod3), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with marital status
+
+#We found that marital status, gender, and race are significant predictors.
 ```
 
 
