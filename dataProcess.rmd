@@ -1,0 +1,100 @@
+---
+title: "Data Process"
+author: "njmobley"
+date: "3/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(data.table)
+library(tibble)
+library(GGally)
+library(kableExtra)
+library(ggpubr)
+library(mice)
+
+#Read in Data
+raw = read_csv("prac_data.csv")
+
+raw_data = read_csv("prac_data.csv") %>%
+  mutate(
+    price = unlist(read_csv("price.csv")),
+    job = as.factor(replace_na(job,"Unknown")),
+    education = replace_na(education,"Unknown"),
+    education = replace(education,which(education == "unknown"),"Unknown"),
+    contact = replace_na(contact,"Unknown"),
+    contact = replace(contact,which(contact == "unknown"),"Unknown"),
+    pdays = replace_na(pdays,-1),
+    default = replace_na(default,"Unknown"),
+    marital = replace_na(marital,"Unkown"),
+    housing = replace_na(housing,"Unkown"),
+    loan = replace_na(loan,"Unkown"),
+    previous = replace_na(previous,0),
+    poutcome = replace_na(poutcome,"Unknown"),
+    numMissing = rowSums(across(everything(), ~is.na(.)))
+  )
+
+medianBalance = median(raw_data$balance)
+medianCampaign = median(raw_data$campaign)
+medianAge = median(raw_data$age)
+medianDuration = median(raw_data$duration)
+imputedData = raw_data %>%
+  mutate(
+    balance = replace_na(balance,medianBalance),
+    campaign = replace_na(campaign,medianCampaign),
+    age = replace_na(age,medianAge),
+    duration = replace_na(duration,medianDuration)
+  )
+raw_cont = raw_data %>%
+  select(balance,campaign,age,duration)
+imputed_cont =imputedData %>%
+  select(balance,campaign,age,duration)
+raw_cont$set = "original"
+imputed_cont$set = "Imputed"
+final_cont = rbind(raw_cont,imputed_cont)
+numericColumns = c(1,6,10,12,13,14,15,18)
+categoricalColumns = c(2,3,4,5,7,8,9)
+df_colnames = colnames(raw_data)
+```
+
+
+
+
+# The Data
+
+The data used for this analysis was provided by our firm's Design of Experiments Team where additional respondents were sampled from the same 5 major metropolitan areas as the initial campaign gathered information on 16 different variables. Variables relating to the demographic of the respondents were all self reported, while variables pertaining to duration of contact and number of contacts were recorded by campaign administers. Description of all variables can be found in the data dictionary of the appendix.
+
+## Examining Missing Data
+
+From the given data there are 45,211 observations. However there are 17,216 (38.10%) observations that contain one or more missing values. Certain categorical variables
+had missing values with no clear pattern of missingness. With these variables we decided to add another category termed Unknown to represent observations
+where the respondents elected to not respond or were unable to provide adequate information. However we still needed to address observations that had missing values in the continuous variables.
+
+We first wanted to understand if the continuous variables were missing in any distinct pattern. From Figure INSERT NUMBER it appears that the data is missing at random. In figure 1 the red cells represent variables that are missing for a specific pattern, while the numbers on the left represent how many instances that pattern appeared in the data set. With the number at the bottom representing the total number of times the variable of the column was missing. From the graphic we see that we only observed 3 rows in which the pattern had 3 missing variables at once. These three patterns only appeared 13 times in our data set. The infrequency of these patterns signify that these patterns did occur randomly. Furthermore there were 6 distinct patterns that were missing 2 or more variables with a total of 439 occurrences. Since all the patterns of missing data occurred with a low frequency it is assumed that all of our missing values are missing at random. This reinforces that the quality of sampling and surveying our Design of Experiments teams conducted, as well as gives us the freedom to either delete or impute the missing values without the worry of skewing the data inappropriately.
+
+```{r}
+plot = mice::md.pattern(raw_data %>% select(1,6,10,12,13,14,15),plot = TRUE,rotate.names = TRUE)
+View(plot)
+```
+
+## Imputing Continous Variables
+
+After determining that the four variables containing missing values (balance, campaign,age, and duration) were all missing at random, we decided to address this issue by performing a single imputation of the median to replace the missing values.
+We were motivated to conduct an imputation, as opposed to deleting all observations with missing data, in an attempt to preserve the information of the other 15 variables in these 7,964 observations.
+
+We determined that the median, as opposed to the mean, was the appropriate measurement to impute the values since all the variables of interest except age where all rightly skewed. Because the variables were skewed replacing the missing values with the mean would have drastically shifted the imputed data sets distributions farther to the right than expected. This median is not susceptible to skewness meaning the new imputed distributions will be representative of the original data set.
+
+
+
+```{r}
+ggplot(final_cont, aes(x = duration)) + geom_density() + facet_wrap(~set,nrow =2)
+```
+
+
+
+
+
+
+
