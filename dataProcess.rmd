@@ -36,16 +36,22 @@ raw_data = read_csv("prac_data.csv") %>%
     numMissing = rowSums(across(everything(), ~is.na(.)))
   )
 
-medianBalance = median(raw_data$balance)
-medianCampaign = median(raw_data$campaign)
-medianAge = median(raw_data$age)
-medianDuration = median(raw_data$duration)
+medianBalance = median(raw_data$balance,na.rm = TRUE)
+medianCampaign = median(raw_data$campaign, na.rm = TRUE)
+medianAge = median(raw_data$age, na.rm = TRUE)
+medianDuration = median(raw_data$duration, na.rm = TRUE)
 imputedData = raw_data %>%
   mutate(
     balance = replace_na(balance,medianBalance),
     campaign = replace_na(campaign,medianCampaign),
     age = replace_na(age,medianAge),
     duration = replace_na(duration,medianDuration)
+  )
+imputedData = imputedData %>%
+  mutate(
+    campaign_binned = cut(campaign,
+                          breaks = c(-Inf,5,10,15,Inf),
+                          labels = c("<5","5-10","10-15",">15"))
   )
 raw_cont = raw_data %>%
   select(balance,campaign,age,duration)
@@ -57,6 +63,7 @@ final_cont = rbind(raw_cont,imputed_cont)
 numericColumns = c(1,6,10,12,13,14,15,18)
 categoricalColumns = c(2,3,4,5,7,8,9)
 df_colnames = colnames(raw_data)
+
 ```
 
 
@@ -89,7 +96,11 @@ We determined that the median, as opposed to the mean, was the appropriate measu
 
 
 ```{r}
-ggplot(final_cont, aes(x = duration)) + geom_density() + facet_wrap(~set,nrow =2)
+
+ggplot(final_cont, aes(x = log(balance))) + geom_density() + facet_wrap(~set)
+ggplot(final_cont, aes(x = log(duration))) + geom_density() + facet_wrap(~set)
+ggplot(final_cont, aes(x = age)) + geom_density() + facet_wrap(~set)
+ggplot(final_cont, aes(x = campaign)) + geom_histogram(binwidth = 1) + facet_wrap(~set) + xlim(0,20)
 ```
 
 
