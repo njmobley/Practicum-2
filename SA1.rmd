@@ -74,6 +74,8 @@ prop.test(ov) #Pearson's X2 test: significant
 mod3 = glm(y ~ Marital + Response, poisson)
 sumary(mod3)
 pchisq(deviance(mod3), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with marital status
+
+#We found that marital status, gender, and race are significant predictors.
 ```
 
 
@@ -271,9 +273,10 @@ text(x, y = c(counts_marital[,1] + 800, counts_marital[,2] + 800), labels = c(co
 ```{r}
 prop.test(counts_marital)
 counts_marital = as.data.frame(counts_marital)
-mod10 = glm(Freq ~ Var1 + Var2, poisson, counts_marital)
+counts_marital2 = counts_marital[!(counts_marital$Var1 == "Unknown"),] 
+mod10 = glm(Freq ~ Var1 + Var2, poisson, counts_marital2)
 sumary(mod10)
-pchisq(deviance(mod10), df = 3, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with marital status
+pchisq(deviance(mod10), df = 2, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with marital status
 ```
 
 
@@ -304,9 +307,10 @@ text(x, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(co
 ```{r}
 prop.test(counts_default)
 counts_default = as.data.frame(counts_default)
-mod12 = glm(Freq ~ Var1 + Var2, poisson, counts_default)
+counts_default2 = counts_default[!(counts_default$Var1 == "Unknown"),] 
+mod12 = glm(Freq ~ Var1 + Var2, poisson, counts_default2)
 sumary(mod12)
-pchisq(deviance(mod12), df = 2, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with status of credit in default
+pchisq(deviance(mod12), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with status of credit in default
 ```
 
 
@@ -321,9 +325,10 @@ text(x, y = c(counts_housing[,1] + 800, counts_housing[,2] + 800), labels = c(co
 ```{r}
 prop.test(counts_housing)
 counts_housing = as.data.frame(counts_housing)
-mod13 = glm(Freq ~ Var1 + Var2, poisson, counts_housing)
+counts_housing2 = counts_housing[!(counts_housing$Var1 == "Unknown"),] 
+mod13 = glm(Freq ~ Var1 + Var2, poisson, counts_housing2)
 sumary(mod13)
-pchisq(deviance(mod13), df = 2, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with status of mortgage
+pchisq(deviance(mod13), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with status of mortgage
 ```
 
 
@@ -339,9 +344,10 @@ text(x, y = c(counts_loan[,1] + 800, counts_loan[,2] + 800), labels = c(counts_l
 ```{r}
 prop.test(counts_loan)
 counts_loan = as.data.frame(counts_loan)
-mod14 = glm(Freq ~ Var1 + Var2, poisson, counts_loan)
+counts_loan2 = counts_loan[!(counts_loan$Var1 == "Unknown"),]
+mod14 = glm(Freq ~ Var1 + Var2, poisson, counts_loan2)
 sumary(mod14)
-pchisq(deviance(mod14), df = 2, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with status of personal loan
+pchisq(deviance(mod14), df = 1, lower.tail = FALSE) #deviance based test, p<0.05, so response is significantly associated with status of personal loan
 ```
 
 
