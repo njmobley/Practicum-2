@@ -1,0 +1,195 @@
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(data.table)
+library(tibble)
+library(GGally)
+#library(kableExtra) #can't load the package on my computer
+library(ggpubr)
+
+#Read in Data
+raw_data = read_csv("prac_data.csv") %>%
+  mutate(
+    price = unlist(read_csv("price.csv")),
+    job = replace(job, which(job == "unknown"),"Unknown"),
+    job = as.factor(replace_na(job,"Unknown")),
+    education = replace_na(education,"Unknown"),
+    education = replace(education,which(education == "unknown"),"Unknown"),
+    contact = replace_na(contact,"Unknown"),
+    contact = replace(contact,which(contact == "unknown"),"Unknown"),
+    pdays = replace_na(pdays,-1),
+    default = replace_na(default,"Unknown"),
+    marital = replace_na(marital,"Unknown"),
+    housing = replace_na(housing,"Unknown"),
+    loan = replace_na(loan,"Unknown"),
+    previous = replace_na(previous,0),
+    poutcome = replace_na(poutcome,"Unknown"),
+    inPrevious = if_else(previous > 0,TRUE,FALSE),
+    numMissing = rowSums(across(everything(), ~is.na(.)))
+  )
+numericColumns = c(1,6,10,12,13,14,15,18)
+categoricalColumns = c(2,3,4,5,7,8,9)
+df_colnames = colnames(raw_data)
+```
+
+```{r}
+raw_data$marital = as.factor(raw_data$marital)
+raw_data$education = as.factor(raw_data$education)
+raw_data$default = as.factor(raw_data$default)
+raw_data$housing = as.factor(raw_data$housing)
+raw_data$loan = as.factor(raw_data$loan)
+raw_data$contact = as.factor(raw_data$contact)
+raw_data$poutcome = as.factor(raw_data$poutcome)
+raw_data$y = as.factor(raw_data$y)
+summary(raw_data)
+```
+
+```{r}
+data1 = drop_na(raw_data, age) #create a dataset with the rows of missing value for age removed
+
+#boxplot
+library(ggplot2)
+ggplot(data1, aes(x = y, y = age, fill = y)) + xlab("Response") + ylab("Age") + geom_boxplot()
+
+bartlett.test(age ~ y, data1) #variances are not equal for groups of different responses
+#Welch two sample t-test
+t.test(age ~ y, data1, var.equal=FALSE, conf.level = 0.95) #means are significantly different
+
+quantile(data1$age[data1$y == "yes"], c(0.025, 0.5, 0.975)) #compare to 25.5, close to the lower limit
+quantile(data1$age[data1$y == "no"], c(0.025, 0.5, 0.975)) #compare to 37.5, close to the median
+#raw_data$age[is.na(raw_data$age)] = median(raw_data$age, na.rm = TRUE)
+#plot(density(raw_data$age), main = "density plot of age after imputation", xlab = "age")
+```
+
+
+```{r}
+data2 = drop_na(raw_data, balance) #create a dataset with the rows of missing value for age removed
+
+#boxplot
+ggplot(data2, aes(x = y, y = balance, fill = y)) + xlab("Response") + ylab("Non-mortgage loan balance") + geom_boxplot()
+
+bartlett.test(balance ~ y, data2) #variances are not equal for groups of different responses
+#Welch two sample t-test
+t.test(balance ~ y, data2, var.equal=FALSE, conf.level = 0.95) #means are significantly different
+
+quantile(data2$balance[data2$y == "yes"], c(0.025, 0.5, 0.975)) #compare to 23,879, which is larger than the upper limit
+quantile(data2$balance[data2$y == "no"], c(0.025, 0.5, 0.975)) #compare to 1,250, within the range
+```
+
+
+
+```{r}
+levels(raw_data$y) = c("no", "yes")
+counts_job = table(raw_data$job, raw_data$y)
+x = barplot(counts_job, ylim = c(0, 22000), main = "Population distribution by Job status and Response", xlab = "Response", col = rainbow(12), legend.text = TRUE, args.legend = list(x = "top", ncol = 3, bty = "n"), beside = TRUE)
+text(x, y = c(counts_job[,1]+500, counts_job[,2]+500), labels = c(counts_job[,1], counts_job[,2]), cex = 0.6)
+```
+
+
+```{r}
+par(mfrow=c(1,2))
+job_table = data.frame(Yes = c(43, 6, 141, 2, 20), No = c(12, 2, 134, 61, 0))
+row.names(job_table) = c("White collar", "Blue Collar", "Student", "House", "Unemployed/Unknown")
+y = as.matrix(job_table)
+x = barplot(y, main = "Population Distribution by Job and Response", xlab = "Response", ylim = c(0, 420), col = c("white", "blue", "yellow", "green", "red"), legend.text = TRUE, args.legend = list(x = ncol(job_table) + 17, y = 430, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+
+
+
+```{r}
+par(mfrow=c(1,2))
+marital_table = data.frame(Yes = c(2, 210), No = c(56, 153))
+row.names(marital_table) = c("Married", "Other")
+y = as.matrix(marital_table)
+x = barplot(y, main = "Population Distribution by Marital Status and Response", xlab = "Response", ylim = c(0, 420), col = c("green", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(marital_table)+3, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+counts_marital = table(raw_data$marital, raw_data$y)
+x = barplot(counts_marital, ylim = c(0, 35000), main = "Population distribution by Marital status and Response", xlab = "Response", col = rainbow(4), legend.text = TRUE, args.legend = list(x = 12, bty = "n"), beside = TRUE)
+text(x, y = c(counts_marital[,1] + 800, counts_marital[,2] + 800), labels = c(counts_marital[,1], counts_marital[,2]), cex = 0.8)
+```
+
+
+```{r}
+par(mfrow=c(1,2))
+education_table = data.frame(Yes = c(197, 15), No = c(152, 57))
+row.names(education_table) = c("College and more", "Lower than college")
+y = as.matrix(education_table)
+x = barplot(y, main = "Population Distribution by Education and Response", xlab = "Response", ylim = c(0, 380), col = c("blue", "yellow" ), legend.text = TRUE, args.legend = list(x = ncol(education_table) + 6, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+counts_education = table(raw_data$education, raw_data$y)
+x = barplot(counts_education, ylim = c(0, 35000), main = "Population distribution by Education and Response", xlab = "Response", col = rainbow(4), legend.text = TRUE, args.legend = list(x = 12, bty = "n"), beside = TRUE)
+text(x, y = c(counts_education[,1] + 800, counts_education[,2] + 800), labels = c(counts_education[,1], counts_education[,2]), cex = 0.5)
+```
+
+
+```{r}
+par(mfrow=c(1,2))
+mortgage_table = data.frame(no = c(21, 188), yes = c(2, 210))
+row.names(mortgage_table) = c("Mortgage", "No mortgage")
+y = as.matrix(mortgage_table)
+x = barplot(y, main = "Population Distribution by Mortgage Status and Response", xlab = "Response", ylim = c(0, 450), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(mortgage_table) + 4, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+counts_housing = table(raw_data$housing, raw_data$y)
+x = barplot(counts_housing, ylim = c(0, 25000), main = "Population distribution by Mortgage status and Response", xlab = "Response", col = rainbow(3), legend.text = TRUE, args.legend = list(x = nrow(counts_housing)+8, bty = "n"), beside = TRUE)
+text(x, y = c(counts_housing[,1] + 800, counts_housing[,2] + 800), labels = c(counts_housing[,1], counts_housing[,2]), cex = 0.8)
+```
+
+
+```{r}
+par(mfrow=c(1,2))
+phone_table = data.frame(yes = c(116, 96), no = c(35, 174))
+row.names(phone_table) = c("Cell phone", "Other")
+y = as.matrix(phone_table)
+x = barplot(y, main = "Population Distribution by Primary Phone and Response", xlab = "Response", ylim = c(0, 450), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(phone_table) +4, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+levels(raw_data$contact) = c("cellular", "telephone", "Unknown")
+counts_contact = table(raw_data$contact, raw_data$y)
+x2 = barplot(counts_contact, ylim = c(0, 35000), main = "Population distribution by Primary Phone and Response", xlab = "Response", col = rainbow(3), legend.text = TRUE, args.legend = list(x = "topright", bty = "n"), beside = TRUE)
+text(x2, y = c(counts_contact[,1] + 800, counts_contact[,2] + 800), labels = c(counts_contact[,1], counts_contact[,2]), cex = 0.6)
+```
+
+```{r}
+par(mfrow=c(1,2))
+delinquency_table = data.frame(Yes = c(146, 66), No = c(39, 170))
+row.names(delinquency_table) = c("more than 60 days", "60 or less days")
+y = as.matrix(delinquency_table)
+x = barplot(y, main = "Population Distribution by Delinquency and Response", xlab = "Response", ylim = c(0, 450), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(delinquency_table) + 6, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+counts_default = table(raw_data$default, raw_data$y)
+x2 = barplot(counts_default, ylim = c(0, 40000), main = "Population distribution by Status of Credit in Default and Response", xlab = "Response", col = rainbow(3), legend.text = TRUE, args.legend = list(x = "topright", bty = "n"), beside = TRUE)
+text(x2, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(counts_default[,1], counts_default[,2]), cex = 0.6)
+```
+
+
+
+```{r}
+#variables only included in study 1
+par(mfrow=c(1,2))
+#gender vs response
+gender_table = data.frame(Yes = c(173, 39), No = c(148, 61))
+row.names(gender_table) = c("Male", "Female")
+y = as.matrix(gender_table)
+x = barplot(y, main = "Population Distribution by Gender and Response", xlab = "Response", ylim = c(0, 350), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(gender_table) + 2.5, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+#race vs response
+race_table = data.frame(Yes = c(189, 23), No = c(172, 37))
+row.names(race_table) = c("White", "Not white")
+y = as.matrix(race_table)
+x = barplot(y, main = "Population Distribution by Race and Response", xlab = "Response", ylim = c(0, 400), col = c("blue", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(race_table) + 3, bty = "n"), beside = TRUE)
+text(x, y+15, labels = as.character(y))
+```
+
+
+```{r}
+#the variable only included in study 2
+counts_loan = table(raw_data$loan, raw_data$y)
+x = barplot(counts_loan, ylim = c(0, 35000), main = "Population distribution by Status of Personal Loan and Response", xlab = "Response", col = rainbow(3), legend.text = TRUE, args.legend = list(x = "topright", bty = "n"), beside = TRUE)
+text(x, y = c(counts_loan[,1] + 800, counts_loan[,2] + 800), labels = c(counts_loan[,1], counts_loan[,2]), cex = 0.8)
+```
+
