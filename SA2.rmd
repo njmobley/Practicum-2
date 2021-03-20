@@ -1,6 +1,6 @@
 ## Introduction
 
-A recent study on American breakfast preferences found that 29% of Americanscite that toast is their go-to breakfast of choice1.  Toast is also an incredibly versatile food, which can be enjoyed throughout the day.  Millennial and Gen-Ztrends have driven a recent increase in the popularity of toast, with a notableaffinity for avocado and hummus toast.  A 2014 op-ed in the New Yorker titled The Trend is Toastargued that toast is so popular among young people thatit could be considered “tip of the hipster sphere”.  The rise in popularity of toast among younger generations has opened a high-potential market space tocombine  technology  with  toast.   Thus,  our  client,  Toast  Co.,  has  created  theToast-UBS© which enables individuals to curate gourmet, artisanal toast rightfrom their computer.  
+A recent study on American breakfast preferences found that 29% of Americanscite that toast is their go-to breakfast of choice.  Toast is also an incredibly versatile food, which can be enjoyed throughout the day.  Millennial and Gen-Z trends have driven a recent increase in the popularity of toast, with a notableaffinity for avocado and hummus toast.  A 2014 op-ed in the New Yorker titled The Trend is Toastargued that toast is so popular among young people thatit could be considered “tip of the hipster sphere”.  The rise in popularity of toast among younger generations has opened a high-potential market space tocombine  technology  with  toast.   Thus,  our  client,  Toast  Co.,  has  created  theToast-UBS© which enables individuals to curate gourmet, artisanal toast rightfrom their computer.  
 
 
 Our  aim  is  to  assist  Toast  Co. to  make  informed,  data-driven  decisions  re-garding the launch of Toast-USB©.  The Design of Experiments Team (DOE) conducted an in-depth market analysis of 421 subjects from five metropolitan areas.  Preliminary results indicated a high potential for success of the product, with 50.36% of the sample responding favorably to the Toast-USB©, nearly doubling the favorable response necessary to break-even on the product.  In addition, Toast Co.  has supplied us with a second data set to be used to evaluatequantitative probability of success of the Toast-USB©.  During the course ofthis investigation, we will synthesize the key findings from the first and secondstudy, perform a risk-benefit analysis on continuation of the campaign, providea binary recommendation for launch of the product,  and outline top grossingmarket demographics, and determine an optimal Manufacture Suggested RetailPrice.
@@ -84,7 +84,6 @@ lapply(seq(1, 8, 1), incomplete.cases)
 library(reshape2)
 melt.dat.cont<- melt(dat.cont)
 ggplot(data = melt.dat.cont , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
-
 ```
 
 Based on the density plots, balance, day, duration, previous, campaign, pdays.
@@ -94,7 +93,7 @@ Based on the density plots, balance, day, duration, previous, campaign, pdays.
 logduration <- log(raw_data$duration)
 logprevious <- log(raw_data$previous+1)
 logcampaign <- log(raw_data$campaign)
-logday <- log(raw_data$day)
+logday <- log(raw_data$day)  # we do not think that this will be an important variable, therefore we will not worry about transforming this
 logpdays <- log(raw_data$pdays + 1.1)
 testdat <- data.frame(logcampaign, logprevious, logduration, logday, logpdays)
 
@@ -102,8 +101,8 @@ melt.testdat <- melt(testdat)
 ggplot(data = melt.testdat , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
 # We could not do this for balance due to a high volume of negative values
 #This helped us for duration.
+dat.cont$logduration <- logduration
 
-#Box Cox on pdays and balance
 
 # Let's take a look at campaign
 ggplot(data=raw_data, aes(x=campaign)) + geom_density()
@@ -111,24 +110,22 @@ summary(raw_data$campaign)
 outliers <- 50:65
 raw_data[raw_data$campaign %in% outliers, "campaign"] = NA
 
-ggplot(data=raw_data, aes(x=campaign)) + geom_density()
-ggplot(data=raw_data, aes(x=log(campaign))) + geom_density()
-ggplot(data=raw_data, aes(x=sqrt(campaign))) + geom_density()
-ggplot(data=raw_data, aes(x=campaign^(-.57))) + geom_density()
 
 # We can try Box Cox
 bc = powerTransform(cbind(previous +.1, campaign, pdays+1.1 , day) ~ 1, raw_data)
 summary(bc)
 library(BBmisc)
-campaign2 <- normalize(raw_data$campaign, method = "standardize", range = c(0, 1), margin = 1L, on.constant = "quiet")
 
-ggplot(data=NULL, )
+
+ggplot(data=NULL, aes(x=campaign2)) + geom_density()
 ```
 
 ## 2.2.  A  scatter  plot  matrix  of  all  the  continuous  variables  in  the  secondstudy will be generated to examine association amongst variables forany necessary transformation.
 
 ```{r sactterplotmatrix}
 # Scatterplot Matrix
+pairs.dat <- dat.cont[c(1,5,8,9)]
+pairs.dat$y <- factor(raw_data$y)
 panel.cor <- function(x, y, ...)
 {
 par(usr = c(0, 1, 0, 1))
@@ -136,22 +133,20 @@ txt <- as.character(format(cor(as.numeric(x), as.numeric(y)), digits=2))
 text(0.5, 0.5, txt, cex =1)
 }
 names.vector <- colnames(dat.cont)
-pairs(dat.cont, upper.panel=panel.cor,labels = names.vector)
+pairs(na.omit(pairs.dat[1:5]), upper.panel=panel.cor,labels = names.vector, col=pairs.dat$y)
 ```
 
-Based on the scatterplot matrix, 
+Based on the scatterplot matrix, we do not see any significant collinearity.
 
 
-
-
-
-
-## 2.3  Build a logistic regression model with the binary response variable ifrespondents is willing to purchase the product, and include all of theother variables as explanatory variables.  Perform model selection tochoose the optimal model.
+## 2.3  Build a logistic regression model with the binary response variable ifrespondents is willing to purchase the product, and include all of theother variables as explanatory variables.  Perform model selection to choose the optimal model.
 ```{r logisticregressionmodels}
-
+# Fit Multiple Regression Models:
+# Do not use campaign, build a test and train set
+glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign, data=raw_data, family=binomial)
 ```
 
 
-## 2.4.  In order to determine whether the campaign should move forward,estimate  the  overall  positive  response  rate  and  compare  it  to  thebreak-even response rate of 24.13%.
+## 2.4.  In order to determine whether the campaign should move forward,estimate  the  overall  positive  response  rate  and  compare  it  to  the break-even response rate of 24.13%.
 
 ## 2.5 Identify potential high-revenue demographic groups that theclient should focus the campaign on as well as providing suggestionson targeted marketing strategies.
