@@ -8,8 +8,8 @@ raw = read_csv("prac_data.csv")
 raw_data = read_csv("prac_data.csv") %>%
   mutate(
     price = unlist(read_csv("price.csv")),
-    job = as.factor(replace_na(job,"Unknown")),
     job = recode(job,unknown = "Unknown"),
+    job = as.factor(replace_na(job,"Unknown")),
     education = replace_na(education,"Unknown"),
     education = replace(education,which(education == "unknown"),"Unknown"),
     contact = replace_na(contact,"Unknown"),

@@ -39,7 +39,7 @@ ggplot(sample_n(training,sampleSize), aes(x = age, y = price, colour = y)) + geo
 ```
 
 ```{r}
-ggplot(sample_n(training,sampleSize), aes(x = age, y = log_balance, colour = y)) + geom_jitter(alpha = .25) +
+ggplot(sample_n(training,sampleSize), aes(x = age, y = log_balance, colour = y)) + geom_jitter(alpha = .15) +
   geom_smooth(se = FALSE)
 ```
 

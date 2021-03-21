@@ -39,7 +39,7 @@ testing = dat[-trainIndexs,]
 
 The data used for this analysis was provided by our firm's Design of Experiments Team where additional respondents were sampled from the same 5 major metropolitan areas as the initial campaign gathered information on 16 different variables. Variables relating to the demographic of the respondents were all self reported, while variables pertaining to duration of contact and number of contacts were recorded by campaign administers. Description of all variables can be found in the data dictionary of the appendix.
 
-## Examining Missing Data
+### Examining Missing Data
 
 From the given data there are 45,211 observations. However there are 17,216 (38.10%) observations that contain one or more missing values. Certain categorical variables
 had missing values with no clear pattern of missingness. With these variables we decided to add another category termed Unknown to represent observations
@@ -52,12 +52,14 @@ plot = mice::md.pattern(raw_data %>% select(1,6,10,12,13,14,15),plot = TRUE,rota
 View(plot)
 ```
 
-## Imputing Continous Variables
+### Imputing Continous Variables
 
 After determining that the four variables containing missing values (balance, campaign,age, and duration) were all missing at random, we decided to address this issue by performing a single imputation of the median to replace the missing values.
 We were motivated to conduct an imputation, as opposed to deleting all observations with missing data, in an attempt to preserve the information of the other 15 variables in these 7,964 observations.
 
 We determined that the median, as opposed to the mean, was the appropriate measurement to impute the values since all the variables of interest except age where all rightly skewed. Because the variables were skewed replacing the missing values with the mean would have drastically shifted the imputed data sets distributions farther to the right than expected. This median is not susceptible to skewness meaning the new imputed distributions will be representative of the original data set.
+
+## Reducing factor levels
 
 
 ## SA1 (compare Samples 1 and 2): Nijia 
