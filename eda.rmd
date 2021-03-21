@@ -95,6 +95,7 @@ We identifed that default, education, loan, and age were potentially significant
 
 
 ```{r}
+
 set.seed(123)
 
 formulas <- gen_formula <- function(picks,curfeatures = c("default","education","loan","age")) {
@@ -139,10 +140,16 @@ c(1, 2, 3, 4)
 all_formulas = sapply(possPicks,formulas)
 
 cv_scores = sapply(all_formulas, cv_model)
-
+which.min(cv_scores)
+#bestFormula = all_formulas[which.max(cv_scores)]
+bestFormula = "y~education+loan+age"
+bestMdl = glm(bestFormula, data = training, family = binomial)
+summary(bestMdl)
+bestFormlua
 ```
 
 
+Of the 15 logistic models that were generated using loan, age, default, and education, we found that the multivariate logistic model regressing age, loan, and education on response to Toast-USB had the maximum likelihood ratio.  The model summary also indicated that secondary, tertiary and unknown education, age, a having a loan were significant predictors in the model.  Thus, we believe that education, loan status, and age will be demographic variables of interest to Toast-Co for strategizing their marketing campaign. 
 
 
 
