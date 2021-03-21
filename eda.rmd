@@ -95,7 +95,8 @@ We identifed that default, education, loan, and age were potentially significant
 
 
 ```{r}
-library(caret)
+set.seed(123)
+
 formulas <- gen_formula <- function(picks,curfeatures = c("default","education","loan","age")) {
   str_c('y ~',str_c(curfeatures[picks], collapse = '+'))
 }
@@ -138,7 +139,6 @@ c(1, 2, 3, 4)
 all_formulas = sapply(possPicks,formulas)
 
 cv_scores = sapply(all_formulas, cv_model)
-which.min(cv_scores)
 
 ```
 
@@ -157,66 +157,3 @@ which.min(cv_scores)
 
 
 
-# DISCARD
-
-
-```{r}
-#First, we want to make qqnorm plots for all of the continuous variables, which could be used to supplement density plots and justify transformations (include in the appendix)
-library(car)
-dat.cont <- imputedData[numericColumns]
-cont.labels <- colnames(dat.cont)
-dat.cont <- dat.cont[-c(3, 5)]
-newfun <- function(x, y) qqPlot(x, main = paste(y, "QQ Plot", sep = " "))
-par(mfrow = c(2, 3))
-mapply(newfun, dat.cont, cont.labels)
-
-
-ggplot(dat.cont, aes(sample = age)) + geom_qq() +
-  geom_qq_line()
-
-#Analysis of which variables have censored Values
-incomplete.cases <- function(x){as.numeric(count(dat.cont))-sum(complete.cases(dat.cont[x]))}
-lapply(seq(1, 6, 1), incomplete.cases)
-# Now let's make Densiy Plots for the variables
-melt.dat.cont<- melt(dat.cont)
-
-ggplot(data = melt.dat.cont , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
-```
-
-Based on the density plots, duration and pdays have non-normal distributions. Days represents the day of the month that a person was contacted.  Logically, we do not beliece that this variable will be indicative of a person's likelihood of purchasing a toaster.  Therefore, we will not perform any transformations or include it in the model.  Duration has a strong left skew.  We will perform a log transformation.  
-
-Nick: consider recoding balance as negative and non-negative?
-
-## Necessary Transformations
-```{r Transformations}
-logduration <- log(imputedData$duration)
-logpdays <- log(imputedData$pdays + 1.1)
-testdat <- data.frame(logduration, logpdays)
-
-melt.testdat <- melt(testdat)
-ggplot(data = melt.testdat , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
-
-#This helped us for duration.
-dat.cont$logduration <- logduration
-
-
-# Let's take a look at campaign
-ggplot(data=imputedData, aes(x=campaign)) + geom_density()
-summary(imputedData$campaign)
-outliers <- 50:65
-imputedData[imputedData$campaign %in% outliers, "campaign"] = NA
-
-```
-
-## 2.2.  A  scatter  plot  matrix  of  all  the  continuous  variables  in  the  secondstudy will be generated to examine association amongst variables for any necessary transformation.
-
-
-
-```{r}
-ggplot(imputedData, aes(y = duration, x = day, colour = y)) + 
-  geom_jitter(alpha = .1)
-```
-
-
-
-Based on the scatterplot matrix, we do not see any significant collinearity.
