@@ -1,1 +1,34 @@
+```{r}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(data.table)
+library(tibble)
+library(GGally)
+library(kableExtra)
+library(ggpubr)
+library(reshape2)
+
+# <Library imported prior to call
+# inserts two dataframe objects into enviroments
+# imputedData which is data set with an imputed median for continous variables
+# raw_data which is the data frame gained from imported the practicum 2 materials
+
+source("data_cleaning.R")
+varsOfInterest = c("age","default","y","job","balance","price","marital","housing","education","loan","log_balance","job_reduced")
+dat = imputedData %>% 
+  select(varsOfInterest)
+numericColumns = c("age","balance","price")
+categoricalColumns = c("default","y","job","marital","education","housing","loan")
+trainIndexs = sample(1:nrow(dat), size = nrow(dat)/2)
+training = dat[trainIndexs,]
+testing = dat[-trainIndexs,]
+```
+
+From our previous section we discovered that the logistic model containg 
+
+
+
+
+
+
 
