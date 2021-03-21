@@ -533,10 +533,12 @@ mean(simulateResponse == "yes")
 
 The favorable response rate for for the product was 12.14%, which is approximately half of the necessary response rate that Toast-Co. indicated would be necessary for the launch of the product.  Based on this analysis, we do not recommend that Toast Co. move forward with this version to Toast-USB.
 
-## SA3 Application of Model to Determine MSRP 
+## Application of Model to Determine MSRP 
 
-From our previous section we discovered that the logistic model containing loan,education,age as our predictor variables performed the best predictions. Although the favorable response is not near the break even rate we still continued in determining which MSRP value would be able to maximize revenue. To generate a range of reasonable prices we selected the minimum and maximum value of price answered in the survey. The lowest value responded value was 0 but we will start our search at 1 and the maximum responded price was 168 so we will search for the optimal value in that range. To find the maximum price we performed the following simulation:
+From our previous section, we discovered that the logistic model containing personal loan status, education, and age as predictor variables performs the best predictions according to maximum likelihood ratio. Although the favorable response is below the break even rate, we still determined which MSRP value would be able to maximize revenue. To generate a range of reasonable prices, we selected the minimum and maximum value of price answered in the survey. The lowest value responded value was 0, so we started our search at 1 USD. The maximum responded price was 168 USD.  Thus, the range for reasonable prices was determined to be [1-168 USD].  To find the maximum price we performed the following simulation:
 For each potential MSRP Value:
+
+
   Repeat the below following process 5 times and take the average:
   For each observation in our training set:
       1. Generate a probability they would purchase the product using the logistic model
