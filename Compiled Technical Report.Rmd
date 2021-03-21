@@ -59,7 +59,6 @@ We were motivated to conduct an imputation, as opposed to deleting all observati
 
 We determined that the median, as opposed to the mean, was the appropriate measurement to impute the values since all the variables of interest except age where all rightly skewed. Because the variables were skewed replacing the missing values with the mean would have drastically shifted the imputed data sets distributions farther to the right than expected. This median is not susceptible to skewness meaning the new imputed distributions will be representative of the original data set.
 
-## Reducing factor levels
 
 
 ## SA1 (compare Samples 1 and 2): Nijia 
