@@ -54,8 +54,8 @@ had missing values with no clear pattern of missingness. These variables include
 
 We first wanted to understand if the continuous variables were missing in any distinct pattern. From Figure 1, it appears that the data is missing at random. In Figure 1, the red cells represent variables that are missing for a specific pattern, while the numbers on the left represent how many instances that pattern appeared in the data set. The number at the bottom of the graphic represents the total number of times the variable of the column was missing. The graphic suggests that we only observed 3 rows in which the pattern had 3 missing variables at once. These three patterns only appeared 13 times in our data set. The infrequency of these patterns signify that these patterns did occur randomly. Furthermore, there were 6 distinct patterns that were missing 2 or more variables with a total of 439 occurrences. Since all the patterns of missing data occurred with a low frequency, it is assumed that all of our missing values are missing at random. This reinforces that the quality of sampling and surveying conducted by the DOE, as well as gives us the freedom to either delete or impute the missing values without the worry of skewing the data inappropriately.
 
-```{r}
-(plot = mice::md.pattern(raw_data %>% select(1,6,10,12,13,14,15),plot = TRUE,rotate.names = TRUE))
+```{r fig.cap= "Missingness pattern of continuous variables in the second study"}
+mice::md.pattern(raw_data %>% select(1,6,10,12,13,14,15),plot = TRUE,rotate.names = TRUE)
 ```
 
 ### Imputing Continous Variables
@@ -111,6 +111,8 @@ raw_data$job = ordered(raw_data$job, levels = c("blue-collar", "management", "te
 
 We first compare the demographic features common in both studies, including two numeric variables age and non-mortgage loan balance, as well as five categorical variables job, education, marital status, mortgage and primary phone.
 
+To determine whether the decision to purchase the product is statistically associated with the numeric variable age in the second study, we generated a boxplot to compare the age distribution of respondents who are willing to purchase the product against those who are not. As is shown in Figure 2, people who are willing to purchase the product have a slightly wider range of age than those who aren't, but overall, the means of two populations appear to be only slightly different. However, based on the Welch Two sample t-test, we verified that the means are significantly different.
+
 ```{r results="hide", fig.align='center', fig.cap="Age distribution of respondents against response in the second study"}
 
 data1 = drop_na(raw_data, age) #create a dataset with the rows of missing value for age removed
@@ -130,10 +132,12 @@ quantile(data1$age[data1$y == "No"], c(0.025, 0.5, 0.975)) #compare to 37.5, clo
 ```
 
 
-To determine whether the decision to purchase the product is statistically associated with the numeric variable age in the second study, we generated a boxplot to compare the age distribution of respondents who are willing to purchase the product against those who are not. As is shown in Figure 2, people who are willing to purchase the product have a slightly wider range of age than those who aren't, but overall, the means of two populations appear to be only slightly different. However, based on the Welch Two sample t-test, we verified that the means are significantly different.
+
 
 To compare the results with the first study, we further obtained the 95% confidence intervals for the age of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that respondents who agree to purchase the product are from 23 to 74 years old, and those who refuse to purchase the product are from 25 to 60 years old. As provided in the first study, the mean age of individuals who agree to purchase the product is 25.5, falling fairly close to the lower bound of the 95% confidence interval in the second study, so it's likely that people who are willing to buy the products from the two studies are not representing the same population. However, the mean age of respondents who refused to buy the product is 37.5, which is close to the mean age of the counterpart in the second study (39 years old). Overall, we believe that based on age, samples in the two studies are unlikely from the same population.
 
+
+Next, to determine whether the choice to purchase the product is statistically associated with another numeric variable non-mortgage loan balance in the second study, we generated a density plot to compare the age distribution of respondents who are willing to purchase the product against those who are not, as is shown in Figure 3. The graph indicates that both distributions are right skewed, and they overlap to a great proportion with the distribution of respondents who refuse to buy the product being slightly less right skewed. It can be inferred that respondents who refused to buy the product might have a lightly lower balance on average, and as verified by Welch Two sample t-test, the true means of two populations are significantly different. 
 
 ```{r results="hide", fig.align='center', fig.cap="Distribution of non-mortgage loan balance against response in the second study"}
 data2 = drop_na(raw_data, balance) #create a dataset with the rows of missing value for age removed
@@ -154,10 +158,10 @@ quantile(data2$balance[data2$y == "No"], c(0.025, 0.5, 0.975)) #compare to 1,250
 ```
 
 
-To determine whether the choice to purchase the product is statistically associated with another numeric variable non-mortgage loan balance in the second study, we generated a density plot to compare the age distribution of respondents who are willing to purchase the product against those who are not, as is shown in Figure 2. The graph indicates that both distributions are right skewed, and they overlap to a great proportion with the distribution of respondents who refuse to buy the product being slightly less right skewed. It can be implied that respondents who refused to buy the product might have a lightly lower balance on average, and as verified by Welch Two sample t-test, the true means of two populations are significantly different. 
-
 We also obtained the 95% confidence intervals for the non-mortgage loan balance of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that in the second study, respondents who agree to purchase the product have non-mortgage loan balance between -157.45 and 10185 dollars, and those who refuse to purchase the product have non-mortgage loan balance between -393 and 8266 dollars. Similar to the varible age, the average non-mortgage loan balance of individuals who refuse to purchase the product ($1250) in the first study falls within the 95% confidence interval of its counterpart in the second study. However, the average non-mortgage loan balance of individuals who agree to purchase the product is 23879 dollars, being way higher than the upper limit of its counterpart in the second study, the sample in the first study is unlikely from the same population of the second study. 
 
+
+Next, that, we continued to compare the categorical varible job in both studies. Figure 4 shows the number of respondents of each type of job in the second study as delineated by their responses to buy the product, which is ranked by the order of counts in the refusal group from high to low. Regardless of the reponse, it appears that most of the respondents are blue-collar, technician or involved in management, but students and households only take up a fairly small proportion of the sample.
 
 ```{r fig.align='center', fig.cap="Population distribution of respondents by job and response in the second study"}
 counts_job = table(raw_data$job, raw_data$y)
@@ -165,9 +169,7 @@ x = barplot(counts_job, ylim = c(0, 10000), main = "Population Distribution by J
 text(x, y = c(counts_job[,1]+200, counts_job[,2]+200), labels = c(counts_job[,1], counts_job[,2]), cex = 0.5)
 ```
 
-
-After that, we continued to compare the categorical varible job in both studies. Figure 3 shows the number of respondents of each type of job in the second study as delineated by their responses to buy the product, which is ranked by the order of counts in the refusal group from high to low. Regardless of the reponse, it appears that most of the respondents are blue-collar, technician or involved in management, but students and households only take up a fairly small proportion of the sample.
-
+In order to allow for the comparison of job distributions in the two studies, we collapsed blue-collar and technician into one category, counted respondents who are entrepreneurs, administrators or involved in management as white-collar and combined unemployed and unknown into one category. Households and students are directly considered as single levels of the job factor. With all the remaining job types omitted, we generated barplots in Figure 5 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
 
 ```{r}
 counts_job = data.frame(counts_job)
@@ -202,7 +204,7 @@ mtext("Population Distribution by Job and Response", outer = TRUE, line = -2, fo
 ```
 
 
-In order to allow for the comparison of job compositions in the two studies, we collapsed blue-collar and technician into one category, counted respondents who are entrepreneurs, administrators or involved in management as white-collar and combined unemployed and unknown into one category. Households and students are directly considered as single levels of the job factor. With all the remaining job types omitted, we generated barplots in Figure 4 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
+
 
 
 ```{r fig.align='center', fig.cap="Population distribution of respondents by education and response in both studies"}
