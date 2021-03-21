@@ -54,8 +54,9 @@ had missing values with no clear pattern of missingness. These variables include
 
 We first wanted to understand if the continuous variables were missing in any distinct pattern. From Figure 1, it appears that the data is missing at random. In Figure 1, the red cells represent variables that are missing for a specific pattern, while the numbers on the left represent how many instances that pattern appeared in the data set. The number at the bottom of the graphic represents the total number of times the variable of the column was missing. The graphic suggests that we only observed 3 rows in which the pattern had 3 missing variables at once. These three patterns only appeared 13 times in our data set. The infrequency of these patterns signify that these patterns did occur randomly. Furthermore, there were 6 distinct patterns that were missing 2 or more variables with a total of 439 occurrences. Since all the patterns of missing data occurred with a low frequency, it is assumed that all of our missing values are missing at random. This reinforces that the quality of sampling and surveying conducted by the DOE, as well as gives us the freedom to either delete or impute the missing values without the worry of skewing the data inappropriately.
 
-```{r fig.cap= "Missingness pattern of continuous variables in the second study"}
-mice::md.pattern(raw_data %>% select(1,6,10,12,13,14,15),plot = TRUE,rotate.names = TRUE)
+```{r fig.cap= "Missingness pattern of continuous variables in the second study", results= 'hide',fig.width = 11,fig.height= 9}
+plot = mice::md.pattern(raw_data %>% select(1,6,10,12,13,14,15),rotate.names = TRUE)
+plot
 ```
 
 ### Imputing Continous Variables
@@ -65,6 +66,9 @@ We conducted an imputation, as opposed to deleting all observations with missing
 
 We determined that the median, as opposed to the mean, was the appropriate measurement to impute the values since all the variables of interest except age where all right-skewed. Because the variables were skewed, replacing the missing values with the mean would have drastically shifted the imputed data sets distributions farther to the right than expected. This median is not susceptible to skewness meaning the new imputed distributions will be representative of the original data set.
 
+
+
+\newpage
 
 ```{r include=FALSE}
 #change the categorical vaiables into factors and reorder the levels for graphic purposes
@@ -113,7 +117,7 @@ We first compare the demographic features common in both studies, including two 
 
 To determine whether the decision to purchase the product is statistically associated with the numeric variable age in the second study, we generated a boxplot to compare the age distribution of respondents who are willing to purchase the product against those who are not. As is shown in Figure 2, people who are willing to purchase the product have a slightly wider range of age than those who aren't, but overall, the means of two populations appear to be only slightly different. However, based on the Welch Two sample t-test, we verified that the means are significantly different.
 
-```{r results="hide", fig.align='center', fig.cap="Age distribution of respondents against response in the second study"}
+```{r results="hide", fig.align='center', fig.cap="Age distribution of respondents against response in the second study", fig.height=5}
 
 data1 = drop_na(raw_data, age) #create a dataset with the rows of missing value for age removed
 
@@ -161,13 +165,15 @@ quantile(data2$balance[data2$y == "No"], c(0.025, 0.5, 0.975)) #compare to 1,250
 We also obtained the 95% confidence intervals for the non-mortgage loan balance of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that in the second study, respondents who agree to purchase the product have non-mortgage loan balance between -157.45 and 10185 dollars, and those who refuse to purchase the product have non-mortgage loan balance between -393 and 8266 dollars. Similar to the varible age, the average non-mortgage loan balance of individuals who refuse to purchase the product ($1250) in the first study falls within the 95% confidence interval of its counterpart in the second study. However, the average non-mortgage loan balance of individuals who agree to purchase the product is 23879 dollars, being way higher than the upper limit of its counterpart in the second study, the sample in the first study is unlikely from the same population of the second study. 
 
 
-Next, that, we continued to compare the categorical varible job in both studies. Figure 4 shows the number of respondents of each type of job in the second study as delineated by their responses to buy the product, which is ranked by the order of counts in the refusal group from high to low. Regardless of the reponse, it appears that most of the respondents are blue-collar, technician or involved in management, but students and households only take up a fairly small proportion of the sample.
+Next, that, we continued to compare the categorical variable job in both studies. Figure 4 shows the number of respondents of each type of job in the second study as delineated by their responses to buy the product, which is ranked by the order of counts in the refusal group from high to low. Regardless of the reponse, it appears that most of the respondents are blue-collar, technician or involved in management, but students and households only take up a fairly small proportion of the sample.
 
 ```{r fig.align='center', fig.cap="Population distribution of respondents by job and response in the second study"}
 counts_job = table(raw_data$job, raw_data$y)
 x = barplot(counts_job, ylim = c(0, 10000), main = "Population Distribution by Job and Response", xlab = "Response", col = rainbow(12), legend.text = TRUE, args.legend = list(x = "topleft", ncol = 1, bty = "n", cex = 0.8), beside = TRUE)
 text(x, y = c(counts_job[,1]+200, counts_job[,2]+200), labels = c(counts_job[,1], counts_job[,2]), cex = 0.5)
 ```
+
+\newpage
 
 In order to allow for the comparison of job distributions in the two studies, we collapsed blue-collar and technician into one category, counted respondents who are entrepreneurs, administrators or involved in management as white-collar and combined unemployed and unknown into one category. Households and students are directly considered as single levels of the job factor. With all the remaining job types omitted, we generated barplots in Figure 5 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
 
@@ -188,7 +194,7 @@ y2 = as.matrix(counts_job2)
 ```
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by job and response in both studies"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by job and response in both studies",fig.pos='h!'}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 job_table = data.frame(Yes = c(43, 6, 141, 2, 20), No = c(12, 2, 134, 61, 0))
 row.names(job_table) = c("White collar", "Blue Collar", "Student", "House", "Unemployed
@@ -203,12 +209,16 @@ mtext("Population Distribution by Job and Response", outer = TRUE, line = -2, fo
 
 ```
 
+\newpage
+
+We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 6. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there're similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there're apparently more respondents who refuse to buy the products than agree. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study , there's less respondents with college education than respondents with secondary education. It seems that based on education levels, these two studies are not from the same population.
 
 
 We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 6. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there are similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there are more respondents with a non-favorable response compared to a favorable response. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study, there's less respondents with college education than respondents with secondary education. Based on education levels, these two studies are not from the same population.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by education and response in both studies"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by education and response in both studies",fig.height=5, fig.pos = "h!"}
+
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 education_table = data.frame(Yes = c(197, 15), No = c(152, 57))
 row.names(education_table) = c("College and more", "Lower than college")
@@ -223,7 +233,9 @@ mtext("Population Distribution by Education and Response", outer = TRUE, line = 
 
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by marital status and response in both studies"}
+
+
+```{r fig.align='center', fig.cap="Population distribution of respondents by marital status and response in both studies", fig.height = 4}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 marital_table = data.frame(Yes = c(2, 210), No = c(56, 153))
 row.names(marital_table) = c("Married", "Other")
@@ -236,6 +248,7 @@ text(x, y = c(counts_marital[,1] + 600, counts_marital[,2] + 600), labels = c(co
 mtext("Population Distribution by Marital Status and Response", outer = TRUE, line = -2, font = 2, cex = 1.2)
 ```
 
+\newpage
 
 Similarly, we also compared the distribution of respondents by marital status against their response to purchase the product, as is shown in Figure 7. In the first study, there're significantly lower numbers of married respondents than unmarried respondents, whereas there are about equal total numbers of married respondents as those unmarried in the second study. Therefore, these two samples are unlikely from the same population. Interestingly, if we focus on the distribution of married respondents in both studies, married respondents are less likely to purchase the product.
 
@@ -271,7 +284,13 @@ mtext("Population Distribution by Primary Phone and Response", font = 2, line = 
 ```
 
 
+
 Figure 9 represents the distribution of respondents who use cell phones as their primary phone against their response to purchase the product. Less than half of the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the true population, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. This could server as more evidence that these two samples are not from the same population.
+
+
+\newpage
+
+With regard to the distribution of respondents use cell phone or not as their primary phone against their response to purchase the product (shown in Figure 8), it appears that less than half ot the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the usual cases, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. Apparently, these two samples are not from the same population.
 
 
 It's possible that people in delinquency for more than 60 days also have credit default, so we compared the delinquency variable in the first study with the credit in default varible in the second study, as is shown in Figure 10. The majority of the respondents in the second study do not have credit in default.  Comparatively, slighly more than half of the respondants in the first study have less than 60 days of delinquency. Interestingly, in the first study, respondents that have less than 60 days of delinquency are less likely to buy the products. A similar trend is observed in the second study, where the majority of repondents with no credit in default refuse to buy the product.
@@ -338,7 +357,7 @@ Next, we conducted likelihood ratio tests to examine whether response to purchas
     \centering
     \begin{tabular}{ |c | c | c | c | c |}
     \hline
-        Variable & Levels & G2 & df & P-value \\ \hline
+        Variable & Levels & \(G^2\) & df & P-value \\ \hline
         Job & White Collar, Blue Collar, Student, House, Unemployed or Unknown & 321.67 & 4 & < 0.001 \\ \hline
         Education & College and more, Lower than college & 31.92 & 1 & < 0.001 \\ \hline
         Marital & Married, Not married & 71.97 & 1 & < 0.001 \\ \hline
@@ -359,7 +378,7 @@ Table 2 shows the likelihood ratio tests of whether response to purchase the pro
     \centering
     \begin{tabular}{ |c | c | c | c | c |}
     \hline
-        Variable & Levels & G2 & df & P-value \\ \hline
+        Variable & Levels & \(G^2\) & df & P-value \\ \hline
         Job & \shortstack{Administer, Management, Entrepreneur, Blue-collar, \\  Technician, Student, Housemaid, Unemployed, \\ Unknown, Self-employeed, Services, Retired} & 698.03 & 11 & < 0.001 \\ \hline
         Education & Tertiary, Secondary, Primary,  Unknown & 226.34 & 3 & < 0.001 \\ \hline
         Marital & Married, Single, Divorced & 193.16 & 2 & < 0.001 \\ \hline
@@ -378,7 +397,7 @@ Since for response is statistically associated with each of the five categorical
     \centering
     \begin{tabular}{ |c | c | c | c | c |}
     \hline
-        Variable & Levels before interacted with Response & G2 & df & P-value \\ \hline
+        Variable & Levels before interacted with Response & \(G2\) & df & P-value \\ \hline
         Job & White Collar, Blue Collar, Student, House, Unemployed or unknown & 861348.2 & 9 & < 0.001 \\ \hline
         Education & College and more, Lower than College & 82340.45 & 3 & < 0.001 \\ \hline
         Marital & Married, Not married & 82723.05 & 3 & < 0.001 \\ \hline
@@ -576,5 +595,55 @@ ggplot(results, aes(x = msrp, y = revenue)) + geom_line(size = .8) +
 From the results of our simulation we can see that the estimated maximum MSRP Value would \$46. The simulation was ran on a test set containing 20,000 observations. From this we could estimate that for every 20,000 people that interact with our product we could estimate a revenue of approximately \$60,000. 
 
 ## Conclusion:
+
+
+# Appendix:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{| m{3.2cm} | m{2cm} | m{50mm}|}
+    \hline
+    \rowcolor{lightgray}
+    Variable & Variable Type & Notes \\
+    \hline
+    Age & Numeric & Age of respondent in years.\\
+    \hline
+    Job & Categorical & Classification of jobs into 12 different categories.\\
+    \hline
+    Marital & Categorical & Indicates if respondent is Single, Married, or Separated.\\
+    \hline
+    Education & Ordinal & Respondents highest level of education. Ordered: Primary, Secondary, Tertiary.\\
+    \hline
+    Default &Binary& Indicator that respondent has defaulted on Credit.\\
+    \hline
+    Balance & Numeric & Amount of Non-mortgage credit currently borrowed.\\
+    \hline
+    Housing & Binary & Indicator that respondent has a mortgage.\\
+    \hline
+    Loan & Binary & Indicator that respondent has Non-mortgage loan.\\
+    \hline
+    Contact & Categorical & If respondent was contacted through Cellular Phone or Home Phone.\\
+    \hline
+    Duration & Numeric & How long previous contact with respondent was. (in Seconds)\\
+    \hline
+    Number of Current Contacts & Numeric & Number of times respondent was contacted during this campaign.\\
+    \hline
+    Previous Contact & Numeric & Number of days between contact in previous campaign and current campaign.\\
+    \hline
+    Number of Previous Contacts & Numeric & Number of times respondent was contacted in previous campaign.\\
+    \hline
+    Previous Outcomes & Categorical & Outcome of contact with respondent.\\
+    \hline
+    Will Purchase & Binary & If respondent would purchase the product.\\
+    \hline
+    Price & Numeric & Regardless if respondent would purchase the product, what price they think would be appropriate. (in USD)\\
+    \hline
+    In Previous Study & Binary & Indicator if respondents participated in previous campaign. \\
+    \hline
+    \end{tabular}
+    \caption{Data Dictionary}
+    \label{tab:my_label}
+\end{table}
+
 
 
