@@ -121,13 +121,13 @@ summary(raw_data)
 
 We first compare the demographic features common in both studies, including two numeric variables age and non-mortgage loan balance, as well as five categorical variables job, education, marital status, mortgage and primary phone.
 
-```{r}
+```{r results="hide", fig.align='center', fig.cap="Age distribution of respondents against response in the second study"}
 
 data1 = drop_na(raw_data, age) #create a dataset with the rows of missing value for age removed
 
 #boxplot
 library(ggplot2)
-ggplot(data1, aes(x = y, y = age, fill = y)) + xlab("Response") + ylab("Age") + geom_boxplot()
+ggplot(data1, aes(x = y, y = age, fill = y)) + xlab("Response") + ylab("Age") + geom_boxplot() + ggtitle("Distribution of Age against Response") + theme(plot.title = element_text(hjust = 0.5, face = "bold")) + labs(fill = "Response")  + scale_fill_manual(values = c("#CC79A7", "#56B4E9"))
 
 bartlett.test(age ~ y, data1) #variances are not equal for groups of different responses
 #Welch two sample t-test
@@ -145,14 +145,14 @@ To determine whether the decision to purchase the product is statistically assoc
 To compare the results with the first study, we further obtained the 95% confidence intervals for the age of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that respondents who agree to purchase the product are from 23 to 74 years old, and those who refuse to purchase the product are from 25 to 60 years old. As provided in the first study, the mean age of individuals who agree to purchase the product is 25.5, falling fairly close to the lower bound of the 95% confidence interval in the second study, so it's likely that people who are willing to buy the products from the two studies are not representing the same population. However, the mean age of respondents who refused to buy the product is 37.5, which is close to the mean age of the counterpart in the second study (39). Overall, it can be speculated that based on age, samples in the two studies are unlikely from the same population.
 
 
-```{r}
+```{r results="hide", fig.align='center', fig.cap="Distribution of non-mortgage loan balance against response in the second study"}
 data2 = drop_na(raw_data, balance) #create a dataset with the rows of missing value for age removed
 
 #boxplot
 #ggplot(data2, aes(x = y, y = balance, fill = y)) + xlab("Response") + ylab("Non-mortgage loan balance") + geom_boxplot()
 
 #draw a density plot instead
-ggplot(data2, aes( x = balance, fill = y)) + geom_density(alpha = .5) + xlim(0,10000)
+ggplot(data2, aes( x = balance, fill = y)) + geom_density(alpha = .5) + xlim(0,10000) + ggtitle("Distribution of Balance against Response") + theme(plot.title = element_text(hjust = 0.5, face = "bold")) + labs(fill = "Response") + scale_fill_manual(values = c("#CC79A7", "#56B4E9"))
 
 bartlett.test(balance ~ y, data2) #variances are not equal for groups of different responses
 #Welch two sample t-test
@@ -169,10 +169,10 @@ To determine whether the choice to purchase the product is statistically associa
 We also obtained the 95% confidence intervals for the non-mortgage loan balance of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that in the second study, respondents who agree to purchase the product have non-mortgage loan balance between -157.45 and 10185 dollars, and those who refuse to purchase the product have non-mortgage loan balance between -393 and 8266 dollars. Similar to the varible age, the average non-mortgage loan balance of individuals who refuse to purchase the product ($1250) in the first study falls within the 95% confidence interval of its counterpart in the second study. However, the average non-mortgage loan balance of individuals who agree to purchase the product is 23879 dollars, being way higher than the upper limit of its counterpart in the second study, the sample in the first study is unlikely from the same population of the second study. 
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by job and response in the second study"}
 counts_job = table(raw_data$job, raw_data$y)
-x = barplot(counts_job, ylim = c(0, 10000), main = "Population distribution by Job status and Response", xlab = "Response", col = rainbow(12), legend.text = TRUE, args.legend = list(x = 5.5, y = 10000, ncol = 1, bty = "n", cex = 0.5), beside = TRUE)
-text(x, y = c(counts_job[,1]+200, counts_job[,2]+200), labels = c(counts_job[,1], counts_job[,2]), cex = 0.4)
+x = barplot(counts_job, ylim = c(0, 10000), main = "Population Distribution by Job and Response", xlab = "Response", col = rainbow(12), legend.text = TRUE, args.legend = list(x = "topleft", ncol = 1, bty = "n", cex = 0.8), beside = TRUE)
+text(x, y = c(counts_job[,1]+200, counts_job[,2]+200), labels = c(counts_job[,1], counts_job[,2]), cex = 0.5)
 ```
 
 
@@ -196,18 +196,18 @@ y2 = as.matrix(counts_job2)
 ```
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by job and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 job_table = data.frame(Yes = c(43, 6, 141, 2, 20), No = c(12, 2, 134, 61, 0))
 row.names(job_table) = c("White collar", "Blue Collar", "Student", "House", "Unemployed
 or Unknown")
 y = as.matrix(job_table)
-x = barplot(y, xlab = "Response in Sample 1", ylim = c(0, 200), col = c("white", "blue", "yellow", "green", "red"), legend.text = TRUE, args.legend = list(x = ncol(job_table) + 8, y = 210, ncol = 2, bty = "n", cex = 0.4), beside = TRUE)
-text(x, y+5, labels = as.character(y), cex = 0.3)
+x = barplot(y, xlab = "Response in Study 1", ylim = c(0, 210), col = c("white", "blue", "yellow", "green", "red"), legend.text = TRUE, args.legend = list(x = "topleft", ncol = 2, bty = "n", cex = 0.6), beside = TRUE)
+text(x, y+4, labels = as.character(y), cex = 0.4)
 
-x2 = barplot(y2, xlab = "Response in Sample 2", ylim = c(0, 20000), col = c("white", "blue", "yellow", "green", "red"), legend.text = TRUE, args.legend = list(x = ncol(job_table) + 3.5, y =21000, bty = "n", cex = 0.4), beside = TRUE)
-text(x2, y2+400, labels = as.character(y2), cex = 0.3)
-mtext("Population Distribution by Job and Response", outer = TRUE, cex = 1.2)
+x2 = barplot(y2, xlab = "Response in Study 2", ylim = c(0, 21000), col = c("white", "blue", "yellow", "green", "red"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.6), beside = TRUE)
+text(x2, y2+500, labels = as.character(y2), cex = 0.4)
+mtext("Population Distribution by Job and Response", outer = TRUE, line = -2, font = 2, cex = 1.2)
 
 ```
 
@@ -215,86 +215,86 @@ mtext("Population Distribution by Job and Response", outer = TRUE, cex = 1.2)
 In order to allow for the comparison of job compositions in the two studies, we collapsed blue-collar and technician into one category, counted respondents who are entrepreneurs, administrators or involved in management as white-collar and combined unemployed and unknown into one category. Households and students are directly considered as single levels of the job factor. With all the remaining job types omitted, we generated barplots in Figure 4 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by education and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 education_table = data.frame(Yes = c(197, 15), No = c(152, 57))
 row.names(education_table) = c("College and more", "Lower than college")
 y = as.matrix(education_table)
-x = barplot(y, xlab = "Response in Sample 1", ylim = c(0, 250), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(education_table) + 3, y = 270, bty = "n", cex = 0.6), beside = TRUE)
-text(x, y+5, labels = as.character(y), cex = 0.4)
+x = barplot(y, xlab = "Response in Study 1", ylim = c(0, 250), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x, y+7, labels = as.character(y), cex = 0.5)
 counts_education = table(raw_data$education, raw_data$y)
-x2 = barplot(counts_education, ylim = c(0, 25000), xlab = "Response in Sample 2", col = c("red", "green", "blue", "purple"), legend.text = TRUE, args.legend = list(x = 6, y = 27000, bty = "n", cex = 0.6), beside = TRUE)
-text(x2, y = c(counts_education[,1] + 500, counts_education[,2] + 500), labels = c(counts_education[,1], counts_education[,2]), cex = 0.4)
-mtext("Population Distribution by Education and Response", outer = TRUE, cex = 1.2)
+x2 = barplot(counts_education, ylim = c(0, 25000), xlab = "Response in Study 2", col = c("red", "green", "blue", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x2, y = c(counts_education[,1] + 600, counts_education[,2] + 600), labels = c(counts_education[,1], counts_education[,2]), cex = 0.5)
+mtext("Population Distribution by Education and Response", outer = TRUE, line = -2, font = 2, cex = 1.2)
 ```
 
 
 We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 5. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there're similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there're apparently more respondents who refuse to buy the products than agree. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study , there's less respondents with college education than respondents with secondary education. It seems that based on education levels, these two studies are not from the same population.
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by marital status and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 marital_table = data.frame(Yes = c(2, 210), No = c(56, 153))
 row.names(marital_table) = c("Married", "Other")
 y = as.matrix(marital_table)
-x = barplot(y, xlab = "Response in Sample 1", ylim = c(0, 300), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(marital_table) + 1.3, y = 300, bty = "n", cex = 0.6), beside = TRUE)
-text(x, y+8, labels = as.character(y), cex = 0.4)
+x = barplot(y, xlab = "Response in Study 1", ylim = c(0, 300), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x, y+7, labels = as.character(y), cex = 0.5)
 counts_marital = table(raw_data$marital, raw_data$y)
-x = barplot(counts_marital, ylim = c(0, 30000), xlab = "Response in Sample 2", col = c("red", "green", "blue", "purple"), legend.text = TRUE, args.legend = list(x = 5.5, y = 30000, bty = "n", cex = 0.6), beside = TRUE)
-text(x, y = c(counts_marital[,1] + 800, counts_marital[,2] + 800), labels = c(counts_marital[,1], counts_marital[,2]), cex = 0.4)
-mtext("Population Distribution by Marital Status and Response", outer = TRUE, cex = 1.2)
+x = barplot(counts_marital, ylim = c(0, 30000), xlab = "Response in Study 2", col = c("red", "green", "blue", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x, y = c(counts_marital[,1] + 600, counts_marital[,2] + 600), labels = c(counts_marital[,1], counts_marital[,2]), cex = 0.5)
+mtext("Population Distribution by Marital Status and Response", outer = TRUE, line = -2, font = 2, cex = 1.2)
 ```
 
 
 Similarly, We also compared the distribution of respondents with different marital status against their response to purchase the product, as is shown in Figure 6. In the first study, there're significantly lower numbers of married respondents than not married respondents, whereas there're about equal total numbers of married respondents as those not married. Therefore, these two samples are unlikely from the same population. Interestingly, if we focus on the distribution of married respondents in both studies, we can see that in both study, married respondents are unlikely to purchase the product.
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by mortgage and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 mortgage_table = data.frame(Yes = c(2, 210), No = c(21, 188))
 row.names(mortgage_table) = c("Mortgage", "No mortgage")
 y = as.matrix(mortgage_table)
-x = barplot(y, xlab = "Response in Sample 1", ylim = c(0, 300), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(mortgage_table) + 2, y = 310, bty = "n", cex = 0.6), beside = TRUE)
-text(x, y+7, labels = as.character(y), cex = 0.4)
+x = barplot(y, xlab = "Response in Study 1", ylim = c(0, 300), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x, y+7, labels = as.character(y), cex = 0.6)
 counts_housing = table(raw_data$housing, raw_data$y)
-x2 = barplot(counts_housing, ylim = c(0, 25000), xlab = "Response in Sample 2", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = nrow(counts_housing) +2.1, y = 26000, bty = "n", cex = 0.6), beside = TRUE)
-text(x2, y = c(counts_housing[,1] + 600, counts_housing[,2] + 600), labels = c(counts_housing[,1], counts_housing[,2]), cex = 0.4)
-mtext("Population Distribution by Mortgage and Response", outer = TRUE, cex = 1.2)
+x2 = barplot(counts_housing, ylim = c(0, 25000), xlab = "Response in Study 2", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x2, y = c(counts_housing[,1] + 600, counts_housing[,2] + 600), labels = c(counts_housing[,1], counts_housing[,2]), cex = 0.6)
+mtext("Population Distribution by Mortgage and Response", outer = TRUE, line = -2, font = 2, cex = 1.2)
 ```
 
 
 Furthermore, we compared the distribution of respondents with or without mortgage against their response to purchase the product, as is shown in Figure 7. Similar to what we observed in Figure 6, in the first study, the majority of the respondents are without mortgage, whereas in the second study there are about comparable number of respondents who have mortgage or not. This could serve as edividence to show that the second study was well designed to randomize the sample. To our notice, in both studies, people with mortgage are less likely to purchase the product as compared to those with no mortgage. This could be explained as if people with mortgage are more prudent with how they should spend money. However, we see conflicting trends of response in the two studies among the group with no mortgage, which could result from the difference in sampling.
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by primary phone and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 phone_table = data.frame(Yes = c(116, 96), No = c(35, 174))
 row.names(phone_table) = c("Cellular", "Other")
 y = as.matrix(phone_table)
-x = barplot(y, xlab = "Response in Sample 1", ylim = c(0, 200), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.6), beside = TRUE)
-text(x, y+5, labels = as.character(y), cex = 0.5)
+x = barplot(y, xlab = "Response in Study 1", ylim = c(0, 200), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x, y+5, labels = as.character(y), cex = 0.6)
 levels(raw_data$contact) = c("Cellular", "Telephone", "Unknown")
 counts_contact = table(raw_data$contact, raw_data$y)
-x2 = barplot(counts_contact, ylim = c(0, 30000), xlab = "Response in Sample 2", col = c("red", "blue", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.6), beside = TRUE)
-text(x2, y = c(counts_contact[,1] + 800, counts_contact[,2] + 800), labels = c(counts_contact[,1], counts_contact[,2]), cex = 0.5)
-mtext("Population Distribution by Primary Phone and Response", outer = TRUE, cex = 1.2)
+x2 = barplot(counts_contact, ylim = c(0, 30000), xlab = "Response in Study 2", col = c("red", "blue", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
+text(x2, y = c(counts_contact[,1] + 800, counts_contact[,2] + 800), labels = c(counts_contact[,1], counts_contact[,2]), cex = 0.6)
+mtext("Population Distribution by Primary Phone and Response", font = 2, line = -2, outer = TRUE, cex = 1.2)
 ```
 
 
 With regard to the distribution of respondents use cell phone or not as their primary phone against their response to purchase the product (shown in Figure 8), it appears that less than half ot the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the usual cases, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. Apparently, these two samples are not from the same population.
 
 
-```{r}
+```{r fig.align='center', fig.cap="Comparison of the population distribution by delinquency and response in the first study against the population distribution by credit in default and response in the second study"}
 par(mfrow=c(1,2))
 delinquency_table = data.frame(Yes = c(146, 66), No = c(39, 170))
 row.names(delinquency_table) = c("More than 60 days", "60 or less days")
 y = as.matrix(delinquency_table)
 x = barplot(y, main = "Population Distribution by
-Delinquency and Response", xlab = "Response in Study 1", ylim = c(0, 220), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(delinquency_table) + 3, y = 200, bty = "n", cex = 0.6), beside = TRUE)
+Delinquency and Response", xlab = "Response in Study 1", ylim = c(0, 205), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
 text(x, y+5, labels = as.character(y), cex = 0.6)
 counts_default = table(raw_data$default, raw_data$y)
-x2 = barplot(counts_default, ylim = c(0, 44000), main = "Population Distribution by
-Credit in Default and Response", xlab = "Response in Study 2", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = 5.5, y = 40000, bty = "n", cex = 0.6), beside = TRUE)
+x2 = barplot(counts_default, ylim = c(0, 41000), main = "Population Distribution by
+Credit in Default and Response", xlab = "Response in Study 2", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
 text(x2, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(counts_default[,1], counts_default[,2]), cex = 0.6)
 
 ```
@@ -302,7 +302,7 @@ text(x2, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(c
 It's possible that people in delinquency for more than 60 days also have credit in default, so we compared the delinquency variable in study one with the credit in default varible in study 2, as is shown in Figure 9. To our notice, the great majority of the respondents in the second study are do not have credit in default, whereas in the first study respondents that have less than 60 days of delinquency account for only slightly more than half of the whole sample. Interestingly, in the first studies, respondents that has less than 60 days of delinquency are less likely to buy the products, and a similar trend is observed in the second study, where the majority of repondents with no credit in default refuse to buy the product.
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by gender against response or by race against response in the first study"}
 #variables only included in study 1
 par(mfrow=c(1,2))
 #gender vs response
@@ -310,14 +310,14 @@ gender_table = data.frame(Yes = c(173, 39), No = c(148, 61))
 row.names(gender_table) = c("Male", "Female")
 y = as.matrix(gender_table)
 x = barplot(y, main = "Population Distribution by
-Gender and Response", xlab = "Response", ylim = c(0, 280), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(gender_table) + 1.2, y = 260, bty = "n", cex = 0.6), beside = TRUE)
+Gender and Response", xlab = "Response", ylim = c(0, 250), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
 text(x, y+7, labels = as.character(y), cex = 0.6)
 #race vs response
 race_table = data.frame(Yes = c(189, 23), No = c(172, 37))
 row.names(race_table) = c("White", "Not white")
 y = as.matrix(race_table)
 x = barplot(y, main = "Population Distribution by
-Race and Response", xlab = "Response", ylim = c(0, 280), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(race_table) + 1.5, y = 260, bty = "n", cex = 0.6), beside = TRUE)
+Race and Response", xlab = "Response", ylim = c(0, 250), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n", cex = 0.7), beside = TRUE)
 text(x, y+7, labels = as.character(y), cex = 0.6)
 ```
 
@@ -325,7 +325,7 @@ text(x, y+7, labels = as.character(y), cex = 0.6)
 Now that the variables common in both studies have been scrutinized, we continued to examine the pattern of distributions with variables only described in the first study, including gender and race. Figure 10 displays the side-by-side distribution of respondents of different gender or race against response. It appears that male and white people both take up the majority of the respondents, which could potentially lead to biased response rates.
 
 
-```{r}
+```{r fig.align='center', fig.cap="Population distribution of respondents by personal loan and response in the second study"}
 #the variable only included in study 2
 counts_loan = table(raw_data$loan, raw_data$y)
 x = barplot(counts_loan, ylim = c(0, 35000), main = "Population distribution by Personal Loan and Response", xlab = "Response", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n"), beside = TRUE)
