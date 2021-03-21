@@ -334,7 +334,7 @@ Next, we conducted likelihood ratio tests to examine whether response to purchas
 
 
 
-\begin{table}
+\begin{table}[h!]
     \centering
     \begin{tabular}{ |c | c | c | c | c |}
     \hline
@@ -348,23 +348,45 @@ Next, we conducted likelihood ratio tests to examine whether response to purchas
         Gender & Male, Female & 6.81 & 1 & 0.009 \\ \hline
         Race & White, Not White & 4.08 & 1 & 0.043 \\ \hline
     \end{tabular}
-    \caption{Table 1}
+    \caption{Likelihood ratio tests of the dependence of response on the demographic variables in the first study}
 \end{table}
-
-
-(insert Table 1)
 
 
 Similarly, Table 2 reflects the likelihood ratio tests of whether response to purchase the product is dependent on each of the demographic categorical variable in the second study, including job, education, marital status, mortgage, primary phone, credit in default and personal loan. The categories used are based on the original levels of factors in the second study. the Similar to what we observed in Table 1, all of the p-values are less than 0.05, suggesting that there're significant evidence that response to buy the product are dependent on each of these seven variables.
 
 
-(insert table 2)
-
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ |c | c | c | c | c |}
+    \hline
+        Variable & Levels & G2 & df & P-value \\ \hline
+        Job & \shortstack{Administer, Management, Entrepreneur, Blue-collar, \\  Technician, Student, Housemaid, Unemployed, \\ Unknown, Self-employeed, Services, Retired} & 698.03 & 11 & < 0.001 \\ \hline
+        Education & Tertiary, Secondary, Primary,  Unknown & 226.34 & 3 & < 0.001 \\ \hline
+        Marital & Married, Single, Divorced & 193.16 & 2 & < 0.001 \\ \hline
+        Mortgage & Mortgage, No Mortgage & 868.71 & 1 & <0.001 \\ \hline
+        Primary Phone & Cellular, Telephone, Unknown & 68.66 & 1 & <0.001 \\ \hline
+        Credit in default & Credit in default, No credit in default & 24.33 & 1 & <0.001 \\ \hline
+        Personal Loan & Personal Loan, No personal loan  & 232.1 & 1 & <0.001 \\ \hline
+    \end{tabular}
+    \caption{Likelihood ratio tests of the dependence of response on the demographic variables in the second study}
+\end{table}
 
 Since for response is statistically associated with each of the five categorical variables common in both studies, we further conducted five more likelihood ratio tests to examine whether the samples in the two studies are from the same population. Assuming that they are two samples from the same population, then the proportion of each level of the interaction terms of response and any of the five categorical variables should be the same for both studies. To allow for the comparisons, the categories used are based on the original levels of factors in the first study. The test statistics are shown in Table 3. As expected, the p-values are all less than 0.05, which confirms that the components of respondents in the first study are significantly different from that in the well randomized second study.
 
 
-(insert table 3)
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ |c | c | c | c | c |}
+    \hline
+        Variable & Levels before interacted with Response & G2 & df & P-value \\ \hline
+        Job & White Collar, Blue Collar, Student, House, Unemployed or unknown & 861348.2 & 9 & < 0.001 \\ \hline
+        Education & College and more, Lower than College & 82340.45 & 3 & < 0.001 \\ \hline
+        Marital & Married, Not married & 82723.05 & 3 & < 0.001 \\ \hline
+        Mortgage & Mortgage, No Mortgage & 80419.45 & 3 & <0.001 \\ \hline
+        Primary Phone & Cellular, Other & 69783.29 & 3 & <0.001 \\ \hline
+    \end{tabular}
+    \caption{Likeliihood ratio test of whether the samples in teh twoo studies are from the same population}
+\end{table}
 
 
 
