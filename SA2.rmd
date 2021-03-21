@@ -13,8 +13,11 @@ library(tibble)
 library(GGally)
 library(kableExtra)
 library(ggpubr)
+library(reshape2)
 
 #Read in Data
+raw = read_csv("prac_data.csv")
+
 raw_data = read_csv("prac_data.csv") %>%
   mutate(
     price = unlist(read_csv("price.csv")),
@@ -30,36 +33,36 @@ raw_data = read_csv("prac_data.csv") %>%
     loan = replace_na(loan,"Unkown"),
     previous = replace_na(previous,0),
     poutcome = replace_na(poutcome,"Unknown"),
-    inPrevious = if_else(previous > 0,TRUE,FALSE),
     numMissing = rowSums(across(everything(), ~is.na(.)))
   )
+
+medianBalance = median(raw_data$balance,na.rm = TRUE)
+medianCampaign = median(raw_data$campaign, na.rm = TRUE)
+medianAge = median(raw_data$age, na.rm = TRUE)
+medianDuration = median(raw_data$duration, na.rm = TRUE)
+imputedData = raw_data %>%
+  mutate(
+    balance = replace_na(balance,medianBalance),
+    campaign = replace_na(campaign,medianCampaign),
+    age = replace_na(age,medianAge),
+    duration = replace_na(duration,medianDuration)
+  )
+imputedData = imputedData %>%
+  mutate(
+    campaign_binned = cut(campaign,
+                          breaks = c(-Inf,5,10,15,Inf),
+                          labels = c("<5","5-10","10-15",">15"))
+  )
+raw_cont = raw_data %>%
+  select(balance,campaign,age,duration)
+imputed_cont =imputedData %>%
+  select(balance,campaign,age,duration)
+raw_cont$set = "original"
+imputed_cont$set = "Imputed"
+final_cont = rbind(raw_cont,imputed_cont)
 numericColumns = c(1,6,10,12,13,14,15,18)
 categoricalColumns = c(2,3,4,5,7,8,9)
 df_colnames = colnames(raw_data)
-
-proportion_df = raw_data %>%
-  group_by(job) %>%
-  summarize(n = n())
-
-mean_df = raw_data %>%
-  summarize(across(numericColumns,function(x) round(mean(x, na.rm = TRUE),2))) %>%
-  pivot_longer(everything(), names_to = "Variable",values_to = "mean") %>%
-  na.omit()
-sd_df = raw_data %>%
-  summarize(across(numericColumns,function(x) round(sd(x, na.rm = TRUE),2))) %>%
-  pivot_longer(everything(),names_to = "Variable",values_to = "sd") %>%
-  na.omit()
-median_df = raw_data %>%
-  summarize(across(numericColumns,function(x) median(x,na.rm = TRUE))) %>%
-  pivot_longer(everything(),names_to = "Variable", values_to = "median") %>%
-  na.omit()
-pecent_missing = raw_data %>%
-  summarize(across(numericColumns,function(x) round((sum(is.na(x))/nrow(raw_data))*100,2))) %>%
-  pivot_longer(everything(),names_to = "Variable", values_to = "Missing Number") %>%
-  na.omit()
-display = inner_join(mean_df,sd_df) %>%
-  inner_join(median_df) %>%
-  inner_join(pecent_missing)
 ```
 
 ## Specific Aims 2:To recommend on whether the client should move forward with the campaign and provide suggestions on campaign strategies.
@@ -72,6 +75,7 @@ display = inner_join(mean_df,sd_df) %>%
 library(car)
 dat.cont <- raw_data[numericColumns]
 cont.labels <- colnames(dat.cont)
+dat.cont <- dat.cont[-c(3, 5)]
 newfun <- function(x, y) qqPlot(x, main = paste(y, "QQ Plot", sep = " "))
 par(mfrow = c(2, 3))
 mapply(newfun, dat.cont, cont.labels)
@@ -81,25 +85,23 @@ incomplete.cases <- function(x){as.numeric(count(dat.cont))-sum(complete.cases(d
 lapply(seq(1, 8, 1), incomplete.cases)
 
 # Now let's make Densiy Plots for the variables
-library(reshape2)
 melt.dat.cont<- melt(dat.cont)
 ggplot(data = melt.dat.cont , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
 ```
 
-Based on the density plots, balance, day, duration, previous, campaign, pdays.
+Based on the density plots, duration and pdays have non-normal distributions. Days represents the day of the month that a person was contacted.  Logically, we do not beliece that this variable will be indicative of a person's likelihood of purchasing a toaster.  Therefore, we will not perform any transformations or include it in the model.  Duration has a strong left skew.  We will perform a log transformation.  
+
+Nick: consider recoding balance as negative and non-negative?
 
 ## Necessary Transformations
 ```{r Transformations}
 logduration <- log(raw_data$duration)
-logprevious <- log(raw_data$previous+1)
-logcampaign <- log(raw_data$campaign)
-logday <- log(raw_data$day)  # we do not think that this will be an important variable, therefore we will not worry about transforming this
 logpdays <- log(raw_data$pdays + 1.1)
-testdat <- data.frame(logcampaign, logprevious, logduration, logday, logpdays)
+testdat <- data.frame(logduration, logpdays)
 
 melt.testdat <- melt(testdat)
 ggplot(data = melt.testdat , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
-# We could not do this for balance due to a high volume of negative values
+
 #This helped us for duration.
 dat.cont$logduration <- logduration
 
@@ -110,20 +112,14 @@ summary(raw_data$campaign)
 outliers <- 50:65
 raw_data[raw_data$campaign %in% outliers, "campaign"] = NA
 
-
-# We can try Box Cox
-bc = powerTransform(cbind(previous +.1, campaign, pdays+1.1 , day) ~ 1, raw_data)
-summary(bc)
-library(BBmisc)
-
-
-ggplot(data=NULL, aes(x=campaign2)) + geom_density()
 ```
 
-## 2.2.  A  scatter  plot  matrix  of  all  the  continuous  variables  in  the  secondstudy will be generated to examine association amongst variables forany necessary transformation.
+## 2.2.  A  scatter  plot  matrix  of  all  the  continuous  variables  in  the  secondstudy will be generated to examine association amongst variables for any necessary transformation.
 
 ```{r sactterplotmatrix}
 # Scatterplot Matrix
+dat.cont <- raw_data[numericColumns]
+cont.labels <- colnames(dat.cont)
 pairs.dat <- dat.cont[c(1,5,8,9)]
 pairs.dat$y <- factor(raw_data$y)
 panel.cor <- function(x, y, ...)
@@ -152,13 +148,13 @@ test.set <- raw_data[-select.rows,]
 
 # Fit Multiple Regression Models:
 # Do not use campaign, build a test and train set
-glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign, data=train.set, family=binomial)
+glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign_binned, data=train.set, family=binomial)
 
+glm.prob1 = predict(glm1, newdata = test.set, type = "response")
+glm.pred = ifelse(glm.prob1 > 0.5, "Yes", "No")
 
 # Function to find RMSE
 RMSE <- function(error) {sqrt(mean(error^2))}
-(RMSE.all.mods <- lapply(error.all.mods, RMSE))
-
 ```
 
 ## 2.4.  In order to determine whether the campaign should move forward,estimate  the  overall  positive  response  rate  and  compare  it  to  the break-even response rate of 24.13%.
