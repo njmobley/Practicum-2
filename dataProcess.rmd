@@ -11,7 +11,7 @@ library(tidyverse)
 library(data.table)
 library(tibble)
 library(GGally)
-library(kableExtra)
+#library(kableExtra)
 library(ggpubr)
 library(mice)
 
