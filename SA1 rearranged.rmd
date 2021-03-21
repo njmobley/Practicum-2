@@ -37,7 +37,7 @@ raw_data = read_csv("prac_data.csv") %>%
   )
 ```
 
-```{r}
+```{r include = FALSE}
 medianBalance = median(raw_data$balance, na.rm = TRUE)
 medianCampaign = median(raw_data$campaign, na.rm = TRUE)
 medianAge = median(raw_data$age, na.rm = TRUE)
@@ -69,6 +69,7 @@ categoricalColumns = c(2,3,4,5,7,8,9)
 df_colnames = colnames(raw_data)
 ```
 
+
 ```{r include = FALSE}
 ggplot(final_cont, aes(x = log(balance))) + geom_density() + facet_wrap(~set)
 ggplot(final_cont, aes(x = log(duration))) + geom_density() + facet_wrap(~set)
@@ -77,8 +78,7 @@ ggplot(final_cont, aes(x = campaign)) + geom_histogram(binwidth = 1) + facet_wra
 ```
 
 
-
-```{r}
+```{r results='hide'}
 #change the categorical vaiables into factors and reorder the levels for graphic purposes
 raw_data$marital = as.factor(raw_data$marital)
 levels(raw_data$marital) = c("Divorced", "Married", "Single", "Unknown")
@@ -115,6 +115,12 @@ raw_data$job = ordered(raw_data$job, levels = c("blue-collar", "management", "te
 summary(raw_data)
 ```
 
+## Specific Aims 1: To compare the demographic features of the sample from the first study to that of the second study qualitatively and quantitatively.
+
+### graphic comparisons
+
+We first compare the demographic features common in both studies, including two numeric variables age and non-mortgage loan balance, as well as five categorical variables job, education, marital status, mortgage and primary phone.
+
 ```{r}
 
 data1 = drop_na(raw_data, age) #create a dataset with the rows of missing value for age removed
@@ -127,11 +133,16 @@ bartlett.test(age ~ y, data1) #variances are not equal for groups of different r
 #Welch two sample t-test
 t.test(age ~ y, data1, var.equal=FALSE, conf.level = 0.95) #means are significantly different
 
-quantile(data1$age[data1$y == "yes"], c(0.025, 0.5, 0.975)) #compare to 25.5, close to the lower limit
-quantile(data1$age[data1$y == "no"], c(0.025, 0.5, 0.975)) #compare to 37.5, close to the median
+quantile(data1$age[data1$y == "Yes"], c(0.025, 0.5, 0.975)) #compare to 25.5, close to the lower limit
+quantile(data1$age[data1$y == "No"], c(0.025, 0.5, 0.975)) #compare to 37.5, close to the median
 #raw_data$age[is.na(raw_data$age)] = median(raw_data$age, na.rm = TRUE)
 #plot(density(raw_data$age), main = "density plot of age after imputation", xlab = "age")
 ```
+
+
+To determine whether the decision to purchase the product is statistically associated with the numeric variable age in the second study, we generated a boxplot to compare the age distribution of respondents who are willing to purchase the product against those who are not. As is shown in Figure 1, people who are willing to purchase the product have a lightly wider range of age than those who aren't, but overall, the means of two populations appear to be only slightly different. However, based on the Welch Two sample t-test, it has been verified that the means are significantly different.
+
+To compare the results with the first study, we further obtained the 95% confidence intervals for the age of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that respondents who agree to purchase the product are from 23 to 74 years old, and those who refuse to purchase the product are from 25 to 60 years old. As provided in the first study, the mean age of individuals who agree to purchase the product is 25.5, falling fairly close to the lower bound of the 95% confidence interval in the second study, so it's likely that people who are willing to buy the products from the two studies are not representing the same population. However, the mean age of respondents who refused to buy the product is 37.5, which is close to the mean age of the counterpart in the second study (39). Overall, it can be speculated that based on age, samples in the two studies are unlikely from the same population.
 
 
 ```{r}
@@ -147,11 +158,15 @@ bartlett.test(balance ~ y, data2) #variances are not equal for groups of differe
 #Welch two sample t-test
 t.test(balance ~ y, data2, var.equal=FALSE, conf.level = 0.95) #means are significantly different
 
-quantile(data2$balance[data2$y == "yes"], c(0.025, 0.5, 0.975)) #compare to 23,879, which is larger than the upper limit
-quantile(data2$balance[data2$y == "no"], c(0.025, 0.5, 0.975)) #compare to 1,250, within the range
+quantile(data2$balance[data2$y == "Yes"], c(0.025, 0.5, 0.975)) #compare to 23,879, which is larger than the upper limit
+quantile(data2$balance[data2$y == "No"], c(0.025, 0.5, 0.975)) #compare to 1,250, within the range
 
 ```
 
+
+To determine whether the choice to purchase the product is statistically associated with another numeric variable non-mortgage loan balance in the second study, we generated a density plot to compare the age distribution of respondents who are willing to purchase the product against those who are not, as is shown in Figure 2. The graph indicates that both distributions are right skewed, and they overlap to a great proportion with the distribution of respondents who refuse to buy the product being slightly less right skewed. It can be implied that respondents who refused to buy the product might have a lightly lower balance on average, and as verified by Welch Two sample t-test, the true means of two populations are significantly different. 
+
+We also obtained the 95% confidence intervals for the non-mortgage loan balance of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that in the second study, respondents who agree to purchase the product have non-mortgage loan balance between -157.45 and 10185 dollars, and those who refuse to purchase the product have non-mortgage loan balance between -393 and 8266 dollars. Similar to the varible age, the average non-mortgage loan balance of individuals who refuse to purchase the product ($1250) in the first study falls within the 95% confidence interval of its counterpart in the second study. However, the average non-mortgage loan balance of individuals who agree to purchase the product is 23879 dollars, being way higher than the upper limit of its counterpart in the second study, the sample in the first study is unlikely from the same population of the second study. 
 
 
 ```{r}
@@ -159,6 +174,10 @@ counts_job = table(raw_data$job, raw_data$y)
 x = barplot(counts_job, ylim = c(0, 10000), main = "Population distribution by Job status and Response", xlab = "Response", col = rainbow(12), legend.text = TRUE, args.legend = list(x = 5.5, y = 10000, ncol = 1, bty = "n", cex = 0.5), beside = TRUE)
 text(x, y = c(counts_job[,1]+200, counts_job[,2]+200), labels = c(counts_job[,1], counts_job[,2]), cex = 0.4)
 ```
+
+
+After that, we continued to compare the categorical varible job in both studies. Figure 3 shows the number of respondents of each type of job in the second study as delineated by their responses to buy the product, which is ranked by the order of counts in the refusal group from high to low. Regardless of the reponse, it appears that most of the respondents are blue-collar, technician or involved in management, but students and households only take up a fairly small proportion of the sample.
+
 
 ```{r}
 counts_job = data.frame(counts_job)
@@ -177,8 +196,6 @@ y2 = as.matrix(counts_job2)
 ```
 
 
-
-
 ```{r}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 job_table = data.frame(Yes = c(43, 6, 141, 2, 20), No = c(12, 2, 134, 61, 0))
@@ -192,25 +209,10 @@ x2 = barplot(y2, xlab = "Response in Sample 2", ylim = c(0, 20000), col = c("whi
 text(x2, y2+400, labels = as.character(y2), cex = 0.3)
 mtext("Population Distribution by Job and Response", outer = TRUE, cex = 1.2)
 
-
 ```
 
 
-
-
-
-```{r}
-par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
-marital_table = data.frame(Yes = c(2, 210), No = c(56, 153))
-row.names(marital_table) = c("Married", "Other")
-y = as.matrix(marital_table)
-x = barplot(y, xlab = "Response in Sample 1", ylim = c(0, 300), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(marital_table) + 1.3, y = 300, bty = "n", cex = 0.6), beside = TRUE)
-text(x, y+8, labels = as.character(y), cex = 0.4)
-counts_marital = table(raw_data$marital, raw_data$y)
-x = barplot(counts_marital, ylim = c(0, 30000), xlab = "Response in Sample 2", col = c("red", "green", "blue", "purple"), legend.text = TRUE, args.legend = list(x = 5.5, y = 30000, bty = "n", cex = 0.6), beside = TRUE)
-text(x, y = c(counts_marital[,1] + 800, counts_marital[,2] + 800), labels = c(counts_marital[,1], counts_marital[,2]), cex = 0.4)
-mtext("Population Distribution by Marital Status and Response", outer = TRUE, cex = 1.2)
-```
+In order to allow for the comparison of job compositions in the two studies, we collapsed blue-collar and technician into one category, counted respondents who are entrepreneurs, administrators or involved in management as white-collar and combined unemployed and unknown into one category. Households and students are directly considered as single levels of the job factor. With all the remaining job types omitted, we generated barplots in Figure 4 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
 
 
 ```{r}
@@ -227,6 +229,26 @@ mtext("Population Distribution by Education and Response", outer = TRUE, cex = 1
 ```
 
 
+We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 5. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there're similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there're apparently more respondents who refuse to buy the products than agree. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study , there's less respondents with college education than respondents with secondary education. It seems that based on education levels, these two studies are not from the same population.
+
+
+```{r}
+par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
+marital_table = data.frame(Yes = c(2, 210), No = c(56, 153))
+row.names(marital_table) = c("Married", "Other")
+y = as.matrix(marital_table)
+x = barplot(y, xlab = "Response in Sample 1", ylim = c(0, 300), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(marital_table) + 1.3, y = 300, bty = "n", cex = 0.6), beside = TRUE)
+text(x, y+8, labels = as.character(y), cex = 0.4)
+counts_marital = table(raw_data$marital, raw_data$y)
+x = barplot(counts_marital, ylim = c(0, 30000), xlab = "Response in Sample 2", col = c("red", "green", "blue", "purple"), legend.text = TRUE, args.legend = list(x = 5.5, y = 30000, bty = "n", cex = 0.6), beside = TRUE)
+text(x, y = c(counts_marital[,1] + 800, counts_marital[,2] + 800), labels = c(counts_marital[,1], counts_marital[,2]), cex = 0.4)
+mtext("Population Distribution by Marital Status and Response", outer = TRUE, cex = 1.2)
+```
+
+
+Similarly, We also compared the distribution of respondents with different marital status against their response to purchase the product, as is shown in Figure 6. In the first study, there're significantly lower numbers of married respondents than not married respondents, whereas there're about equal total numbers of married respondents as those not married. Therefore, these two samples are unlikely from the same population. Interestingly, if we focus on the distribution of married respondents in both studies, we can see that in both study, married respondents are unlikely to purchase the product.
+
+
 ```{r}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 mortgage_table = data.frame(Yes = c(2, 210), No = c(21, 188))
@@ -239,6 +261,9 @@ x2 = barplot(counts_housing, ylim = c(0, 25000), xlab = "Response in Sample 2", 
 text(x2, y = c(counts_housing[,1] + 600, counts_housing[,2] + 600), labels = c(counts_housing[,1], counts_housing[,2]), cex = 0.4)
 mtext("Population Distribution by Mortgage and Response", outer = TRUE, cex = 1.2)
 ```
+
+
+Furthermore, we compared the distribution of respondents with or without mortgage against their response to purchase the product, as is shown in Figure 7. Similar to what we observed in Figure 6, in the first study, the majority of the respondents are without mortgage, whereas in the second study there are about comparable number of respondents who have mortgage or not. This could serve as edividence to show that the second study was well designed to randomize the sample. To our notice, in both studies, people with mortgage are less likely to purchase the product as compared to those with no mortgage. This could be explained as if people with mortgage are more prudent with how they should spend money. However, we see conflicting trends of response in the two studies among the group with no mortgage, which could result from the difference in sampling.
 
 
 ```{r}
@@ -255,21 +280,26 @@ text(x2, y = c(counts_contact[,1] + 800, counts_contact[,2] + 800), labels = c(c
 mtext("Population Distribution by Primary Phone and Response", outer = TRUE, cex = 1.2)
 ```
 
+
+With regard to the distribution of respondents use cell phone or not as their primary phone against their response to purchase the product (shown in Figure 8), it appears that less than half ot the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the usual cases, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. Apparently, these two samples are not from the same population.
+
+
 ```{r}
 par(mfrow=c(1,2))
 delinquency_table = data.frame(Yes = c(146, 66), No = c(39, 170))
 row.names(delinquency_table) = c("More than 60 days", "60 or less days")
 y = as.matrix(delinquency_table)
 x = barplot(y, main = "Population Distribution by
-Delinquency and Response", xlab = "Response", ylim = c(0, 220), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(delinquency_table) + 3, y = 200, bty = "n", cex = 0.6), beside = TRUE)
+Delinquency and Response", xlab = "Response in Study 1", ylim = c(0, 220), col = c("red", "yellow"), legend.text = TRUE, args.legend = list(x = ncol(delinquency_table) + 3, y = 200, bty = "n", cex = 0.6), beside = TRUE)
 text(x, y+5, labels = as.character(y), cex = 0.6)
 counts_default = table(raw_data$default, raw_data$y)
 x2 = barplot(counts_default, ylim = c(0, 44000), main = "Population Distribution by
-Credit in Default and Response", xlab = "Response", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = 5.5, y = 40000, bty = "n", cex = 0.6), beside = TRUE)
+Credit in Default and Response", xlab = "Response in Study 2", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = 5.5, y = 40000, bty = "n", cex = 0.6), beside = TRUE)
 text(x2, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(counts_default[,1], counts_default[,2]), cex = 0.6)
 
 ```
 
+It's possible that people in delinquency for more than 60 days also have credit in default, so we compared the delinquency variable in study one with the credit in default varible in study 2, as is shown in Figure 9. To our notice, the great majority of the respondents in the second study are do not have credit in default, whereas in the first study respondents that have less than 60 days of delinquency account for only slightly more than half of the whole sample. Interestingly, in the first studies, respondents that has less than 60 days of delinquency are less likely to buy the products, and a similar trend is observed in the second study, where the majority of repondents with no credit in default refuse to buy the product.
 
 
 ```{r}
@@ -292,17 +322,34 @@ text(x, y+7, labels = as.character(y), cex = 0.6)
 ```
 
 
+Now that the variables common in both studies have been scrutinized, we continued to examine the pattern of distributions with variables only described in the first study, including gender and race. Figure 10 displays the side-by-side distribution of respondents of different gender or race against response. It appears that male and white people both take up the majority of the respondents, which could potentially lead to biased response rates.
+
+
 ```{r}
 #the variable only included in study 2
 counts_loan = table(raw_data$loan, raw_data$y)
-x = barplot(counts_loan, ylim = c(0, 35000), main = "Population distribution by Personal Loan and Response", xlab = "Response", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topright", bty = "n"), beside = TRUE)
+x = barplot(counts_loan, ylim = c(0, 35000), main = "Population distribution by Personal Loan and Response", xlab = "Response", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n"), beside = TRUE)
 text(x, y = c(counts_loan[,1] + 800, counts_loan[,2] + 800), labels = c(counts_loan[,1], counts_loan[,2]), cex = 0.8)
 ```
 
 
+In the second study, whether or not a respondent has personal loan is the only variable reflecing demographic features that haven't been looked into. Consistent with what we observed for the credit in default variable, the majority of the respondents are with no personal loan. Interestingly, regardless of having personal loan or not, they both tend to not buy the product, with similar probabilities.
+
+### Likelihood ratio tests
+
+Next, we conducted likelihood ratio tests to examine whether response to purchase the product is dependent on each categorical variable reflecting demographic features. For the first study, likelihood ratio test statistics, degrees of freedom and p-values of the tests on the eight variables (job, education, marital status, mortgage, primary phone, delinquency, gender and race) has been shown in Table 1, with all of the p-values being less than 0.05, indicating that there're significant evidence that response to buy the product are associated with each of these eight variables.
 
 
+(insert Table 1)
 
 
+Similarly, Table 2 reflects the likelihood ratio tests of whether response to purchase the product is dependent on each of the demographic categorical variable in the second study, including job, education, marital status, mortgage, primary phone, credit in default and personal loan. The categories used are based on the original levels of factors in the second study. the Similar to what we observed in Table 1, all of the p-values are less than 0.05, suggesting that there're significant evidence that response to buy the product are dependent on each of these seven variables.
 
 
+(insert table 2)
+
+
+Since for response is statistically associated with each of the five categorical variables common in both studies, we further conducted five more likelihood ratio tests to examine whether the samples in the two studies are from the same population. Assuming that they are two samples from the same population, then the proportion of each level of the interaction terms of response and any of the five categorical variables should be the same for both studies. To allow for the comparisons, the categories used are based on the original levels of factors in the first study. The test statistics are shown in Table 3. As expected, the p-values are all less than 0.05, which confirms that the components of respondents in the first study are significantly different from that in the well randomized second study.
+
+
+(insert table 3)
