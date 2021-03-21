@@ -35,7 +35,7 @@ testing = dat[-trainIndexs,]
 
 ## Abstract: 
 
-The popularity of toast as an American breakfast food as well as recent trends in technology have created a potential marketspace for the Toast-USB, which allows individuals to curate gourmet toast straight from their computer.  We performed a risk-benefit analysis on two samples obtained from Toast Co.'s Department of Experiments (DOE) to investigate the potential favorable response rate for the product as well as potential target demographic groups for the marketing campaign.  A series of logistic models were built to investigate the potential success of this product. We found that the best logistic model included demographic variables representing loan, age, default, and education as demographic indicators of interest.  However, the favorable response rate for the product was 12.14%, which was roughly half of the necessary response rate required for launch of the product.  Thus, based on this risk-benefit analysis, we do not recommend that Toast-Co move forward with this campaign.  However, we do have some actionable next-step suggestions for Toast-Co to implement to continue their exploration in this exciting market space. 
+The popularity of toast as an American breakfast food as well as recent trends in technology have created a potential marketspace for the Toast-USB, which allows individuals to curate gourmet toast straight from their computer.  We performed a risk-benefit analysis on two samples obtained by our firm's Department of Experiments (DOE) to investigate the potential favorable response rate for the product as well as potential target demographic groups for the marketing campaign.  A series of logistic models were built to investigate the potential success of this product. We found that the best logistic model included demographic variables representing loan, age, default, and education as demographic indicators of interest.  However, the favorable response rate for the product was 12.14%, which was roughly half of the necessary response rate required for launch of the product.  Thus, based on this risk-benefit analysis, we do not recommend that Toast-Co move forward with this campaign.  However, we do have some actionable next-step suggestions for Toast-Co to implement to continue their exploration in this exciting market space. 
 
 ## Introduction:
 
@@ -173,6 +173,7 @@ x = barplot(counts_job, ylim = c(0, 10000), main = "Population Distribution by J
 text(x, y = c(counts_job[,1]+200, counts_job[,2]+200), labels = c(counts_job[,1], counts_job[,2]), cex = 0.5)
 ```
 
+\newpage
 
 In order to allow for the comparison of job distributions in the two studies, we collapsed blue-collar and technician into one category, counted respondents who are entrepreneurs, administrators or involved in management as white-collar and combined unemployed and unknown into one category. Households and students are directly considered as single levels of the job factor. With all the remaining job types omitted, we generated barplots in Figure 5 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
 
@@ -212,7 +213,12 @@ mtext("Population Distribution by Job and Response", outer = TRUE, line = -2, fo
 
 We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 6. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there're similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there're apparently more respondents who refuse to buy the products than agree. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study , there's less respondents with college education than respondents with secondary education. It seems that based on education levels, these two studies are not from the same population.
 
+
+We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 6. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there are similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there are more respondents with a non-favorable response compared to a favorable response. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study, there's less respondents with college education than respondents with secondary education. Based on education levels, these two studies are not from the same population.
+
+
 ```{r fig.align='center', fig.cap="Population distribution of respondents by education and response in both studies",fig.height=5, fig.pos = "h!"}
+
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 education_table = data.frame(Yes = c(197, 15), No = c(152, 57))
 row.names(education_table) = c("College and more", "Lower than college")
@@ -244,11 +250,10 @@ mtext("Population Distribution by Marital Status and Response", outer = TRUE, li
 
 \newpage
 
-Similarly, We also compared the distribution of respondents with different marital status against their response to purchase the product, as is shown in Figure 6. In the first study, there're significantly lower numbers of married respondents than not married respondents, whereas there're about equal total numbers of married respondents as those not married. Therefore, these two samples are unlikely from the same population. Interestingly, if we focus on the distribution of married respondents in both studies, we can see that in both study, married respondents are unlikely to purchase the product.
+Similarly, we also compared the distribution of respondents by marital status against their response to purchase the product, as is shown in Figure 7. In the first study, there're significantly lower numbers of married respondents than unmarried respondents, whereas there are about equal total numbers of married respondents as those unmarried in the second study. Therefore, these two samples are unlikely from the same population. Interestingly, if we focus on the distribution of married respondents in both studies, married respondents are less likely to purchase the product.
 
-\newpage
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by mortgage and response in both studies", fig.pos = "t"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by mortgage and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 mortgage_table = data.frame(Yes = c(2, 210), No = c(21, 188))
 row.names(mortgage_table) = c("Mortgage", "No mortgage")
@@ -261,14 +266,10 @@ text(x2, y = c(counts_housing[,1] + 600, counts_housing[,2] + 600), labels = c(c
 mtext("Population Distribution by Mortgage and Response", outer = TRUE, line = -2, font = 2, cex = 1.2)
 ```
 
+Furthermore, we compared the distribution of respondents with or without mortgage against their response to purchase the product, as is shown in Figure 8. Similar to what we observed in Figure 7, in the first study, the majority of the respondents are without mortgage, whereas in the second study there are about comparable number of respondents who have mortgage or not. This could serve as edividence to show that the second study was well designed to randomize the sample. In both studies, people with mortgage are less likely to purchase the product as compared to those with no mortgage. A possible explanation for this is that people with mortgage could be more prudent with how they should spend money. However, we see conflicting trends of response in the two studies among the group with no mortgage, which could result from the difference in sampling.
 
 
-
-Furthermore, we compared the distribution of respondents with or without mortgage against their response to purchase the product, as is shown in Figure 7. Similar to what we observed in Figure 6, in the first study, the majority of the respondents are without mortgage, whereas in the second study there are about comparable number of respondents who have mortgage or not. This could serve as edividence to show that the second study was well designed to randomize the sample. To our notice, in both studies, people with mortgage are less likely to purchase the product as compared to those with no mortgage. This could be explained as if people with mortgage are more prudent with how they should spend money. However, we see conflicting trends of response in the two studies among the group with no mortgage, which could result from the difference in sampling.
-
-\newpage
-
-```{r fig.align='center', fig.cap="Population distribution of respondents by primary phone and response in both studies", fig.pos = 't'}
+```{r fig.align='center', fig.cap="Population distribution of respondents by primary phone and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 phone_table = data.frame(Yes = c(116, 96), No = c(35, 174))
 row.names(phone_table) = c("Cellular", "Other")
@@ -284,11 +285,17 @@ mtext("Population Distribution by Primary Phone and Response", font = 2, line = 
 
 
 
-With regard to the distribution of respondents use cell phone or not as their primary phone against their response to purchase the product (shown in Figure 8), it appears that less than half of the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the usual cases, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. Apparently, these two samples are not from the same population.
+Figure 9 represents the distribution of respondents who use cell phones as their primary phone against their response to purchase the product. Less than half of the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the true population, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. This could server as more evidence that these two samples are not from the same population.
+
 
 \newpage
 
-```{r fig.align='center', fig.cap="Comparison of the population distribution by delinquency and response in the first study against the population distribution by credit in default and response in the second study",fig.pos = 't', fig.height = 5}
+With regard to the distribution of respondents use cell phone or not as their primary phone against their response to purchase the product (shown in Figure 8), it appears that less than half ot the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the usual cases, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. Apparently, these two samples are not from the same population.
+
+
+It's possible that people in delinquency for more than 60 days also have credit default, so we compared the delinquency variable in the first study with the credit in default varible in the second study, as is shown in Figure 10. The majority of the respondents in the second study do not have credit in default.  Comparatively, slighly more than half of the respondents in the first study have less than 60 days of delinquency. Interestingly, in the first study, respondents that have less than 60 days of delinquency are less likely to buy the products. A similar trend is observed in the second study, where the majority of repondents with no credit in default refuse to buy the product.
+
+```{r fig.align='center', fig.cap="Comparison of the population distribution by delinquency and response in the first study against the population distribution by credit in default and response in the second study"}
 
 par(mfrow=c(1,2))
 delinquency_table = data.frame(Yes = c(146, 66), No = c(39, 170))
@@ -304,10 +311,10 @@ text(x2, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(c
 
 ```
 
-It's possible that people in delinquency for more than 60 days also have credit in default, so we compared the delinquency variable in study one with the credit in default variable in study 2, as is shown in Figure 9. To our notice, the great majority of the respondents in the second study are do not have credit in default, whereas in the first study respondents that have less than 60 days of delinquency account for only slightly more than half of the whole sample. Interestingly, in the first studies, respondents that has less than 60 days of delinquency are less likely to buy the products, and a similar trend is observed in the second study, where the majority of respondents with no credit in default refuse to buy the product.
+Now that the variables common in both studies have been compared, we continued to examine the pattern of distributions with variables only described in the first study, including gender and race. Figure 11 displays the side-by-side distribution of respondents of different gender or race against response. Males and white individuals are overrepresented in this study, which could potentially lead to biased response rates.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by gender against response or by race against response in the first study", fig.pos = "t",fig.height=3.7}
+```{r fig.align='center', fig.cap="Population distribution of respondents by gender against response or by race against response in the first study"}
 #variables only included in study 1
 par(mfrow=c(1,2))
 #gender vs response
@@ -327,12 +334,10 @@ text(x, y+7, labels = as.character(y), cex = 0.6)
 ```
 
 
-\pagebreak
-
-Now that the variables common in both studies have been scrutinized, we continued to examine the pattern of distributions with variables only described in the first study, including gender and race. Figure 10 displays the side-by-side distribution of respondents of different gender or race against response. It appears that male and white people both take up the majority of the respondents, which could potentially lead to biased response rates.
+In the second study, personal loan status is the only variable reflecing demographic features that has yet to be investigated. Consistent with what we observed for the credit in default variable, the majority of the respondents are with no personal non-mortgage loans as shown in Figure 12. Interestingly, regardless of having personal loan or not, they both tend to not buy the product, with similar probabilities.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by personal loan and response in the second study",fig.pos = "h!",fig.height=3.7}
+```{r fig.align='center', fig.cap="Population distribution of respondents by personal loan and response in the second study"}
 #the variable only included in study 2
 counts_loan = table(raw_data$loan, raw_data$y)
 x = barplot(counts_loan, ylim = c(0, 35000), main = "Population distribution by Personal Loan and Response", xlab = "Response", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n"), beside = TRUE)
@@ -340,13 +345,11 @@ text(x, y = c(counts_loan[,1] + 800, counts_loan[,2] + 800), labels = c(counts_l
 ```
 
 
-In the second study, whether or not a respondent has personal loan is the only variable reflecting demographic features that haven't been looked into. Consistent with what we observed for the credit in default variable, the majority of the respondents are with no personal loan. Interestingly, regardless of having personal loan or not, they both tend to not buy the product, with similar probabilities.
+\newpage
 
-\pagebreak
+### Likelihood ratio tests
 
-# Likelihood ratio tests
-
-Next, we conducted likelihood ratio tests to examine whether response to purchase the product is dependent on each categorical variable reflecting demographic features. For the first study, likelihood ratio test statistics, degrees of freedom and p-values of the tests on the eight variables (job, education, marital status, mortgage, primary phone, delinquency, gender and race) has been shown in Table 1, with all of the p-values being less than 0.05, indicating that there is significant evidence that response to buy the product are associated with each of these eight variables.
+Next, we conducted likelihood ratio tests to examine whether response to purchase the product is dependent on each categorical variable reflecting demographic features. Table 1 includes likelihood ratio test statistics, degrees of freedom and p-values of the tests on the eight variables (job, education, marital status, mortgage, primary phone, delinquency, gender and race) for the first study. All of the p-values are less than 0.05, indicating that there is significant evidence that response to buy the product are associated with each of these eight variables.
 
 
 
@@ -368,7 +371,7 @@ Next, we conducted likelihood ratio tests to examine whether response to purchas
 \end{table}
 
 
-Similarly, Table 2 reflects the likelihood ratio tests of whether response to purchase the product is dependent on each of the demographic categorical variable in the second study, including job, education, marital status, mortgage, primary phone, credit in default and personal loan. The categories used are based on the original levels of factors in the second study. the Similar to what we observed in Table 1, all of the p-values are less than 0.05, suggesting that there're significant evidence that response to buy the product are dependent on each of these seven variables.
+Table 2 shows the likelihood ratio tests of whether response to purchase the product is dependent on each of the demographic categorical variable in the second study, including job, education, marital status, mortgage, primary phone, credit in default and personal loan. The categories used are based on the original levels of factors in the second study. Similar to what we observed in Table 1, all of the p-values are less than 0.05, suggesting that there is significant evidence that response to buy the product are dependent on each of these seven variables.
 
 
 \begin{table}[h!]
@@ -396,10 +399,10 @@ Since for response is statistically associated with each of the five categorical
     \hline
         Variable & Levels before interacted with Response & \(G2\) & df & P-value \\ \hline
         Job & White Collar, Blue Collar, Student, House, Unemployed or unknown & 861348.2 & 9 & < 0.001 \\ \hline
-        Education & College and more, Lower than College & 82,340.45 & 3 & < 0.001 \\ \hline
-        Marital & Married, Not married & 82,723.05 & 3 & < 0.001 \\ \hline
-        Mortgage & Mortgage, No Mortgage & 80,419.45 & 3 & <0.001 \\ \hline
-        Primary Phone & Cellular, Other & 69,783.29 & 3 & <0.001 \\ \hline
+        Education & College and more, Lower than College & 82340.45 & 3 & < 0.001 \\ \hline
+        Marital & Married, Not married & 82723.05 & 3 & < 0.001 \\ \hline
+        Mortgage & Mortgage, No Mortgage & 80419.45 & 3 & <0.001 \\ \hline
+        Primary Phone & Cellular, Other & 69783.29 & 3 & <0.001 \\ \hline
     \end{tabular}
     \caption{Likeliihood ratio test of whether the samples in teh twoo studies are from the same population}
 \end{table}
@@ -408,24 +411,23 @@ Since for response is statistically associated with each of the five categorical
 
 ### Exploratory Data Analysis for Modeling Process
 
+For the model analysis of this study, we were interested in creating a logistic model to estimate the likelihood that a person would buy the product based off of their demographic information. This is in effort to create a generalized model that can be used to predict the success of the Toast-USB.
 
-For this study we were interested in creating a logistic model that was able to capture how the likelihood that a person would buy the product based off of their demographic information. This is in effort to create a generalized model that can be used to predict the success of the Toast-USB.
-
-First, we want to explore the relationship between the demographic variables in the sample, and particularly explore how demographic information affects willingness to purchase Toast-USB. In this case, we can define willingness to purchase the Toast-USB as both the binary (Y/N) favorable response and the price a person said they would be willing to pay for the product. Figure X shows the relationship between age and willingness to purchase.  There is a moderate relationship between age and price, and the figure suggests that individuals on the older end of the spectrum may actually have more a more favorable response to the product.  This is somewhat contridictory to our expectation, given that Millennial and Gen-Z's dual love for technology and gourmet toast served as a compelling reason to enter this market space with the launch of the Toast-USB. This paradoxical relationship could be due to the fact that younger people are more likely to eat-out rather than at home, and therefore are less likely to purchase kitchen appliances.  Additionally, young people establishing their first household may have access to less capital to purchase appliances, resulting in a decreased willingness to purchase among this demographic group.  The figure also demostrated that people had a favorable response to the product were also, on average, willing to pay more for the product.
-
-Next, in Figure X we explored the relationship between logged-balance and willingness to purchase.  Balance representes the amount of non-morgatage credit currently owed by an individual.  If a person has a large balance, it could negatively impact their willingness to purchase the Toast-USB simply because they do not have access to capital. The metric representing balance had both negative values and a strong right-skew.  We performed a linear shift by the largest negative-value balance and a log-transformation to alleviate the skew of the date. The equation below represents the mathematical formula used to transform the balance variable:
-
-$Transformed Balance = log(Balance + min(Balance))$
-
-Figure X represents the association between logged balance and willingness to purchase Toast-USB.  The figure does not demonstrate that there is a significant association between balance and willingness to purchase.  Similarly to the relationship demonstrated for age, the figure also suggests that people with a favorable respone were, on average, willing to pay more for Toast-USB.
+First, we want to explore the relationship between the demographic variables in the sample, and particularly explore how demographic information affects willingness to purchase Toast-USB. In this case, we can define willingness to purchase the Toast-USB as both the binary (Y/N) favorable response and the price a person said they would be willing to pay for the product. Figure 13 shows the relationship between age and willingness to purchase. There is a moderate relationship between age and price. The figure suggests that individuals on the older end of the spectrum may actually have a more favorable response to the product. This is somewhat contradictory to our expectation, given that Millennial and Gen-Z's dual love for technology and gourmet toast served as a compelling reason to enter this market space with the launch of the Toast-USB. This paradoxical relationship could be due to the fact that younger people are more likely to eat-out rather than at home, and therefore are less likely to purchase kitchen appliances. Additionally, young people establishing their first household may have access to less capital to purchase appliances, resulting in a decreased willingness to purchase among this demographic group. The figure also demostrated that people had a favorable response to the product were also, on average, willing to pay more for the product.
 
 
-```{r}
+Next, we explored the relationship between logged-balance and willingness to purchase.  Balance representes the amount of non-morgatage credit currently owed by an individual.  If a person has a large negative-value balance, it could negatively impact their willingness to purchase the Toast-USB simply because they do not have access to capital. The metric representing balance had both negative values and is strongly right-skewed.  We performed a linear shift by the largest negative-value balance and a log-transformation to alleviate the skew of the date. The equation below represents the mathematical formula used to transform the balance variable, and the density plot for this variable is included in the appendix:
+
+$$Transformed_Balance = log(Balance + min(Balance))$$
+
+Figure 14 represents the association between logged balance and willingness to purchase Toast-USB.  The figure does not demonstrate that there is a significant association between balance and willingness to purchase.  Similarly to the relationship demonstrated for age, the figure also suggests that people with a favorable respone were, on average, willing to pay more for Toast-USB.
+
+
+```{r fig.cap="Association between age and willingness to purchase Toast-USB"}
 sampleSize = 10000
 ggplot(sample_n(training,sampleSize), aes(x = age, y = price, colour = y)) + geom_jitter(alpha = .25) +
-  geom_smooth(se = FALSE)
+  geom_smooth(se = FALSE) + ggtitle("Age and Response")
 ```
-
 
 
 ```{r, include=FALSE}
@@ -442,7 +444,7 @@ ggplot(sample_n(training,sampleSize), aes(x = log_balance, y = price, colour = y
 ```
 
 
-Figure 15 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-mortgage loan due to the exorbitant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
+Figure 15 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-morgatage loan due to the exorbanant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
 
 ```{r fig.cap="Association categorical demographic predictors and willingness to purchase Toast-USB"}
 create_plots <- function(var) {
@@ -517,6 +519,7 @@ which.min(cv_scores)
 #bestFormula = all_formulas[which.max(cv_scores)]
 bestFormula = "y~education+loan+age"
 bestMdl = glm(bestFormula, data = training, family = binomial)
+summary(bestMdl)
 ```
 
 
@@ -532,25 +535,20 @@ The favorable response rate for for the product was 12.14%, which is approximate
 
 ## Application of Model to Determine MSRP 
 
-From our previous section we discovered that the logistic model containing loan,education,age as our predictor variables performed the best predictions. Although the favorable response is not near the break even rate we still continued in determining which MSRP value would be able to maximize revenue. To generate a range of reasonable prices we selected the minimum and maximum value of price answered in the survey. The lowest value responded value was 0 but we will start our search at 1 and the maximum responded price was 168 so we will search for the optimal value in that range. To find the maximum price we performed the following simulation:
-
-\newpage
-
+From our previous section, we discovered that the logistic model containing personal loan status, education, and age as predictor variables performs the best predictions according to maximum likelihood ratio. Although the favorable response is below the break even rate, we still determined which MSRP value would be able to maximize revenue. To generate a range of reasonable prices, we selected the minimum and maximum value of price answered in the survey. The lowest value responded value was 0, so we started our search at 1 USD. The maximum responded price was 168 USD.  Thus, the range for reasonable prices was determined to be [1-168 USD].  To find the maximum price we performed the following simulation:
+For each potential MSRP Value:
 
 
-For each potential MSRP Value:  
-&nbsp;&nbsp;  Repeat the following process 5 times and take the average:  
-&nbsp;&nbsp;&nbsp;&nbsp;  For each observation in our training set:  
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;     1. Generate a probability they would purchase the product using the logistic model  
-&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;     2. Compare that generated probability with a randomly generated number, if the random number is  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         lower than the probability then the customer will consider purchasing the item. If not then we skip  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;         to next observation.  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      3. We compare the MSRP to observed price the customer said they were willing to pay. If the MSRP  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          is less than than the price then in our simulation the customer "purchases" the product and   
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;          that sale is added to the total revenue and we continue to the next observation.  
-&nbsp;&nbsp;&nbsp;&nbsp;   We key the total revenue to be associated with the MSRP value and selected the MSRP value with the  
-&nbsp;&nbsp;&nbsp;&nbsp; highest revenue.
-
+  Repeat the below following process 5 times and take the average:
+  For each observation in our training set:
+      1. Generate a probability they would purchase the product using the logistic model
+      2. Compare that generated probability with a randomly generated number, if the random number is lower
+         than the probability then the customer will consider purchasing the item. If not then we skip to next
+         observation.
+      3. We compare the MSRP to observed price the customer said they were willing to pay. If the MSRP is less than
+         than the price then in our simulation the customer "purchases" the product and that sale is added to the 
+         total revenue and we continue to the next observation.
+  We key the total revenue to be associated with the MSRP value and selected the MSRP value with the highest revenue.
   
 ```{r}
 bestFormula = "y~education+loan+age"
@@ -590,9 +588,24 @@ ggplot(results, aes(x = msrp, y = revenue)) + geom_line(size = .8) +
   scale_y_continuous(breaks = seq(0,70000,10000))
 ```
 
-From the results of our simulation we can see that the estimated maximum MSRP Value would be \$46. The simulation was ran on a test set containing 20,000 observations. From this we could estimate that for every 20,000 people that interact with our product we could estimate a revenue of approximately \$60,000. 
+From the results of our simulation we can see that the estimated maximum MSRP Value would \$46. The simulation was ran on a test set containing 20,000 observations. From this we could estimate that for every 20,000 people that interact with our product we could estimate a revenue of approximately \$60,000. 
 
 ## Conclusion:
+
+Toast is a staple in the American diet.  It is an extremely popular breakfast food, and in recent years has gained even more popularity, as artisanal toast is at the center of Millennial and Gen-Z dietary trends. Our client, ToastCo., has proposed the launch of the Toast-USB©, which would allow amateursand toast connoisseurs alike to create culinary-grade toast straight from theircomputer. Our aim was was to assist Toast-Co. to make data-driven, insightful decisions regarding the launch and campaign strategy for this product.  In particular, we has three specific aims for the analysis.
+
+  1. Compare the demographic and campaign-specifc features from the two samples quantitatively and qualitatively.
+  
+  2. Make a binary (Y/N) recommendation regarding launch of the product based on a selection of significant demographic predictors and logistic modeling.
+  
+  3. Determing an MSRP that will maximize revenue for the product.
+
+
+For the intitial analysis, we compared the demographic and campaign-specific features of the first and second study.  *NIJIA WILL SYNTHESIZE THIS*
+
+*alli discusses the second and third 
+
+
 
 
 # Appendix:
