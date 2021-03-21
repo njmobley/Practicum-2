@@ -152,7 +152,7 @@ test.set <- raw_data[-select.rows,]
 
 # Fit Multiple Regression Models:
 # Do not use campaign, build a test and train set
-glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign_binned, data=train.set, family=binomial)
+glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign_binned + price, data=train.set, family=binomial)
 
 glm.prob1 = predict(glm1, newdata = test.set, type = "response")
 glm.pred = ifelse(glm.prob1 > 0.5, "Yes", "No")
@@ -163,4 +163,4 @@ RMSE <- function(error) {sqrt(mean(error^2))}
 
 ## 2.4.  In order to determine whether the campaign should move forward,estimate  the  overall  positive  response  rate  and  compare  it  to  the break-even response rate of 24.13%.
 
-## 2.5 Identify potential high-revenue demographic groups that theclient should focus the campaign on as well as providing suggestionson targeted marketing strategies.
+## 2.5 Identify potential high-revenue demographic groups that the client should focus the campaign on as well as providing suggestionson targeted marketing strategies.
