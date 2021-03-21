@@ -33,7 +33,9 @@ For this study we were interested in creating a logistic model that was able to 
 First, we want to explore the relationship between the demographic variables in the sample, and particularly explore how demographic information affects willingness to purchase Toast-USB. In this case, we can define willingness to purchase the Toast-USB as both the binary (Y/N) favorable response and the price a person said they would be willing to pay for the product. Figure X shows the relationship between age and willingness to purchase.  There is a moderate relationship between age and price, and the figure suggests that individuals on the older end of the spectrum may actually have more a more favorable response to the product.  This is somewhat contridictory to our expectation, given that Millennial and Gen-Z's dual love for technology and gourmet toast served as a compelling reason to enter this market space with the launch of the Toast-USB. This paradoxical relationship could be due to the fact that younger people are more likely to eat-out rather than at home, and therefore are less likely to purchase kitchen appliances.  Additionally, young people establishing their first household may have access to less capital to purchase appliances, resulting in a decreased willingness to purchase among this demographic group.  The figure also demostrated that people had a favorable response to the product were also, on average, willing to pay more for the product.
 
 
-Next, in Figure X we explored the relationship between logged-balance and willingness to purchase.  Balance representes the amount of non-morgatage credit currently owed by an individual.  If a person has a large balance, it could negatively impact their willingness to purchase the Toast-USB simply because they do not have access to capital.  However, the figure does not demonstrate that there is a significant association between balance and willingness to purchase.  Similarly to the relationship demonstrated for age, the figure also suggests that people with a favorable respone were, on average, willing to pay more for Toast-USB.
+Next, in Figure X we explored the relationship between logged-balance and willingness to purchase.  Balance representes the amount of non-morgatage credit currently owed by an individual.  If a person has a large balance, it could negatively impact their willingness to purchase the Toast-USB simply because they do not have access to capital. The metric representing balance had both negative values and a strong right-skew.  We performed a linear shift by the largest negative-value balance and a log-transformation to alleviate the skew of the date.
+
+Figure X represents the association between logged balance and willingness to purchase Toast-USB.  The figure does not demonstrate that there is a significant association between balance and willingness to purchase.  Similarly to the relationship demonstrated for age, the figure also suggests that people with a favorable respone were, on average, willing to pay more for Toast-USB.
 
 
 ```{r}
@@ -50,26 +52,21 @@ ggplot(sample_n(training,sampleSize), aes(x = age, y = log_balance, colour = y))
 ```
 
 ```{r}
+#Include in the appendix
 mininumBalance = min(raw_data$balance, na.rm = TRUE)
 ggplot(training, aes(x = log(balance - mininumBalance))) + geom_density()
 ```
 
 
-Figure X demostrated the association between continuous demographic predictors and willingness to purchase the product.  None of the variables have a particularly strong association with willingness to purchase, and there are no obvious instances of collinearity between the continuous demographic predictors.  However, the plots of the continuous predictors do suggest that price is a significant speerator.  As demonstrated in previous exploratory analysis, individuals who had a favorable response to the product were also willing to pay more for it than people who did not have an initial favorable response. 
+Figure X demostrated the association between continuous demographic predictors and willingness to purchase the product.  None of the variables have a particularly strong association with willingness to purchase, and there are no obvious instances of collinearity between the continuous demographic predictors.  However, the plots of the continuous predictors do suggest that price is a significant seperator.  As demonstrated in previous exploratory analysis, individuals who had a favorable response to the product were also willing to pay more for it than people who did not have an initial favorable response. 
 
 ```{r}
 ggplot(sample_n(training,sampleSize), aes(x = , y = price, colour = y)) + geom_point(alpha = .2) +
   geom_smooth(se = FALSE)
 ```
 
-- TALK ABOUT SHIFTING MINIMUM BALANCE :: *do this in data process????*
 
-- Not much of a relationship between any of the demographic continous variables NO COLinearity
-
-- PRICE seems to be only significant seperator
-
-
-Figure X shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default. ** Maybe say something about how these could be linked with education, given that a high amound of debt in the country is student loans???**
+Figure X shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-morgatage loan due to the exorbanant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
 
 ```{r}
 create_plots <- function(var) {
@@ -82,15 +79,16 @@ ggarrange(plotlist = plotList)
 
 ```
 
-- DEFAULT EDUCATION AND LOAN
+The original dataset obtained by the DOE had 12 factors representing the job classification for individuals in the sample.  The job variable was recoded to represent more broad categories more closely related to profession-type.  Factor levels in the recoded dataset for profession-type include classifications of student, unknown employment, administration, white-collar, and blue-collar. Figure X represents the distribution of favorable response for each of the profession types.  There is no significant association between favorable response and profession type in this sample.  
 
 ```{r}
 ggplot(training,aes(x = fct_reorder(job_reduced,job_reduced,.fun = 'length'),  fill = y)) + geom_bar(stat='count')
 ```
 
-- Not looking significant
+After exploratory analysis, we believe that default, education, loan, and age are demographic variables of interest that could be utilized in the logistic model.  For the statistical analysis portion, we aim to build a logistic model that uses relevant demographic variables to predict a favorable response to the Toast-USB and indicate if Toast-Co. should move forward with the launch of the produce.
 
-Continue to examine using defualt, education, loan in model
+## Model Process
+
 
 ```{r}
 md1 = glm(y ~ default + education + loan + age, data = training, family = binomial)
