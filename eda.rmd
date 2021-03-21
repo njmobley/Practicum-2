@@ -151,7 +151,11 @@ bestFormlua
 
 Of the 15 logistic models that were generated using loan, age, default, and education, we found that the multivariate logistic model regressing age, loan, and education on response to Toast-USB had the maximum likelihood ratio.  The model summary also indicated that secondary, tertiary and unknown education, age, a having a loan were significant predictors in the model.  Thus, we believe that education, loan status, and age will be demographic variables of interest to Toast-Co for strategizing their marketing campaign. 
 
-
+```{r}
+prediction = predict(bestMdl, testing, type = 'response')
+simulateResponse = if_else(runif(length(prediction)) < prediction,"yes","no")
+mean(simulateResponse == "yes")
+```
 
 
 
