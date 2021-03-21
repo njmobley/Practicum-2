@@ -55,7 +55,10 @@ imputedData = imputedData %>%
   mutate(
     campaign_binned = cut(campaign,
                           breaks = c(-Inf,5,10,15,Inf),
-                          labels = c("<5","5-10","10-15",">15"))
+                          labels = c("<5","5-10","10-15",">15")),
+    education = factor(education, levels = c("Unknown","primary","secondary","tertiary")),
+    default = as.factor(default),
+    loan = as.factor(loan)
   )
 raw_cont = raw_data %>%
   select(balance,campaign,age,duration)
