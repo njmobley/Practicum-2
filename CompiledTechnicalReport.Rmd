@@ -307,7 +307,7 @@ text(x2, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(c
 It's possible that people in delinquency for more than 60 days also have credit in default, so we compared the delinquency variable in study one with the credit in default variable in study 2, as is shown in Figure 9. To our notice, the great majority of the respondents in the second study are do not have credit in default, whereas in the first study respondents that have less than 60 days of delinquency account for only slightly more than half of the whole sample. Interestingly, in the first studies, respondents that has less than 60 days of delinquency are less likely to buy the products, and a similar trend is observed in the second study, where the majority of respondents with no credit in default refuse to buy the product.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by gender against response or by race against response in the first study"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by gender against response or by race against response in the first study", fig.pos = "t",fig.height=3.7}
 #variables only included in study 1
 par(mfrow=c(1,2))
 #gender vs response
@@ -327,10 +327,12 @@ text(x, y+7, labels = as.character(y), cex = 0.6)
 ```
 
 
+\pagebreak
+
 Now that the variables common in both studies have been scrutinized, we continued to examine the pattern of distributions with variables only described in the first study, including gender and race. Figure 10 displays the side-by-side distribution of respondents of different gender or race against response. It appears that male and white people both take up the majority of the respondents, which could potentially lead to biased response rates.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by personal loan and response in the second study"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by personal loan and response in the second study",fig.pos = "h!",fig.height=3.7}
 #the variable only included in study 2
 counts_loan = table(raw_data$loan, raw_data$y)
 x = barplot(counts_loan, ylim = c(0, 35000), main = "Population distribution by Personal Loan and Response", xlab = "Response", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n"), beside = TRUE)
@@ -340,9 +342,7 @@ text(x, y = c(counts_loan[,1] + 800, counts_loan[,2] + 800), labels = c(counts_l
 
 In the second study, whether or not a respondent has personal loan is the only variable reflecting demographic features that haven't been looked into. Consistent with what we observed for the credit in default variable, the majority of the respondents are with no personal loan. Interestingly, regardless of having personal loan or not, they both tend to not buy the product, with similar probabilities.
 
-
-\newpage
-
+\pagebreak
 
 # Likelihood ratio tests
 
@@ -442,7 +442,7 @@ ggplot(sample_n(training,sampleSize), aes(x = log_balance, y = price, colour = y
 ```
 
 
-Figure 15 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-morgatage loan due to the exorbanant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
+Figure 15 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-mortgage loan due to the exorbitant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
 
 ```{r fig.cap="Association categorical demographic predictors and willingness to purchase Toast-USB"}
 create_plots <- function(var) {

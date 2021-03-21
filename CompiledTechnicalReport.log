@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.12)  21 MAR 2021 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.12)  21 MAR 2021 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -820,43 +820,28 @@ Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
 nk-12-1.pdf  used on input line 445.
 (pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
 <CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf, id=182, 469
-.755pt x 325.215pt>
+.755pt x 266.9975pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
 nk-13-1.pdf  used on input line 466.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf, id=183, 469
-.755pt x 325.215pt>
-File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf Graphic
- file (type pdf)
-<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf>
-Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-14-1.pdf  used on input line 483.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+(pdftex.def)             Requested size: 469.75386pt x 266.99683pt.
 [11pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.497 \newpage
-               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-11-1
-.pdf>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 514.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 514.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 514.
-
-Overfull \hbox (32.42139pt too wide) in paragraph at lines 514--526
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
+l.474 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-11-1.pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf, id=194, 469
+.755pt x 266.9975pt>
+File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf Graphic
+ file (type pdf)
+<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf>
+Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
+nk-14-1.pdf  used on input line 485.
+(pdftex.def)             Requested size: 469.75386pt x 266.99683pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -865,186 +850,197 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.567 
+l.500 
        <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-12-1.pdf>] [
 13pdfTeX warning (ext4): destination with the same identifier (name{figure.11})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.567 
-       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf>] [
-14pdfTeX warning (ext4): destination with the same identifier (name{figure.12})
- has been already used, duplicate ignored
+l.513 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+12}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.567 
-       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf>]
-Overfull \hbox (43.25464pt too wide) in paragraph at lines 570--579
+l.513 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf> <.
+/CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 516.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 516.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 516.
+
+Overfull \hbox (32.42139pt too wide) in paragraph at lines 516--528
  [][] 
  []
 
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 584.
+Overfull \hbox (43.25464pt too wide) in paragraph at lines 572--581
+ [][] 
+ []
 
-[15pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 586.
+
+[14pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.613 
+l.593 
       pdfTeX warning (ext4): destination with the same identifier (name{table.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.613 
-      pdfTeX warning (ext4): destination with the same identifier (name{table.3
-}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.613 
+l.593 
       ]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf, id=241, 469
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf, id=235, 469
 .755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-15-1.pdf  used on input line 634.
+nk-15-1.pdf  used on input line 636.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-16-1.pdf, id=242, 469
-.755pt x 325.215pt>
-File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-16-1.pdf Graphic
- file (type pdf)
-<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-16-1.pdf>
-Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-16-1.pdf  used on input line 636.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[16 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-17-1.pdf, id=256, 469
-.755pt x 325.215pt>
-File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-17-1.pdf Graphic
- file (type pdf)
-<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-17-1.pdf>
-Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-17-1.pdf  used on input line 638.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[17 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-16-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf, id=270, 469
+[15pdfTeX warning (ext4): destination with the same identifier (name{table.3}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.638 B
+       ased on the analysis of the continuous demogrpahic predictors, none of]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf, id=242, 469
 .755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-18-1.pdf  used on input line 650.
+nk-18-1.pdf  used on input line 664.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[18 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-17-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf, id=280, 469
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf, id=243, 469
 .755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-19-1.pdf  used on input line 667.
+nk-19-1.pdf  used on input line 681.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[19 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-20-1.pdf, id=296, 469
-.755pt x 325.215pt>
-File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-20-1.pdf Graphic
- file (type pdf)
-<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-20-1.pdf>
-Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-20-1.pdf  used on input line 679.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[20 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf>]
+[16 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf>] [17p
+dfTeX warning (ext4): destination with the same identifier (name{figure.13}) ha
+s been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.710 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf>] [
+18pdfTeX warning (ext4): destination with the same identifier (name{figure.14})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.710 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf>]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 7
-06.
+11.
 (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [21 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-20-1.pdf>]
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-739.
-(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [22]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf, id=323, 469
+) [19]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf, id=286, 469
 .755pt x 325.215pt>
-File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf Graphic
+File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf Graphic
  file (type pdf)
-<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf>
+<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-23-1.pdf  used on input line 809.
+nk-22-1.pdf  used on input line 784.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 828--828
+Underfull \hbox (badness 10000) in paragraph at lines 803--803
 []|\T1/lmr/m/n/10 Variable
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 838--839
+Underfull \hbox (badness 1320) in paragraph at lines 813--814
 []|\T1/lmr/m/n/10 Indicator that re-spon-dent has
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 844--845
+Underfull \hbox (badness 1320) in paragraph at lines 819--820
 []|\T1/lmr/m/n/10 Indicator that re-spon-dent has
  []
 
 
-Underfull \hbox (badness 6300) in paragraph at lines 846--847
+Underfull \hbox (badness 6300) in paragraph at lines 821--822
 []|\T1/lmr/m/n/10 If re-spon-dent was con-tacted
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 869.
-[23 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf>] [24p
-dfTeX warning (ext4): destination with the same identifier (name{table.4}) has 
-been already used, duplicate ignored
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf, id=287, 469
+.755pt x 325.215pt>
+File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf Graphic
+ file (type pdf)
+<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf>
+Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
+nk-23-1.pdf  used on input line 846.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 850.
+[20 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf>] [21p
+dfTeX warning (ext4): destination with the same identifier (name{figure.15}) ha
+s been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.869 \end{document}
+l.850 \end{document}
+                     <./CompiledTechnicalReport_files/figure-latex/unnamed-chun
+k-23-1.pdf>] [22pdfTeX warning (ext4): destination with the same identifier (na
+me{table.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.850 \end{document}
                     ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 869.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 850.
 (./CompiledTechnicalReport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 869.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 869.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 850.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 850.
 Package rerunfilecheck Info: File `CompiledTechnicalReport.out' has not changed
 .
-(rerunfilecheck)             Checksum: 2046F6D0710ADAE4AA6A3769CDB17069;2917.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 869.
+(rerunfilecheck)             Checksum: 15BDAEB0CDB4EBA8CD99785A4A0D0166;2894.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 850.
  ) 
 Here is how much of TeX's memory you used:
- 12190 strings out of 482913
- 182087 string characters out of 5957672
- 432695 words of memory out of 5000000
- 27138 multiletter control sequences out of 15000+600000
- 578353 words of font info for 65 fonts, out of 8000000 for 9000
+ 12142 strings out of 482913
+ 180653 string characters out of 5957672
+ 432691 words of memory out of 5000000
+ 27095 multiletter control sequences out of 15000+600000
+ 578048 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,13n,37p,927b,459s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.
-enc}{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec
-.enc}{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-r
-m.enc}{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-
-mathit.enc}<c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/publi
-c/lm/lmbx10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/
-public/lm/lmbx12.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/t
-ype1/public/lm/lmmi10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fo
-nts/type1/public/lm/lmr10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dis
-t/fonts/type1/public/lm/lmr12.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf
--dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/t
-exmf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/nmobl/AppData/Roaming/TinyTe
-X/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on CompiledTechnicalReport.pdf (24 pages, 2036002 bytes).
+ 34i,13n,37p,927b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.e
+nc}{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.
+enc}{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ma
+thit.enc}<c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/
+lm/lmbx10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/pu
+blic/lm/lmbx12.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/typ
+e1/public/lm/lmmi10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/font
+s/type1/public/lm/lmr10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/
+fonts/type1/public/lm/lmr12.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-d
+ist/fonts/type1/public/lm/lmr17.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/tex
+mf-dist/fonts/type1/public/lm/lmr7.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/
+texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on CompiledTechnicalReport.pdf (22 pages, 892454 bytes).
 PDF statistics:
- 391 PDF objects out of 1000 (max. 8388607)
- 315 compressed objects within 4 object streams
- 67 named destinations out of 1000 (max. 500000)
- 200 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 362 PDF objects out of 1000 (max. 8388607)
+ 293 compressed objects within 3 object streams
+ 68 named destinations out of 1000 (max. 500000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 
