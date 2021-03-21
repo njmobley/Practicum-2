@@ -32,6 +32,18 @@ source("data_cleaning.R")
 
 
 
+```{r}
+logisticRegressionModel = 
+
+```
+
+
+
+
+
+
+
+
 
 
 ## 2.3  Build a logistic regression model with the binary response variable ifrespondents is willing to purchase the product, and include all of theother variables as explanatory variables.  Perform model selection to choose the optimal model.

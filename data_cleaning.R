@@ -9,6 +9,7 @@ raw_data = read_csv("prac_data.csv") %>%
   mutate(
     price = unlist(read_csv("price.csv")),
     job = as.factor(replace_na(job,"Unknown")),
+    job = recode(job,unknown = "Unknown"),
     education = replace_na(education,"Unknown"),
     education = replace(education,which(education == "unknown"),"Unknown"),
     contact = replace_na(contact,"Unknown"),
@@ -35,7 +36,19 @@ imputedData = raw_data %>%
     campaign = replace_na(campaign,medianCampaign),
     age = replace_na(age,medianAge),
     duration = replace_na(duration,medianDuration),
-    log_balance = log (balance - (-8019))
+    log_balance = log (balance - (-8019)),
+    job_reduced = recode(job,Unknown = "unknown",
+                                 student = "student",
+                                 housemaid = "blue-collar",
+                                 unemployed = "unemployed",
+                                 entrepreneur = "white-collar",
+                                 `self-employe` = "white-collar",
+                                 retired = "unemployed",
+                                 services = "blue-collar",
+                                 admin = "white-collar",
+                                 technician = "blue-collar",
+                                 management = "white-collar"
+                                 )
   )
 imputedData = imputedData %>%
   filter(previous != max(raw_data$previous)) %>%

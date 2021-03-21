@@ -14,7 +14,7 @@ library(reshape2)
 # raw_data which is the data frame gained from imported the practicum 2 materials
 
 source("data_cleaning.R")
-varsOfInterest = c("age","default","y","job","balance","price","marital","housing","education","loan","log_balance")
+varsOfInterest = c("age","default","y","job","balance","price","marital","housing","education","loan","log_balance","job_reduced")
 dat = imputedData %>% 
   select(varsOfInterest)
 numericColumns = c("age","balance","price")
@@ -65,7 +65,7 @@ ggplot(sample_n(training,sampleSize), aes(x = , y = price, colour = y)) + geom_p
 
 ```{r}
 create_plots <- function(var) {
-  ggplot(training, aes(x = !!ensym(var), fill = y )) + geom_bar(stat = 'count')
+  ggplot(training, aes(x = fct_reorder(!!ensym(var),!!ensym(var),.fun = 'length'), fill = y )) + geom_bar(stat = 'count')
 }
 
 plotList = lapply(categoricalColumns[-c(2,3)],create_plots)
@@ -76,9 +76,19 @@ ggarrange(plotlist = plotList)
 
 - DEFAULT EDUCATION AND LOAN
 
+```{r}
+ggplot(training,aes(x = fct_reorder(job_reduced,job_reduced,.fun = 'length'),  fill = y)) + geom_bar(stat='count')
+```
 
+- Not looking significant
 
+Continue to examine using defualt, education, loan in model
 
+```{r}
+md1 = glm(y ~ default + education + loan + age, data = training, family = binomial)
+summary(md1)
+plot(md1)
+```
 
 
 
