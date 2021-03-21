@@ -273,11 +273,7 @@ mtext("Population Distribution by Primary Phone and Response", outer = TRUE, cex
 
 With regard to the distribution of respondents use cell phone or not as their primary phone against their response to purchase the product (shown in Figure 8), it appears that less than half ot the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the usual cases, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. Apparently, these two samples are not from the same population.
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 3fe999b9a8fe1b86e5433cca8b94e58154465c4c
 ```{r}
 par(mfrow=c(1,2))
 delinquency_table = data.frame(Yes = c(146, 66), No = c(39, 170))
@@ -329,9 +325,30 @@ text(x, y = c(counts_loan[,1] + 800, counts_loan[,2] + 800), labels = c(counts_l
 
 In the second study, whether or not a respondent has personal loan is the only variable reflecing demographic features that haven't been looked into. Consistent with what we observed for the credit in default variable, the majority of the respondents are with no personal loan. Interestingly, regardless of having personal loan or not, they both tend to not buy the product, with similar probabilities.
 
+\newpage
+
 ### Likelihood ratio tests
 
-Next, we conducted likelihood ratio tests to examine whether response to purchase the product is dependent on each categorical variable reflecting demographic features. For the first study, likelihood ratio test statistics, degrees of freedom and p-values of the tests on the eight variables (job, education, marital status, mortgage, primary phone, delinquency, gender and race) has been shown in Table 1, with all of the p-values being less than 0.05, indicating that there're significant evidence that response to buy the product are associated with each of these eight variables.
+Next, we conducted likelihood ratio tests to examine whether response to purchase the product is dependent on each categorical variable reflecting demographic features. For the first study, likelihood ratio test statistics, degrees of freedom and p-values of the tests on the eight variables (job, education, marital status, mortgage, primary phone, delinquency, gender and race) has been shown in Table 1, with all of the p-values being less than 0.05, indicating that there is significant evidence that response to buy the product are associated with each of these eight variables.
+
+
+
+\begin{table}
+    \centering
+    \begin{tabular}{ |c | c | c | c | c |}
+    \hline
+        Variable & Levels & G2 & df & P-value \\ \hline
+        Job & White Collar, Blue Collar, Student, House, Unemployed or Unknown & 321.67 & 4 & < 0.001 \\ \hline
+        Education & College and more, Lower than college & 31.92 & 1 & < 0.001 \\ \hline
+        Marital & Married, Not married & 71.97 & 1 & < 0.001 \\ \hline
+        Mortgage & Mortgage, No Mortgage & 19.49 & 1 & <0.001 \\ \hline
+        Primary Phone & Cellular, Other & 68.66 & 1 & <0.001 \\ \hline
+        Delinquency & More than 60 days, 60 or less days & 113.33 & 1 & <0.001 \\ \hline
+        Gender & Male, Female & 6.81 & 1 & 0.009 \\ \hline
+        Race & White, Not White & 4.08 & 1 & 0.043 \\ \hline
+    \end{tabular}
+    \caption{Table 1}
+\end{table}
 
 
 
