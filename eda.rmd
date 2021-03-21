@@ -1,0 +1,160 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(data.table)
+library(tibble)
+library(GGally)
+library(kableExtra)
+library(ggpubr)
+library(reshape2)
+
+# <Library imported prior to call
+# inserts two dataframe objects into enviroments
+# imputedData which is data set with an imputed median for continous variables
+# raw_data which is the data frame gained from imported the practicum 2 materials
+
+source("data_cleaning.R")
+varsOfInterest = c("age","default","y","job","balance","price","marital","housing","education","loan","log_balance")
+dat = imputedData %>% 
+  select(varsOfInterest)
+numericColumns = c("age","balance","price")
+categoricalColumns = c("default","y","job","marital","education","housing","loan")
+trainIndexs = sample(1:nrow(dat), size = nrow(dat)/2)
+training = dat[trainIndexs,]
+testing = dat[-trainIndexs,]
+```
+
+
+### 2.1.  Graphic descriptions of the remaining seven variables related to campaign in the second study, including histograms and density plots.
+
+
+
+#### For this study we were interested in creating a logistic model that was able to capture how many people would buy the product based off of their demographic information. This is in effort to create a generalized model that can be interpeted with how.
+
+
+```{r}
+sampleSize = 10000
+ggplot(sample_n(training,sampleSize), aes(x = age, y = price, colour = y)) + geom_jitter(alpha = .25) +
+  geom_smooth(se = FALSE)
+```
+
+```{r}
+ggplot(sample_n(training,sampleSize), aes(x = age, y = log_balance, colour = y)) + geom_jitter(alpha = .25) +
+  geom_smooth(se = FALSE)
+```
+
+```{r}
+mininumBalance = min(raw_data$balance, na.rm = TRUE)
+ggplot(training, aes(x = log(balance - mininumBalance))) + geom_density()
+```
+
+
+
+
+```{r}
+ggplot(sample_n(training,sampleSize), aes(x = , y = price, colour = y)) + geom_point(alpha = .2) +
+  geom_smooth(se = FALSE)
+```
+
+
+- TALK ABOUT SHIFTING MINIMUM BALANCE
+
+- Not much of a relationship between any of the demographic continous variables NO COLinearity
+
+- PRICE seems to be only significant seperator
+
+```{r}
+create_plots <- function(var) {
+  ggplot(training, aes(x = !!ensym(var), fill = y )) + geom_bar(stat = 'count')
+}
+
+plotList = lapply(categoricalColumns[-c(2,3)],create_plots)
+
+ggarrange(plotlist = plotList)
+
+```
+
+- DEFAULT EDUCATION AND LOAN
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# DISCARD
+
+
+```{r}
+#First, we want to make qqnorm plots for all of the continuous variables, which could be used to supplement density plots and justify transformations (include in the appendix)
+library(car)
+dat.cont <- imputedData[numericColumns]
+cont.labels <- colnames(dat.cont)
+dat.cont <- dat.cont[-c(3, 5)]
+newfun <- function(x, y) qqPlot(x, main = paste(y, "QQ Plot", sep = " "))
+par(mfrow = c(2, 3))
+mapply(newfun, dat.cont, cont.labels)
+
+
+ggplot(dat.cont, aes(sample = age)) + geom_qq() +
+  geom_qq_line()
+
+#Analysis of which variables have censored Values
+incomplete.cases <- function(x){as.numeric(count(dat.cont))-sum(complete.cases(dat.cont[x]))}
+lapply(seq(1, 6, 1), incomplete.cases)
+# Now let's make Densiy Plots for the variables
+melt.dat.cont<- melt(dat.cont)
+
+ggplot(data = melt.dat.cont , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
+```
+
+Based on the density plots, duration and pdays have non-normal distributions. Days represents the day of the month that a person was contacted.  Logically, we do not beliece that this variable will be indicative of a person's likelihood of purchasing a toaster.  Therefore, we will not perform any transformations or include it in the model.  Duration has a strong left skew.  We will perform a log transformation.  
+
+Nick: consider recoding balance as negative and non-negative?
+
+## Necessary Transformations
+```{r Transformations}
+logduration <- log(imputedData$duration)
+logpdays <- log(imputedData$pdays + 1.1)
+testdat <- data.frame(logduration, logpdays)
+
+melt.testdat <- melt(testdat)
+ggplot(data = melt.testdat , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
+
+#This helped us for duration.
+dat.cont$logduration <- logduration
+
+
+# Let's take a look at campaign
+ggplot(data=imputedData, aes(x=campaign)) + geom_density()
+summary(imputedData$campaign)
+outliers <- 50:65
+imputedData[imputedData$campaign %in% outliers, "campaign"] = NA
+
+```
+
+## 2.2.  A  scatter  plot  matrix  of  all  the  continuous  variables  in  the  secondstudy will be generated to examine association amongst variables for any necessary transformation.
+
+
+
+```{r}
+ggplot(imputedData, aes(y = duration, x = day, colour = y)) + 
+  geom_jitter(alpha = .1)
+```
+
+
+
+Based on the scatterplot matrix, we do not see any significant collinearity.

@@ -13,29 +13,22 @@ library(tibble)
 library(GGally)
 library(kableExtra)
 library(ggpubr)
+library(reshape2)
 
-#Read in Data
-raw_data = read_csv("prac_data.csv") %>%
-  mutate(
-    price = unlist(read_csv("price.csv")),
-    job = as.factor(replace_na(job,"Unknown")),
-    education = replace_na(education,"Unknown"),
-    education = replace(education,which(education == "unknown"),"Unknown"),
-    contact = replace_na(contact,"Unknown"),
-    contact = replace(contact,which(contact == "unknown"),"Unknown"),
-    pdays = replace_na(pdays,-1),
-    default = replace_na(default,"Unknown"),
-    marital = replace_na(marital,"Unkown"),
-    housing = replace_na(housing,"Unkown"),
-    loan = replace_na(loan,"Unkown"),
-    previous = replace_na(previous,0),
-    poutcome = replace_na(poutcome,"Unknown"),
-    inPrevious = if_else(previous > 0,TRUE,FALSE),
-    numMissing = rowSums(across(everything(), ~is.na(.)))
-  )
-numericColumns = c(1,6,10,12,13,14,15,18)
-categoricalColumns = c(2,3,4,5,7,8,9)
-df_colnames = colnames(raw_data)
+# <Library imported prior to call
+# inserts two dataframe objects into enviroments
+# imputedData which is data set with an imputed median for continous variables
+# raw_data which is the data frame gained from imported the practicum 2 materials
+
+source("data_cleaning.R")
+varsOfInterest = c("age","default","y","job","balance","price","marital","housing","education","loan","log_balance")
+dat = imputedData %>% 
+  select(varsOfInterest)
+numericColumns = c("age","balance","price")
+categoricalColumns = c("default","y","job","marital","education","housing","loan")
+trainIndexs = sample(1:nrow(dat), size = nrow(dat)/2)
+training = dat[trainIndexs,]
+testing = dat[-trainIndexs,]
 ```
 
 ## Abstract: wait until proof read

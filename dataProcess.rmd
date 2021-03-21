@@ -96,7 +96,6 @@ We determined that the median, as opposed to the mean, was the appropriate measu
 
 
 ```{r}
-
 ggplot(final_cont, aes(x = log(balance))) + geom_density() + facet_wrap(~set)
 ggplot(final_cont, aes(x = log(duration))) + geom_density() + facet_wrap(~set)
 ggplot(final_cont, aes(x = age)) + geom_density() + facet_wrap(~set)

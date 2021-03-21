@@ -19,146 +19,42 @@ library(kableExtra)
 library(ggpubr)
 library(reshape2)
 
-#Read in Data
-raw = read_csv("prac_data.csv")
+# <Library imported prior to call
+# inserts two dataframe objects into enviroments
+# imputedData which is data set with an imputed median for continous variables
+# raw_data which is the data frame gained from imported the practicum 2 materials
 
-raw_data = read_csv("prac_data.csv") %>%
-  mutate(
-    price = unlist(read_csv("price.csv")),
-    job = as.factor(replace_na(job,"Unknown")),
-    education = replace_na(education,"Unknown"),
-    education = replace(education,which(education == "unknown"),"Unknown"),
-    contact = replace_na(contact,"Unknown"),
-    contact = replace(contact,which(contact == "unknown"),"Unknown"),
-    pdays = replace_na(pdays,-1),
-    default = replace_na(default,"Unknown"),
-    marital = replace_na(marital,"Unkown"),
-    housing = replace_na(housing,"Unkown"),
-    loan = replace_na(loan,"Unkown"),
-    previous = replace_na(previous,0),
-    poutcome = replace_na(poutcome,"Unknown"),
-    numMissing = rowSums(across(everything(), ~is.na(.)))
-  )
+source("data_cleaning.R")
 
-medianBalance = median(raw_data$balance,na.rm = TRUE)
-medianCampaign = median(raw_data$campaign, na.rm = TRUE)
-medianAge = median(raw_data$age, na.rm = TRUE)
-medianDuration = median(raw_data$duration, na.rm = TRUE)
-imputedData = raw_data %>%
-  mutate(
-    balance = replace_na(balance,medianBalance),
-    campaign = replace_na(campaign,medianCampaign),
-    age = replace_na(age,medianAge),
-    duration = replace_na(duration,medianDuration)
-  )
-imputedData = imputedData %>%
-  mutate(
-    campaign_binned = cut(campaign,
-                          breaks = c(-Inf,5,10,15,Inf),
-                          labels = c("<5","5-10","10-15",">15"))
-  )
-raw_cont = raw_data %>%
-  select(balance,campaign,age,duration)
-imputed_cont =imputedData %>%
-  select(balance,campaign,age,duration)
-raw_cont$set = "original"
-imputed_cont$set = "Imputed"
-final_cont = rbind(raw_cont,imputed_cont)
-numericColumns = c(1,6,10,12,13,14,15,18)
-categoricalColumns = c(2,3,4,5,7,8,9)
-df_colnames = colnames(raw_data)
 ```
 
 ## Specific Aims 2:To recommend on whether the client should move forward with the campaign and provide suggestions on campaign strategies.
 
 
-### 2.1.  Graphic descriptions of the remaining seven variables related to campaign in the second study, including histograms and density plots.
 
-```{r}
-#First, we want to make qqnorm plots for all of the continuous variables, which could be used to supplement density plots and justify transformations (include in the appendix)
-library(car)
-dat.cont <- raw_data[numericColumns]
-cont.labels <- colnames(dat.cont)
-dat.cont <- dat.cont[-c(3, 5)]
-newfun <- function(x, y) qqPlot(x, main = paste(y, "QQ Plot", sep = " "))
-par(mfrow = c(2, 3))
-mapply(newfun, dat.cont, cont.labels)
-
-#Analysis of which variables have censored Values
-incomplete.cases <- function(x){as.numeric(count(dat.cont))-sum(complete.cases(dat.cont[x]))}
-lapply(seq(1, 8, 1), incomplete.cases)
-
-# Now let's make Densiy Plots for the variables
-melt.dat.cont<- melt(dat.cont)
-ggplot(data = melt.dat.cont , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
-```
-
-Based on the density plots, duration and pdays have non-normal distributions. Days represents the day of the month that a person was contacted.  Logically, we do not beliece that this variable will be indicative of a person's likelihood of purchasing a toaster.  Therefore, we will not perform any transformations or include it in the model.  Duration has a strong left skew.  We will perform a log transformation.  
-
-Nick: consider recoding balance as negative and non-negative?
-
-## Necessary Transformations
-```{r Transformations}
-logduration <- log(raw_data$duration)
-logpdays <- log(raw_data$pdays + 1.1)
-testdat <- data.frame(logduration, logpdays)
-
-melt.testdat <- melt(testdat)
-ggplot(data = melt.testdat , aes(x = value)) + stat_density() + facet_wrap(~variable, scales = "free")
-
-#This helped us for duration.
-dat.cont$logduration <- logduration
-
-
-# Let's take a look at campaign
-ggplot(data=raw_data, aes(x=campaign)) + geom_density()
-summary(raw_data$campaign)
-outliers <- 50:65
-raw_data[raw_data$campaign %in% outliers, "campaign"] = NA
-
-```
-
-## 2.2.  A  scatter  plot  matrix  of  all  the  continuous  variables  in  the  secondstudy will be generated to examine association amongst variables for any necessary transformation.
-
-```{r sactterplotmatrix}
-# Scatterplot Matrix
-dat.cont <- raw_data[numericColumns]
-cont.labels <- colnames(dat.cont)
-pairs.dat <- dat.cont[c(1,5,8,9)]
-pairs.dat$y <- factor(raw_data$y)
-panel.cor <- function(x, y, ...)
-{
-par(usr = c(0, 1, 0, 1))
-txt <- as.character(format(cor(as.numeric(x), as.numeric(y)), digits=2))
-text(0.5, 0.5, txt, cex =1)
-}
-names.vector <- colnames(dat.cont)
-pairs(na.omit(pairs.dat[1:5]), upper.panel=panel.cor,labels = names.vector, col=pairs.dat$y)
-```
-
-Based on the scatterplot matrix, we do not see any significant collinearity.
 
 
 ## 2.3  Build a logistic regression model with the binary response variable ifrespondents is willing to purchase the product, and include all of theother variables as explanatory variables.  Perform model selection to choose the optimal model.
 ```{r logisticregressionmodels}
 # Divide the data in two, by random sampling of rows (without bootstrapping)
 set.seed(333)
-select.rows <- sample(1:nrow(raw_data), replace=FALSE,
-                      size=floor(nrow(raw_data)/2))
+select.rows <- sample(1:nrow(imputedData), replace=FALSE,
+                      size=floor(nrow(imputedData)/2))
 # That half of the data set will now be used for selection
-train.set <- raw_data[select.rows,]
+train.set <- imputedData[select.rows,]
 # The other half will be used for inference later
-test.set <- raw_data[-select.rows,]
+test.set <- imputedData[-select.rows,]
 
 # Fit Multiple Regression Models:
 # Do not use campaign, build a test and train set
-glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign_binned, data=train.set, family=binomial)
+glm1 <- glm( y~age +  education +  log(duration) + campaign_binned, data=train.set, family=binomial)
 
 glm.prob1 = predict(glm1, newdata = test.set, type = "response")
 glm.pred = ifelse(glm.prob1 > 0.5, "Yes", "No")
 
-# Function to find RMSE
-RMSE <- function(error) {sqrt(mean(error^2))}
+
+summary(glm1)
+
 ```
 
 ## 2.4.  In order to determine whether the campaign should move forward,estimate  the  overall  positive  response  rate  and  compare  it  to  the break-even response rate of 24.13%.
