@@ -141,11 +141,25 @@ Based on the scatterplot matrix, we do not see any significant collinearity.
 
 ## 2.3  Build a logistic regression model with the binary response variable ifrespondents is willing to purchase the product, and include all of theother variables as explanatory variables.  Perform model selection to choose the optimal model.
 ```{r logisticregressionmodels}
+# Divide the data in two, by random sampling of rows (without bootstrapping)
+set.seed(333)
+select.rows <- sample(1:nrow(raw_data), replace=FALSE,
+                      size=floor(nrow(raw_data)/2))
+# That half of the data set will now be used for selection
+train.set <- raw_data[select.rows,]
+# The other half will be used for inference later
+test.set <- raw_data[-select.rows,]
+
 # Fit Multiple Regression Models:
 # Do not use campaign, build a test and train set
-glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign, data=raw_data, family=binomial)
-```
+glm1 <- glm(factor(as.numeric(y))~age +  education +  log(duration) + campaign, data=train.set, family=binomial)
 
+
+# Function to find RMSE
+RMSE <- function(error) {sqrt(mean(error^2))}
+(RMSE.all.mods <- lapply(error.all.mods, RMSE))
+
+```
 
 ## 2.4.  In order to determine whether the campaign should move forward,estimate  the  overall  positive  response  rate  and  compare  it  to  the break-even response rate of 24.13%.
 
