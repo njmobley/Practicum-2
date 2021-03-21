@@ -2,7 +2,7 @@
 title: "Risk Benefit Analysis for Toast-USB Launch"
 author: "Alli McCarty, Nick Mobley, Nijia Ke"
 date: "3/18/2021"
-output: html_document
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -21,7 +21,9 @@ library(reshape2)
 # raw_data which is the data frame gained from imported the practicum 2 materials
 
 source("data_cleaning.R")
-varsOfInterest = c("age","default","y","job","balance","price","marital","housing","education","loan","log_balance")
+varsOfInterest = c("age","default","y","job",
+                   "balance","price","marital","housing",
+                   "education","loan","log_balance","job_reduced")
 dat = imputedData %>% 
   select(varsOfInterest)
 numericColumns = c("age","balance","price")
@@ -327,7 +329,7 @@ In the second study, whether or not a respondent has personal loan is the only v
 Next, we conducted likelihood ratio tests to examine whether response to purchase the product is dependent on each categorical variable reflecting demographic features. For the first study, likelihood ratio test statistics, degrees of freedom and p-values of the tests on the eight variables (job, education, marital status, mortgage, primary phone, delinquency, gender and race) has been shown in Table 1, with all of the p-values being less than 0.05, indicating that there're significant evidence that response to buy the product are associated with each of these eight variables.
 
 
-(insert Table 1)
+
 
 
 Similarly, Table 2 reflects the likelihood ratio tests of whether response to purchase the product is dependent on each of the demographic categorical variable in the second study, including job, education, marital status, mortgage, primary phone, credit in default and personal loan. The categories used are based on the original levels of factors in the second study. the Similar to what we observed in Table 1, all of the p-values are less than 0.05, suggesting that there're significant evidence that response to buy the product are dependent on each of these seven variables.
@@ -380,7 +382,7 @@ ggplot(training, aes(x = log(balance - mininumBalance))) + geom_density()
 Figure X demostrated the association between continuous demographic predictors and willingness to purchase the product.  None of the variables have a particularly strong association with willingness to purchase, and there are no obvious instances of collinearity between the continuous demographic predictors.  However, the plots of the continuous predictors do suggest that price is a significant seperator.  As demonstrated in previous exploratory analysis, individuals who had a favorable response to the product were also willing to pay more for it than people who did not have an initial favorable response. 
 
 ```{r}
-ggplot(sample_n(training,sampleSize), aes(x = , y = price, colour = y)) + geom_point(alpha = .2) +
+ggplot(sample_n(training,sampleSize), aes(x = log_balance, y = price, colour = y)) + geom_point(alpha = .2) +
   geom_smooth(se = FALSE)
 ```
 
@@ -408,11 +410,10 @@ After exploratory analysis, we believe that default, education, loan, and age ar
 
 ## Model Process
 
-We identifed that default, education, loan, and age were potentially significant indicators of willingness to purchase in the exploratory analysis.  Our aim for the anlysis was to 1) predict the success of the Toast-USB and 2) indicate which demographic groups should be targeted in the marketing campaign. To investigate these endpoints, we generated a function that build a multivariate logistic models representing every combination of the four aforementioned variables. Interaction terms were not included, as none of these variables demonstrated significant collinearity. To do so, we partitioned the data into a test and a train set, both of which represented half of the original dataset (non-overlaping). Using the train-set, we generated 15 potential logistic models representing combinations of these four predictors.  Next, we generated a function to cross-validate the models using the test-set to select the model with the maximal likelihood ratio. 
+We identified that default, education, loan, and age were potentially significant indicators of willingness to purchase in the exploratory analysis.  Our aim for the analysis was to 1) predict the success of the Toast-USB and 2) indicate which demographic groups should be targeted in the marketing campaign. To investigate these endpoints, we generated a function that build a multivariate logistic models representing every combination of the four aforementioned variables. Interaction terms were not included, as none of these variables demonstrated significant collinearity. To do so, we partitioned the data into a test and a train set, both of which represented half of the original dataset (non-overlapping). Using the train-set, we generated 15 potential logistic models representing combinations of these four predictors.  Next, we generated a function to cross-validate the models using the test-set to select the model with the maximal likelihood ratio. 
 
 
 ```{r}
-
 set.seed(123)
 
 formulas <- gen_formula <- function(picks,curfeatures = c("default","education","loan","age")) {
@@ -435,7 +436,6 @@ cv_model <- function(formula) {
   }
   mean(results)
 }
->>>>>>> 79e90b568d40df07a78b85db49387e3f3ebe8549
 
 
 possPicks = list(
@@ -463,7 +463,6 @@ which.min(cv_scores)
 bestFormula = "y~education+loan+age"
 bestMdl = glm(bestFormula, data = training, family = binomial)
 summary(bestMdl)
-bestFormlua
 ```
 
 
