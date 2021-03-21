@@ -95,7 +95,7 @@ Continue to examine using defualt, education, loan, age in model
 ```{r}
 library(caret)
 formulas <- gen_formula <- function(picks,curfeatures = c("default","education","loan","age")) {
-  formula(str_c('y ~',str_c(curfeatures[picks], collapse = '+')))
+  str_c('y ~',str_c(curfeatures[picks], collapse = '+'))
 }
 
 cv_model <- function(formula) {
@@ -134,11 +134,9 @@ c(2, 3, 4),
 c(1, 2, 3, 4)
 )
 all_formulas = sapply(possPicks,formulas)
-create_glm <- function(formula) {
-  train(formula,data = training, trainControl = train_control,method = "glm",family = binomial())
-}
 
-
+cv_scores = sapply(all_formulas, cv_model)
+which.min(cv_scores)
 full_model = glm(y ~ default + loan + education + age, data = training, family = binomial())
 predictions = predict(full_model,testing, type = 'response')
 ```
