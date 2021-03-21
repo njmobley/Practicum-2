@@ -69,3 +69,8 @@ summary(glm1)
 ## 2.4.  In order to determine whether the campaign should move forward,estimate  the  overall  positive  response  rate  and  compare  it  to  the break-even response rate of 24.13%.
 
 ## 2.5 Identify potential high-revenue demographic groups that the client should focus the campaign on as well as providing suggestionson targeted marketing strategies.
+
+
+Model Process Explanation:
+
+We identifed that default, education, loan, and age were potentially significant indicators of willingness to purchase in the EDA.  Our aim for the anlysis was to 1) predict the success of the Toast-USB and 2) indicate which demographic groups should be targeted in the marketing campaign. To investigate these endpoints, we generated a function that build a multivariate logistic model representing every combination of the four aforementioned variable combinations (interaction terms were not included, as none of these variables demonstrated collinearity). To do so, we partitioned the data into a test and a train set, both of which represented half of the original dataset (non-overlaping). Using the train-set, we generated 15 potential logistic models representing combinations of these four predictors.  Next, we generated a function to cross-validate the models using the test-set to select the model with the maximal likelihood ratio.  
