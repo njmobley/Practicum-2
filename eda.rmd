@@ -150,13 +150,3 @@ Of the 15 logistic models that were generated using loan, age, default, and educ
 
 
 
-
-
-
-
-
-
-
-
-
-
