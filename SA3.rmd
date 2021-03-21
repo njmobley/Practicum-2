@@ -24,10 +24,58 @@ training = dat[trainIndexs,]
 testing = dat[-trainIndexs,]
 ```
 
-From our previous section we discovered that the logistic model containg 
+From our previous section we discovered that the logistic model containing loan,education,age as our predictor variables performed the best predictions. Although the favorable response is not near the break even rate we still continued in determining which MSRP value would be able to maximize revenue. To generate a range of reasonable prices we selected the minimum and maximum value of price answered in the survey. The lowest value responded value was 0 but we will start our search at 1 and the maximum responded price was 168 so we will search for the optimal value in that range. To find the maximum price we performed the following simulation:
+For each potential MSRP Value:
+  Repeat the below following process 5 times and take the average:
+  For each observation in our training set:
+      1. Generate a probability they would purchase the product using the logistic model
+      2. Compare that generated probability with a randomly generated number, if the random number is lower
+         than the probability then the customer will consider purchasing the item. If not then we skip to next
+         observation.
+      3. We compare the MSRP to observed price the customer said they were willing to pay. If the MSRP is less than
+         than the price then in our simulation the customer "purchases" the product and that sale is added to the 
+         total revenue and we continue to the next observation.
+  We key the total revenue to be associated with the MSRP value and selected the MSRP value with the highest revenue.
+  
+```{r}
+bestFormula = "y~education+loan+age"
+bestMdl = glm(bestFormula, data = training, family = binomial)
+simTest = testing %>%
+  sample_n(size = 20000) %>%
+  select(loan,education,age,price)
+simTest$probsToPurchase = predict(bestMdl,simTest, type = 'response')
+MSRP_values = seq(1,168,3)
+total_revenue = array(-1,dim = length(MSRP_values))
+tempPrice = simTest$price
+for (i in 1:length(MSRP_values)) {
+  msrp = MSRP_values[i]
+  msrpRevenue = 0
+  for (k in 1:5) {
+    willPurchase = runif(nrow(simTest)) < simTest$probsToPurchase
+    for (j in 1:length(tempPrice)) {
+      if (willPurchase[j] == TRUE) {
+        if (msrp <= tempPrice[j]) {
+          msrpRevenue = msrpRevenue + msrp
+        }
+      }
+    } # end j for loop
+  } # end k loop
+  total_revenue[i] = (msrpRevenue/5)
+} # end outer for loop
+```
 
+```{r}
+results = data.frame(msrp = MSRP_values,
+                     revenue = total_revenue)
+ggplot(results, aes(x = msrp, y = revenue)) + geom_line(size = .8) + 
+  geom_point() + 
+  xlab("MSRP Value (USD)") +
+  ylab("Estimate total Revenue") +
+  ggtitle("Revenue estimates of MSRP per 20,000 consumers") +
+  scale_y_continuous(breaks = seq(0,70000,10000))
+```
 
-
+From the results of our simulation we can see that the estimated maximum MSRP Value would \$46. The simulation was ran on a test set containing 20,000 observations. From this we could estimate that for every 20,000 people that interact with our product we could estimate a revenue of approximately \$60,000. 
 
 
 
