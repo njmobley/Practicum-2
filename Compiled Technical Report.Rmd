@@ -169,7 +169,7 @@ x = barplot(counts_job, ylim = c(0, 10000), main = "Population Distribution by J
 text(x, y = c(counts_job[,1]+200, counts_job[,2]+200), labels = c(counts_job[,1], counts_job[,2]), cex = 0.5)
 ```
 
-In order to allow for the comparison of job distributions in the two studies, we collapsed blue-collar and technician into one category, counted respondents who are entrepreneurs, administrators or involved in management as white-collar and combined unemployed and unknown into one category. Households and students are directly considered as single levels of the job factor. With all the remaining job types omitted, we generated barplots in Figure 5 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
+In order to allow for the comparison of job distributions in the two studies, we collapsed blue-collar and technician into one category, recoded entrepreneurs, administrators or management employees as white-collar and combined unemployed and unknown into one category. Households and students are also considered as levels for job factor. With all the remaining job types omitted, we generated barplots in Figure 5 to compare the distributions against response. In stark contrast to what we observed for the second study, in the first study, the most common job is student, whereas blue collars are hardly seen. This clearly indicates that according to job type, the two studies are not based on the same population.
 
 ```{r}
 counts_job = data.frame(counts_job)
@@ -205,8 +205,6 @@ mtext("Population Distribution by Job and Response", outer = TRUE, line = -2, fo
 
 
 
-
-
 ```{r fig.align='center', fig.cap="Population distribution of respondents by education and response in both studies"}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 education_table = data.frame(Yes = c(197, 15), No = c(152, 57))
@@ -221,7 +219,7 @@ mtext("Population Distribution by Education and Response", outer = TRUE, line = 
 ```
 
 
-We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 5. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there're similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there're apparently more respondents who refuse to buy the products than agree. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study , there's less respondents with college education than respondents with secondary education. It seems that based on education levels, these two studies are not from the same population.
+We also compared the distribution of respondents with different education backgrounds as delineated by their response to purchase the product, as is shown in Figure 6. The tertiary education in the second study can be regarded as the the same as the college and more level in the first study, so the relevant bars were all highlighted in red. From the figures, we can see that although there're similar numbers of respondents who agree or refuse to buy the product in the first study, in the second study there're apparently more respondents who refuse to buy the products than agree. The majority of the respondents involved in the first study has education level of college or higher, whereas in the second study , there's less respondents with college education than respondents with secondary education. It seems that based on education levels, these two studies are not from the same population.
 
 
 ```{r fig.align='center', fig.cap="Population distribution of respondents by marital status and response in both studies"}
