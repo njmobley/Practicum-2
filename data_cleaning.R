@@ -8,7 +8,7 @@ raw = read_csv("prac_data.csv")
 raw_data = read_csv("prac_data.csv") %>%
   mutate(
     price = unlist(read_csv("price.csv")),
-    job = recode(job,unknown = "Unknown"),
+    job = dplyr::recode(job,unknown = "Unknown"),
     job = as.factor(replace_na(job,"Unknown")),
     education = replace_na(education,"Unknown"),
     education = replace(education,which(education == "unknown"),"Unknown"),
@@ -37,7 +37,7 @@ imputedData = raw_data %>%
     age = replace_na(age,medianAge),
     duration = replace_na(duration,medianDuration),
     log_balance = log (balance - (-8019)),
-    job_reduced = recode(job,Unknown = "unknown",
+    job_reduced = dplyr::recode(job,Unknown = "unknown",
                                  student = "student",
                                  housemaid = "blue-collar",
                                  unemployed = "unemployed",
