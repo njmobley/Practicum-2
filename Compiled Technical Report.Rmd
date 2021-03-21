@@ -269,8 +269,7 @@ mtext("Population Distribution by Primary Phone and Response", outer = TRUE, cex
 
 With regard to the distribution of respondents use cell phone or not as their primary phone against their response to purchase the product (shown in Figure 8), it appears that less than half ot the respondents use cell phone as their primary phone in the first study, whereas more than half of the respondents use cell phone as their primary phone in the second study. The second study may be representing the usual cases, as nowadays people tend to use cell phone more often than before. Interestingly, although respondents who use cell phones as their primary phone tend to agree to buy the product in the first study, this trend is reversed in the second study, with the majority of the respondents refused to buy the product. Apparently, these two samples are not from the same population.
 
-<<<<<<< HEAD
-=======
+
 
 ```{r}
 par(mfrow=c(1,2))
