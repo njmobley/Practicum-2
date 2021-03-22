@@ -16,7 +16,7 @@ library(ggpubr)
 library(reshape2)
 
 # <Library imported prior to call
-# inserts two dataframe objects into enviroments
+# inserts two dataframe objects into environments
 # imputedData which is data set with an imputed median for continous variables
 # raw_data which is the data frame gained from imported the practicum 2 materials
 
@@ -35,13 +35,13 @@ testing = dat[-trainIndexs,]
 
 ## Abstract
 
-The popularity of toast as an American breakfast food as well as recent trends in technology have created a potential marketspace for the Toast-USB, which allows individuals to curate gourmet toast straight from their computer.  We performed a risk-benefit analysis on two samples obtained by our firm's Department of Experiments (DOE) to investigate the potential favorable response rate for the product as well as potential target demographic groups for the marketing campaign.  A series of logistic models were built to investigate the potential success of this product. We found that the best logistic model included demographic variables representing loan, age, default, and education as demographic indicators of interest.  However, the favorable response rate for the product was 12.14%, which was roughly half of the necessary response rate required for launch of the product.  Thus, based on this risk-benefit analysis, we do not recommend that Toast-Co move forward with this campaign.  However, we do have some actionable next-step suggestions for Toast-Co to implement to continue their exploration in this exciting market space. 
+The popularity of toast as an American breakfast food as well as recent trends in technology have created a potential marketplace for the Toast-USB, which allows individuals to curate gourmet toast straight from their computer.  We performed a risk-benefit analysis on two samples obtained by our firm's Department of Experiments (DOE) to investigate the potential favorable response rate for the product as well as potential target demographic groups for the marketing campaign.  A series of logistic models were built to investigate the potential success of this product. We found that the best logistic model included demographic variables representing loan, age, default, and education as demographic indicators of interest.  However, the favorable response rate for the product was 12.14%, which was roughly half of the necessary response rate required for launch of the product.  Thus, based on this risk-benefit analysis, we do not recommend that Toast-Co move forward with this campaign.  However, we do have some actionable next-step suggestions for Toast-Co to implement to continue their exploration in this exciting market space. 
 
 ## Introduction
 
 Toast has been a staple in the American breakfast for many decades. Avocado and hummus toast has also been the center of Millennial and Gen-Z dietary trends, creating a surge in the popularity of gourmet toast. The sustained popularity of toast as a breakfast food coupled with a recent drive in demand for gourmet toast created a potentially high-potential market space to combine toast with technology. Our client, Toast Co., is aiming to capitalize on a first-mover advantage and explore this new potential market space. Thus, Toast  Co.,  has  created  the Toast-USB which enables individuals to curate gourmet, artisanal toast right from their computer.  
 
-Our aim is to assist Toast Co. to make informed, data-driven decisions regarding the launch of Toast-USB. Toast Co. conducted a first round market analysis from five metropolitan areas (including Toronto, ON; New York City, NY, Philadelphia, PA; Dallas, TX, and San Francisco, CA). Preliminary results were so promising that our firm's DOE has conducted another larger-scale study to determine the likelihood of success of Toast-USB. During the course of this investigation, we will synthesize the key findings from the first and second study. This includes significant data processing to both reconcile the data of the first and second study, as well as to process demographic data such that it can be used in model analysis. Further exploratory analysis will be performed to investigate key demographic groups that are significant predictors of a favorable response rate. To perform a risk-benefit analysis on continuation of the campaign, we will build a series of logistic models using demographic predictors of interest, and use cross validation based on maximizing the likelihood ratio to select the model. The model selection should provide insight on which demographic groups should be targeted by the marketing campaign, should Toast Co. move forward with the launch. Next, we will predict the favorable response rate based on the selected model, and give a binary(Y/N) recommendation on launch of the product. Finally, we will determing an MSRP for the product using a simulation of the logistic model.
+Our aim is to assist Toast Co. to make informed, data-driven decisions regarding the launch of Toast-USB. Toast Co. conducted a first round market analysis from five metropolitan areas (including Toronto, ON; New York City, NY, Philadelphia, PA; Dallas, TX, and San Francisco, CA). Preliminary results were so promising that our firm's DOE has conducted another larger-scale study to determine the likelihood of success of Toast-USB. During the course of this investigation, we will synthesize the key findings from the first and second study. This includes significant data processing to both reconcile the data of the first and second study, as well as to process demographic data such that it can be used in model analysis. Further exploratory analysis will be performed to investigate key demographic groups that are significant predictors of a favorable response rate. To perform a risk-benefit analysis on continuation of the campaign, we will build a series of logistic models using demographic predictors of interest, and use cross validation based on maximizing the likelihood ratio to select the model. The model selection should provide insight on which demographic groups should be targeted by the marketing campaign, should Toast Co. move forward with the launch. Next, we will predict the favorable response rate based on the selected model, and give a binary(Y/N) recommendation on launch of the product. Finally, we will determining an MSRP for the product using a simulation of the logistic model.
 
 ## The Data
 
@@ -53,7 +53,7 @@ From the given data there are 45,211 observations. However there are 17,216 (38.
 
 We first wanted to understand if the continuous variables were missing in any distinct pattern. From Figure 1, it appears that the data is missing at random. In Figure 1, the red cells represent variables that are missing for a specific pattern, while the numbers on the left represent how many instances that pattern appeared in the data set. The number at the bottom of the graphic represents the total number of times the variable of the column was missing. The graphic suggests that we only observed 3 rows in which the pattern had 3 missing variables at once. These three patterns only appeared 13 times in our data set. The infrequency of these patterns signify that these patterns did occur randomly. Furthermore, there were 6 distinct patterns that were missing 2 or more variables with a total of 439 occurrences. Since all the patterns of missing data occurred with a low frequency, it is assumed that all of our missing values are missing at random. This reinforces that the quality of sampling and surveying conducted by the DOE, as well as gives us the freedom to either delete or impute the missing values without the worry of skewing the data inappropriately.
 
-```{r fig.cap= "Missingness pattern of continuous variables in the second study", results= 'hide',fig.width = 11,fig.height= 9}
+```{r fig.cap= "Missingness pattern of continuous variables in the second study, Red cells reperesent that variable was missing in that pattern. Values on the bottom row represent how many observations were missing that specific variable. With a total of 7,964 observations with missing variables", results= 'hide',fig.height= 9}
 plot = mice::md.pattern(raw_data %>% select(1,6,10,12,13,14,15),rotate.names = TRUE)
 plot
 ```
@@ -69,7 +69,7 @@ We determined that the median, as opposed to the mean, was the appropriate measu
 \newpage
 
 ```{r include=FALSE}
-#change the categorical vaiables into factors and reorder the levels for graphic purposes
+#change the categorical variables into factors and reorder the levels for graphic purposes
 raw_data$marital = as.factor(raw_data$marital)
 levels(raw_data$marital) = c("Divorced", "Married", "Single", "Unknown")
 raw_data$marital = ordered(raw_data$marital, levels = c("Married", "Divorced", "Single", "Unknown"))
@@ -159,10 +159,10 @@ quantile(data2$balance[data2$y == "No"], c(0.025, 0.5, 0.975)) #compare to 1,250
 ```
 
 
-We also obtained the 95% confidence intervals for the non-mortgage loan balance of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that in the second study, respondents who agree to purchase the product have non-mortgage loan balance between -157.45 and 10185 USD, and those who refuse to purchase the product have non-mortgage loan balance between -393 and 8266 USD. Similar to the varible age, the average non-mortgage loan balance of individuals who refuse to purchase the product (1250 USD) in the first study falls within the 95% confidence interval of its counterpart in the second study. However, the average non-mortgage loan balance of individuals who agree to purchase the product is 23879 USD, being way higher than the upper limit of its counterpart in the second study, the sample in the first study is unlikely from the same population of the second study. 
+We also obtained the 95% confidence intervals for the non-mortgage loan balance of people in two populations as delineated by whether they are willing to purchase the product. We are 95% confident that in the second study, respondents who agree to purchase the product have non-mortgage loan balance between -157.45 and 10185 USD, and those who refuse to purchase the product have non-mortgage loan balance between -393 and 8266 USD. Similar to the variable age, the average non-mortgage loan balance of individuals who refuse to purchase the product (1250 USD) in the first study falls within the 95% confidence interval of its counterpart in the second study. However, the average non-mortgage loan balance of individuals who agree to purchase the product is 23879 USD, being way higher than the upper limit of its counterpart in the second study, the sample in the first study is unlikely from the same population of the second study. 
 
 
-Next, that, we continued to compare the categorical variable job in both studies. Figure 4 shows the number of respondents of each type of job in the second study as delineated by their responses to buy the product, which is ranked by the order of counts in the refusal group from high to low. Regardless of the reponse, it appears that most of the respondents are blue-collar, technician or involved in management, but students and households only take up a fairly small proportion of the sample.
+Next, that, we continued to compare the categorical variable job in both studies. Figure 4 shows the number of respondents of each type of job in the second study as delineated by their responses to buy the product, which is ranked by the order of counts in the refusal group from high to low. Regardless of the response, it appears that most of the respondents are blue-collar, technician or involved in management, but students and households only take up a fairly small proportion of the sample.
 
 ```{r fig.align='center', fig.cap="Population distribution of respondents by job and response in the second study"}
 counts_job = table(raw_data$job, raw_data$y)
@@ -227,7 +227,7 @@ mtext("Population Distribution by Education and Response", outer = TRUE, line = 
 ```
 
 
-Similarly, we also compared the distribution of respondents by marital status against their response to purchase the product, as is shown in Figure 7. In the first study, there're significantly lower numbers of married respondents than unmarried respondents, whereas there are about equal total numbers of married respondents as those unmarried in the second study. Therefore, these two samples are unlikely from the same population. Interestingly, if we focus on the distribution of married respondents in both studies, married respondents are less likely to purchase the product.
+Similarly, we also compared the distribution of respondents by marital status against their response to purchase the product, as is shown in Figure 7. In the first study, there are significantly lower numbers of married respondents than unmarried respondents, whereas there are about equal total numbers of married respondents as those unmarried in the second study. Therefore, these two samples are unlikely from the same population. Interestingly, if we focus on the distribution of married respondents in both studies, married respondents are less likely to purchase the product.
 
 
 ```{r fig.align='center', fig.cap="Population distribution of respondents by marital status and response in both studies", fig.height = 4}
@@ -245,10 +245,10 @@ mtext("Population Distribution by Marital Status and Response", outer = TRUE, li
 
 \newpage
 
-Furthermore, we compared the distribution of respondents with or without mortgage against their response to purchase the product, as is shown in Figure 8. Similar to what we observed in Figure 7, in the first study, the majority of the respondents are without mortgage, whereas in the second study there are about comparable number of respondents who have mortgage or not. This could serve as edividence to show that the second study was well designed to randomize the sample. In both studies, people with mortgage are less likely to purchase the product as compared to those with no mortgage. A possible explanation for this is that people with mortgage could be more prudent with how they should spend money. However, we see conflicting trends of response in the two studies among the group with no mortgage, which could result from the difference in sampling.
+Furthermore, we compared the distribution of respondents with or without mortgage against their response to purchase the product, as is shown in Figure 8. Similar to what we observed in Figure 7, in the first study, the majority of the respondents are without mortgage, whereas in the second study there are about comparable number of respondents who have mortgage or not. This could serve as evidence to show that the second study was well designed to randomize the sample. In both studies, people with mortgage are less likely to purchase the product as compared to those with no mortgage. A possible explanation for this is that people with mortgage could be more prudent with how they should spend money. However, we see conflicting trends of response in the two studies among the group with no mortgage, which could result from the difference in sampling.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by mortgage and response in both studies"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by mortgage and response in both studies", fig.height = 3.7}
 par(mfrow=c(1,2), oma = c(0, 0, 2, 0))
 mortgage_table = data.frame(Yes = c(2, 210), No = c(21, 188))
 row.names(mortgage_table) = c("Mortgage", "No mortgage")
@@ -282,7 +282,7 @@ mtext("Population Distribution by Primary Phone and Response", font = 2, line = 
 
 \newpage
 
-It's possible that people in delinquency for more than 60 days also have credit default, so we compared the delinquency variable in the first study with the credit in default varible in the second study, as is shown in Figure 10. The majority of the respondents in the second study do not have credit in default.  Comparatively, slighly more than half of the respondents in the first study have less than 60 days of delinquency. Interestingly, in the first study, respondents that have less than 60 days of delinquency are less likely to buy the products. A similar trend is observed in the second study, where the majority of repondents with no credit in default refuse to buy the product.
+It's possible that people in delinquency for more than 60 days also have credit default, so we compared the delinquency variable in the first study with the credit in default variable in the second study, as is shown in Figure 10. The majority of the respondents in the second study do not have credit in default.  Comparatively, slightly more than half of the respondents in the first study have less than 60 days of delinquency. Interestingly, in the first study, respondents that have less than 60 days of delinquency are less likely to buy the products. A similar trend is observed in the second study, where the majority of respondents with no credit in default refuse to buy the product.
 
 
 ```{r fig.align='center', fig.cap="Comparison of the population distribution by delinquency and response in the first study against the population distribution by credit in default and response in the second study"}
@@ -302,10 +302,10 @@ text(x2, y = c(counts_default[,1] + 900, counts_default[,2] + 900), labels = c(c
 ```
 
 
-Now that the variables common in both studies have been compared, we continued to examine the pattern of distributions with variables only described in the first study, including gender and race. Figure 11 displays the side-by-side distribution of respondents of different gender or race against response. Males and white individuals are overrepresented in this study, which could potentially lead to biased response rates.
+Now that the variables common in both studies have been compared, we continued to examine the pattern of distributions with variables only described in the first study, including gender and race. Figure 11 displays the side-by-side distribution of respondents of different gender or race against response. Males and white individuals are over represented in this study, which could potentially lead to biased response rates.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by gender against response or by race against response in the first study"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by gender against response or by race against response in the first study",fig.height= 3.7}
 #variables only included in study 1
 par(mfrow=c(1,2))
 #gender vs response
@@ -325,10 +325,10 @@ text(x, y+7, labels = as.character(y), cex = 0.6)
 ```
 
 
-In the second study, personal loan status is the only variable reflecing demographic features that has yet to be investigated. Consistent with what we observed for the credit in default variable, the majority of the respondents are with no personal non-mortgage loans as shown in Figure 12. Interestingly, regardless of having personal loan or not, they both tend to not buy the product, with similar probabilities.
+In the second study, personal loan status is the only variable reflecting demographic features that has yet to be investigated. Consistent with what we observed for the credit in default variable, the majority of the respondents are with no personal non-mortgage loans as shown in Figure 12. Interestingly, regardless of having personal loan or not, they both tend to not buy the product, with similar probabilities.
 
 
-```{r fig.align='center', fig.cap="Population distribution of respondents by personal loan and response in the second study"}
+```{r fig.align='center', fig.cap="Population distribution of respondents by personal loan and response in the second study",fig.height= 3.8}
 #the variable only included in study 2
 counts_loan = table(raw_data$loan, raw_data$y)
 x = barplot(counts_loan, ylim = c(0, 35000), main = "Population distribution by Personal Loan and Response", xlab = "Response", col = c("red", "yellow", "purple"), legend.text = TRUE, args.legend = list(x = "topleft", bty = "n"), beside = TRUE)
@@ -404,14 +404,14 @@ Since for response is statistically associated with each of the five categorical
 
 For the model analysis of this study, we were interested in creating a logistic model to estimate the likelihood that a person would buy the product based off of their demographic information. This is in effort to create a generalized model that can be used to predict the success of the Toast-USB.
 
-First, we want to explore the relationship between the demographic variables in the sample, and particularly explore how demographic information affects willingness to purchase Toast-USB. In this case, we can define willingness to purchase the Toast-USB as both the binary (Y/N) favorable response and the price a person said they would be willing to pay for the product. Figure 13 shows the relationship between age and willingness to purchase. There is a moderate relationship between age and price. The figure suggests that individuals on the older end of the spectrum may actually have a more favorable response to the product. This is somewhat contradictory to our expectation, given that Millennial and Gen-Z's dual love for technology and gourmet toast served as a compelling reason to enter this market space with the launch of the Toast-USB. This paradoxical relationship could be due to the fact that younger people are more likely to eat-out rather than at home, and therefore are less likely to purchase kitchen appliances. Additionally, young people establishing their first household may have access to less capital to purchase appliances, resulting in a decreased willingness to purchase among this demographic group. The figure also demostrated that people had a favorable response to the product were also, on average, willing to pay more for the product.
+First, we want to explore the relationship between the demographic variables in the sample, and particularly explore how demographic information affects willingness to purchase Toast-USB. In this case, we can define willingness to purchase the Toast-USB as both the binary (Y/N) favorable response and the price a person said they would be willing to pay for the product. Figure 13 shows the relationship between age and willingness to purchase. There is a moderate relationship between age and price. The figure suggests that individuals on the older end of the spectrum may actually have a more favorable response to the product. This is somewhat contradictory to our expectation, given that Millennial and Gen-Z's dual love for technology and gourmet toast served as a compelling reason to enter this market space with the launch of the Toast-USB. This paradoxical relationship could be due to the fact that younger people are more likely to eat-out rather than at home, and therefore are less likely to purchase kitchen appliances. Additionally, young people establishing their first household may have access to less capital to purchase appliances, resulting in a decreased willingness to purchase among this demographic group. The figure also demonstrated that people had a favorable response to the product were also, on average, willing to pay more for the product.
 
 
-Next, we explored the relationship between logged-balance and willingness to purchase.  Balance representes the amount of non-morgatage credit currently owed by an individual.  If a person has a large negative-value balance, it could negatively impact their willingness to purchase the Toast-USB simply because they do not have access to capital. The metric representing balance had both negative values and is strongly right-skewed.  We performed a linear shift by the largest negative-value balance and a log-transformation to alleviate the skew of the date. The equation below represents the mathematical formula used to transform the balance variable, and the density plot for this variable is included in the appendix:
+Next, we explored the relationship between logged-balance and willingness to purchase.  Balance represents the amount of non-mortgage credit currently owed by an individual.  If a person has a large negative-value balance, it could negatively impact their willingness to purchase the Toast-USB simply because they do not have access to capital. The metric representing balance had both negative values and is strongly right-skewed.  We performed a linear shift by the largest negative-value balance and a log-transformation to alleviate the skew of the date. The equation below represents the mathematical formula used to transform the balance variable, and the density plot for this variable is included in the appendix:
 
 $$Transformed_Balance = log(Balance + min(Balance))$$
 
-Figure 14 represents the association between logged balance and willingness to purchase Toast-USB.  The figure does not demonstrate that there is a significant association between balance and willingness to purchase.  Similarly to the relationship demonstrated for age, the figure also suggests that people with a favorable respone were, on average, willing to pay more for Toast-USB.
+Figure 14 represents the association between logged balance and willingness to purchase Toast-USB.  The figure does not demonstrate that there is a significant association between balance and willingness to purchase.  Similarly to the relationship demonstrated for age, the figure also suggests that people with a favorable response were, on average, willing to pay more for Toast-USB.
 
 
 ```{r fig.cap="Association between age and willingness to purchase Toast-USB"}
@@ -427,7 +427,7 @@ ggplot(sample_n(training,sampleSize), aes(x = age, y = log_balance, colour = y))
 ```
 
 
-Based on the analysis of the continuous demogrpahic predictors, none of the variables have a particularly strong association with willingness to purchase, and there are no obvious instances of collinearity.  However, the plots of the continuous predictors do suggest that price is a significant seperator.  As demonstrated in previous exploratory analysis, individuals who had a favorable response to the product were also willing to pay more for it than people who did not have an initial favorable response. 
+Based on the analysis of the continuous demographic predictors, none of the variables have a particularly strong association with willingness to purchase, and there are no obvious instances of collinearity.  However, the plots of the continuous predictors do suggest that price is a significant separator.  As demonstrated in previous exploratory analysis, individuals who had a favorable response to the product were also willing to pay more for it than people who did not have an initial favorable response. 
 
 ```{r, include=FALSE}
 ggplot(sample_n(training,sampleSize), aes(x = log_balance, y = price, colour = y)) + geom_point(alpha = .2) +
@@ -435,16 +435,21 @@ ggplot(sample_n(training,sampleSize), aes(x = log_balance, y = price, colour = y
 ```
 
 
-Figure 14 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-morgatage loan due to the exorbanant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
+Figure 14 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-mortgage loan due to the exorbitant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
 
 ```{r fig.cap="Association categorical demographic predictors and willingness to purchase Toast-USB"}
 create_plots <- function(var) {
-  ggplot(training, aes(x = fct_reorder(!!ensym(var),!!ensym(var),.fun = 'length'), fill = y )) + geom_bar(stat = 'count') + xlab(var) + ggtitle("Categorical Demographic Predictors and Willingness to Purchase")
+  ggplot(training, aes(x = fct_reorder(!!ensym(var),!!ensym(var),.fun = 'length'), fill = y )) + geom_bar(stat = 'count') +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    xlab(var)
 }
 
 plotList = lapply(categoricalColumns[-c(2,3)],create_plots)
 
-ggarrange(plotlist = plotList)
+
+
+ggarrange(plotlist = plotList) %>%
+  annotate_figure(top = text_grob("Categorical Demographic Predictors and willingness to Purchase"))
 
 ```
 
@@ -506,11 +511,9 @@ c(1, 2, 3, 4)
 all_formulas = sapply(possPicks,formulas)
 
 cv_scores = sapply(all_formulas, cv_model)
-which.min(cv_scores)
 #bestFormula = all_formulas[which.max(cv_scores)]
 bestFormula = "y~education+loan+age"
 bestMdl = glm(bestFormula, data = training, family = binomial)
-summary(bestMdl)
 ```
 
 
@@ -519,7 +522,6 @@ Of the 15 logistic models that were generated using the four key demographic var
 ```{r ResponseRate}
 prediction = predict(bestMdl, testing, type = 'response')
 simulateResponse = if_else(runif(length(prediction)) < prediction,"yes","no")
-mean(simulateResponse == "yes")
 ```
 
 The favorable response rate for for the product was 12.14%, which is approximately half of the necessary response rate that Toast-Co. indicated would be necessary for the launch of the product.  Based on this analysis, we do not recommend that Toast Co. move forward with this version to Toast-USB.
@@ -582,32 +584,32 @@ From the results of our simulation we can see that the estimated maximum MSRP Va
 
 ## Discussion and Conclusion
 
-Toast is a staple in the American diet.  It is an extremely popular breakfast food, and in recent years has gained even more popularity, as artisanal toast is at the center of Millennial and Gen-Z dietary trends. Our client, ToastCo., has proposed the launch of the Toast-USB, which would allow amateursand toast connoisseurs alike to create culinary-grade toast straight from theircomputer. Our aim was was to assist Toast-Co. to make data-driven, insightful decisions regarding the launch and campaign strategy for this product.  In particular, we has three specific aims for the analysis.
+Toast is a staple in the American diet.  It is an extremely popular breakfast food, and in recent years has gained even more popularity, as artisanal toast is at the center of Millennial and Gen-Z dietary trends. Our client, ToastCo., has proposed the launch of the Toast-USB, which would allow amateursand toast connoisseurs alike to create culinary-grade toast straight from their computer. Our aim was was to assist Toast-Co. to make data-driven, insightful decisions regarding the launch and campaign strategy for this product.  In particular, we has three specific aims for the analysis.
 
-  1. Compare the demographic and campaign-specifc features from the two samples quantitatively and qualitatively.
+  1. Compare the demographic and campaign-specific features from the two samples quantitatively and qualitatively.
   
   2. Make a binary (Y/N) recommendation regarding launch of the product based on a selection of significant demographic predictors and logistic modeling.
   
-  3. Determing an MSRP that will maximize revenue for the product.
+  3. Determining an MSRP that will maximize revenue for the product.
 
 
-In the intitial analysis, we compared the demographic features of the first and second study. For the two numeric variables common in both studies, we obtained distribution plots and 95% confidence intervals of age and non-mortgage loan balance in the second study, and then compared them to the mean of age and non-mortgage loan balance in the second study. The results suggests that based on age and non-mortgage loan balance, samples in the two studies are unlikely from the same population.
+In the initial analysis, we compared the demographic features of the first and second study. For the two numeric variables common in both studies, we obtained distribution plots and 95% confidence intervals of age and non-mortgage loan balance in the second study, and then compared them to the mean of age and non-mortgage loan balance in the second study. The results suggests that based on age and non-mortgage loan balance, samples in the two studies are unlikely from the same population.
 
-We further compared the categorical variables common in both studies, including job, education, marital status, mortgage and primary phone. Students are overrepresented whereas blue collar workers are underrepresented in the first study, which is opposite to what we've observed in the second study. Individuals with education levels of college and more are overrepresented, whereas married individuals or individuals with mortgage are underrepresented in the first study. Also, respondents using cell phone as the primary phone are slightly underrepresented in the first study. 
+We further compared the categorical variables common in both studies, including job, education, marital status, mortgage and primary phone. Students are over represented whereas blue collar workers are underrepresented in the first study, which is opposite to what we've observed in the second study. Individuals with education levels of college and more are over represented, whereas married individuals or individuals with mortgage are underrepresented in the first study. Also, respondents using cell phone as the primary phone are slightly underrepresented in the first study. 
 
-There are two categorical variables only present in the first study, including gender and race. White males appear to overrepresent the respondents. For the the second study, people with no personal loan take up a great proportion.
+There are two categorical variables only present in the first study, including gender and race. White males appear to over represent the respondents. For the the second study, people with no personal loan take up a great proportion.
 
 After that, likelihood ratio tests have verified that there is significant evidence that response to buy the product are associated with all the demographic variables in both studies, and that the components of respondents in the first study are significantly different from that in the well randomized second study.
 
-We performed further exploratory analysis on the data from the second study to gain insights on which demographic variables would have a meaningful effect on the favorable response rate. We found that age, personal loan status, default status and education were key demographic features of interest for the marketing campaign. We built 15 logistic models using combinations of these variables, and found that the logistic model including age, personal loan status, and education had the maximum likelihood ratio. Based on this result and the exploratory analysis, the Toast-USB has the highest favorble response rate among older individuals with higher levels of education and access to capital (no defaulted debt).
+We performed further exploratory analysis on the data from the second study to gain insights on which demographic variables would have a meaningful effect on the favorable response rate. We found that age, personal loan status, default status and education were key demographic features of interest for the marketing campaign. We built 15 logistic models using combinations of these variables, and found that the logistic model including age, personal loan status, and education had the maximum likelihood ratio. Based on this result and the exploratory analysis, the Toast-USB has the highest favorable response rate among older individuals with higher levels of education and access to capital (no defaulted debt).
 
-We performed a simulation on the test set to determing the estimated favorable response rate. The estimated response rate for this sample was 12.14%, which was under the 24.13% benchmark that is required to break-even.  Based on this result, we do not recommend that Toast Co. proceed with the launch of the Toast-USB.  This result was somewhat contradictory to the results of the first study, which had extremely promising preliminary findings and a 50.36% favorable response rate. Our investigation into the quantitative and qualitative differences betweent the first and second study suggested that the first study was not representative of the true population, and overrepresentation of certain groups led to bias in the favorable response rate of that study. 
+We performed a simulation on the test set to determining the estimated favorable response rate. The estimated response rate for this sample was 12.14%, which was under the 24.13% benchmark that is required to break-even.  Based on this result, we do not recommend that Toast Co. proceed with the launch of the Toast-USB.  This result was somewhat contradictory to the results of the first study, which had extremely promising preliminary findings and a 50.36% favorable response rate. Our investigation into the quantitative and qualitative differences between the first and second study suggested that the first study was not representative of the true population, and over representation of certain groups led to bias in the favorable response rate of that study. 
 
-Despite the recommendation to not proceed with this campaign, we believe that the investigation into the MSRP for the product to maximize revenue could be useful for the Toast Co., should they decide to launch a similar product in the future.  We performed a simulation using the probability that the individual would purchase the product calcualted from the logistic model and the price that the individual cited that they were willing to pay.  Using this process, we determined that the optimal price for this product is 46 USD, which would generate an estimated revenue of 60,000 USD. 
+Despite the recommendation to not proceed with this campaign, we believe that the investigation into the MSRP for the product to maximize revenue could be useful for the Toast Co., should they decide to launch a similar product in the future.  We performed a simulation using the probability that the individual would purchase the product calculated from the logistic model and the price that the individual cited that they were willing to pay.  Using this process, we determined that the optimal price for this product is 46 USD, which would generate an estimated revenue of 60,000 USD. 
 
-Although we do not recommend launching the Toast-USB, there are some key insights that we found in this investigation that could potentially be very useful to Toast Co. in reevaluating their business strategy.  Since we believe that older, highly-educated indivuduals are most likely to have a favorable response to the product, Toast Co. could re-imagine the Toast-USB to be more tailored to this group of people.  This could include adding more functional features, updating the aesthetic design, or improving the software systems to the product.
+Although we do not recommend launching the Toast-USB, there are some key insights that we found in this investigation that could potentially be very useful to Toast Co. in reevaluating their business strategy.  Since we believe that older, highly-educated individuals are most likely to have a favorable response to the product, Toast Co. could re-imagine the Toast-USB to be more tailored to this group of people.  This could include adding more functional features, updating the aesthetic design, or improving the software systems to the product.
 
-
+\newpage
 
 ## Appendix:
 

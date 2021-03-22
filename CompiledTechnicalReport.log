@@ -1,28 +1,101 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.1.8)  21 MAR 2021 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.12)  22 MAR 2021 06:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **CompiledTechnicalReport.tex
 (./CompiledTechnicalReport.tex
-LaTeX2e <2020-10-01> patch level 3
-L3 programming layer <2020-12-07> xparse <2020-03-03> (/Users/kenijia/Library/T
-inyTeX/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-02-25> (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf
+-dist/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-\c@part=\count177
-\c@section=\count178
-\c@subsection=\count179
-\c@subsubsection=\count180
-\c@paragraph=\count181
-\c@subparagraph=\count182
-\c@figure=\count183
-\c@table=\count184
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
-\bibindent=\dimen138
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
+\bibindent=\dimen134
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.st
+y
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip49
+For additional information on amsmath, use the `?' option.
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.st
+y
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen135
+))
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen136
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count175
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count176
+\leftroot@=\count177
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count178
+\DOTSCASE@=\count179
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box45
+\strutbox@=\box46
+\big@size=\dimen137
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count180
+\c@MaxMatrixCols=\count181
+\dotsspace@=\muskip16
+\c@parentequation=\count182
+\dspbrk@lvl=\count183
+\tag@help=\toks16
+\row@=\count184
+\column@=\count185
+\maxfields@=\count186
+\andhelp@=\toks17
+\eqnshift@=\dimen138
+\alignsep@=\dimen139
+\tagshift@=\dimen140
+\tagwidth@=\dimen141
+\totwidth@=\dimen142
+\lineht@=\dimen143
+\@envbody=\toks18
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.s
+ty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.
+sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/lmodern.sty
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
@@ -56,217 +129,205 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks15
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2020/09/23 v2.17i AMS math features
-\@mathmargin=\skip49
-For additional information on amsmath, use the `?' option.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks16
-\ex@=\dimen139
-)) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen140
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count185
-LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count186
-\leftroot@=\count187
-LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count188
-\DOTSCASE@=\count189
-LaTeX Info: Redefining \ldots on input line 496.
-LaTeX Info: Redefining \dots on input line 499.
-LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box47
-\strutbox@=\box48
-\big@size=\dimen141
-LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count190
-\c@MaxMatrixCols=\count191
-\dotsspace@=\muskip16
-\c@parentequation=\count192
-\dspbrk@lvl=\count193
-\tag@help=\toks17
-\row@=\count194
-\column@=\count195
-\maxfields@=\count196
-\andhelp@=\toks18
-\eqnshift@=\dimen142
-\alignsep@=\dimen143
-\tagshift@=\dimen144
-\tagwidth@=\dimen145
-\totwidth@=\dimen146
-\lineht@=\dimen147
-\@envbody=\toks19
-\multlinegap=\skip50
-\multlinetaggap=\skip51
-\mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2923.
-LaTeX Info: Redefining \] on input line 2924.
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.sty
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.st
+y
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
-)) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+))
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.s
+ty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/base/fixltx2e.sty
-Package: fixltx2e 2016/12/29 v2.1a fixes to LaTeX (obsolete)
-Applying: [2015/01/01] Old fixltx2e package on input line 46.
-
-Package fixltx2e Warning: fixltx2e is not required with releases after 2015
-(fixltx2e)                All fixes are now in the LaTeX kernel.
-(fixltx2e)                See the latexrelease package for details.
-
-Already applied: [0000/00/00] Old fixltx2e package on input line 53.
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2020/08/10 v2.0s Standard LaTeX package
+) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
 LaTeX Font Info:    Trying to load font information for T1+lmr on input line 11
 2.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2020/08/01 v1.3d Input encoding file
-\inpenc@prehook=\toks21
-\inpenc@posthook=\toks22
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
+)) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/inputenc.s
+ty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks20
+\inpenc@posthook=\toks21
+) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/textcomp.st
+y
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/upquote/upquote.st
+y
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-)
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.st
+) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.st
 y
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color
+.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-def/pdfte
+x.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.
+sty
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.
+sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdftexcmds/pdftexc
+mds.sty
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/infwarerr/infwar
+err.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks23
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.st
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/keyval.st
 y
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvsetkeys/kvsetk
+eys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekey
-s.sty
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvd
+efinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.st
-y
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfesc
+ape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.st
+y
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltxmacro.st
-y
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/letltxmacro/letltx
+macro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.sty
-Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen148
-\Hy@linkcounter=\count197
-\Hy@pagecounter=\count198
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/auxhook/auxhook.st
+y
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoption
+s.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen144
+\Hy@linkcounter=\count187
+\Hy@pagecounter=\count188
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.de
+f
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.
+sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmd
+s.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count199
-Package hyperref Info: Option `unicode' set `true' on input line 4338.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2020-05-15 v7.00e Hyperref: PDF Unicode definition (HO)
+\Hy@SavedSpaceFactor=\count189
+\pdfmajorversion=\count190
+Package hyperref Info: Option `unicode' set `true' on input line 4421.
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2020/01/14 v7.00d Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4464.
-Package hyperref Info: Link nesting OFF on input line 4469.
-Package hyperref Info: Hyper index ON on input line 4472.
-Package hyperref Info: Plain pages OFF on input line 4479.
-Package hyperref Info: Backreferencing OFF on input line 4484.
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing OFF on input line 4567.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4717.
-\c@Hy@tempcnt=\count266
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
+Package hyperref Info: Bookmarks ON on input line 4800.
+\c@Hy@tempcnt=\count191
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 5076.
-\XeTeXLinkMargin=\dimen149
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen145
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bitset/bitset.st
+y
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.st
-y
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigin
+tcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count267
-\Field@Width=\dimen150
-\Fld@charsize=\dimen151
-Package hyperref Info: Hyper figures OFF on input line 6347.
-Package hyperref Info: Link nesting OFF on input line 6352.
-Package hyperref Info: Hyper index ON on input line 6355.
-Package hyperref Info: backreferencing OFF on input line 6362.
-Package hyperref Info: Link coloring OFF on input line 6367.
-Package hyperref Info: Link coloring with OCG OFF on input line 6372.
-Package hyperref Info: PDF/A mode OFF on input line 6377.
-LaTeX Info: Redefining \ref on input line 6417.
-LaTeX Info: Redefining \pageref on input line 6421.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.sty
-Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
-ge
-with kernel methods
+\Fld@menulength=\count192
+\Field@Width=\dimen146
+\Fld@charsize=\dimen147
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing OFF on input line 6445.
+Package hyperref Info: Link coloring OFF on input line 6450.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/atbegshi/atbegsh
+i.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
 )
-\Hy@abspage=\count268
-\c@Item=\count269
-\c@Hfootnote=\count270
+\Hy@abspage=\count193
+\c@Item=\count194
+\c@Hfootnote=\count195
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
-e
-with kernel methods
-)
-\Fld@listcount=\count271
-\c@bookmark@seq@number=\count272
 
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilech
-eck.sty
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.d
+ef
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/atveryend/atveryen
+d.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count196
+\c@bookmark@seq@number=\count197
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rer
+unfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecoun
-ter.sty
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/uniquecounter/un
+iquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
@@ -274,88 +335,263 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip52
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 35.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/geometry/geometry.
+sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count273
-\Gm@cntv=\count274
-\c@Gm@tempcnt=\count275
-\Gm@bindingoffset=\dimen152
-\Gm@wd@mp=\dimen153
-\Gm@odd@mp=\dimen154
-\Gm@even@mp=\dimen155
-\Gm@layoutwidth=\dimen156
-\Gm@layoutheight=\dimen157
-\Gm@layouthoffset=\dimen158
-\Gm@layoutvoffset=\dimen159
-\Gm@dimlist=\toks24
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
+\Gm@cnth=\count198
+\Gm@cntv=\count199
+\c@Gm@tempcnt=\count266
+\Gm@bindingoffset=\dimen148
+\Gm@wd@mp=\dimen149
+\Gm@odd@mp=\dimen150
+\Gm@even@mp=\dimen151
+\Gm@layoutwidth=\dimen152
+\Gm@layoutheight=\dimen153
+\Gm@layouthoffset=\dimen154
+\Gm@layoutvoffset=\dimen155
+\Gm@dimlist=\toks23
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.
+sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.
+sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graphics.cf
-g
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graph
+ics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 105.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+\Gin@req@height=\dimen156
+\Gin@req@width=\dimen157
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.
+sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen158
+\lightrulewidth=\dimen159
+\cmidrulewidth=\dimen160
+\belowrulesep=\dimen161
+\belowbottomsep=\dimen162
+\aboverulesep=\dimen163
+\abovetopsep=\dimen164
+\cmidrulesep=\dimen165
+\cmidrulekern=\dimen166
+\defaultaddspace=\dimen167
+\@cmidla=\count267
+\@cmidlb=\count268
+\@aboverulesep=\dimen168
+\@belowrulesep=\dimen169
+\@thisruleclass=\count269
+\@lastruleclass=\count270
+\@thisrulewidth=\dimen170
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.st
+y
+Package: longtable 2020/01/07 v4.13 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count271
+\LTcapwidth=\dimen171
+\LT@head=\box47
+\LT@firsthead=\box48
+\LT@foot=\box49
+\LT@lastfoot=\box50
+\LT@cols=\count272
+\LT@rows=\count273
+\c@LT@tables=\count274
+\c@LT@chunks=\count275
+\LT@p@ftn=\toks24
+) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen172
+\ar@mcellbox=\box51
+\extrarowheight=\dimen173
+\NC@list=\toks25
+\extratabsurround=\skip57
+\backup@length=\skip58
+\ar@cellbox=\box52
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/multirow/multirow.
+sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip59
+\multirow@cntb=\count276
+\multirow@dima=\skip60
+\bigstrutjot=\dimen174
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/wrapfig/wrapfig.st
+y
+\wrapoverhang=\dimen175
+\WF@size=\dimen176
+\c@WF@wrappedlines=\count277
+\WF@box=\box53
+\WF@everypar=\toks26
+Package: wrapfig 2003/01/31  v 3.6
+) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count278
+\float@exts=\toks27
+\float@box=\box54
+\@float@everytoks=\toks28
+\@floatcapt=\box55
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.
+sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks29
+\minrowclearance=\skip61
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscap
+e.sty
+Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/lscape.st
+y
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.
+sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box56
+\sift@deathcycles=\count279
+\@vwid@loff=\dimen177
+\@vwid@roff=\dimen178
+)
+\c@taburow=\count280
+\tabu@nbcols=\count281
+\tabu@cnt=\count282
+\tabu@Xcol=\count283
+\tabu@alloc=\count284
+\tabu@nested=\count285
+\tabu@target=\dimen179
+\tabu@spreadtarget=\dimen180
+\tabu@naturalX=\dimen181
+\tabucolX=\dimen182
+\tabu@Xsum=\dimen183
+\extrarowdepth=\dimen184
+\abovetabulinesep=\dimen185
+\belowtabulinesep=\dimen186
+\tabustrutrule=\dimen187
+\tabu@thebody=\toks30
+\tabu@footnotes=\toks31
+\tabu@box=\box57
+\tabu@arstrutbox=\box58
+\tabu@hleads=\box59
+\tabu@vleads=\box60
+\tabu@cellskip=\skip62
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttable/thr
+eeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box61
+)
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/threeparttablex/th
+reeparttablex.sty
+Package: threeparttablex 2013/07/23 v0.3 by daleif
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/environ/environ.st
+y
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspa
+ces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\Gin@req@height=\dimen160
-\Gin@req@width=\dimen161
-) (/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/grffile/grffile.sty
-Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legac
-y)
-Package grffile Info: This package is an empty stub for compatibility on input 
-line 40.
+\TPTL@width=\skip63
+) (c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box62
+\UL@hyphenbox=\box63
+\UL@skip=\skip64
+\UL@hook=\toks32
+\UL@height=\dimen188
+\UL@pe=\count286
+\UL@pixel=\dimen189
+\ULC@box=\box64
+Package: ulem 2019/11/18
+\ULdepth=\dimen190
 )
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex
-.def
-File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count276
-\l__pdf_internal_box=\box49
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/makecell/makecell.
+sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen191
+\c@nlinenum=\count287
+\TeXr@lab=\toks33
 )
-No file CompiledTechnicalReport.aux.
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
+d-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count288
+\l__pdf_internal_box=\box65
+) (./CompiledTechnicalReport.aux)
 \openout1 = `CompiledTechnicalReport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 71.
-LaTeX Font Info:    ... okay on input line 71.
-Package hyperref Info: Link coloring OFF on input line 71.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 84.
+LaTeX Font Info:    ... okay on input line 84.
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epsto
+pdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/latexconfig/epstop
+df-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box66
+Package hyperref Info: Link coloring OFF on input line 84.
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.s
+ty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
+
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/refcount/refcount.
+sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitles
-tring.sty
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/gettitlestring/g
+ettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count277
+\c@section@level=\count289
 )
-LaTeX Info: Redefining \ref on input line 71.
-LaTeX Info: Redefining \pageref on input line 71.
-LaTeX Info: Redefining \nameref on input line 71.
+LaTeX Info: Redefining \ref on input line 84.
+LaTeX Info: Redefining \pageref on input line 84.
+LaTeX Info: Redefining \nameref on input line 84.
+(./CompiledTechnicalReport.out) (./CompiledTechnicalReport.out)
 \@outlinefile=\write3
 \openout3 = `CompiledTechnicalReport.out'.
 
@@ -393,246 +629,400 @@ LaTeX Info: Redefining \nameref on input line 71.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base
-.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.c
-fg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 7
-3.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 8
+6.
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 7
-3.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
+6.
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-73.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
+86.
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-73.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
+86.
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 73.
+(Font)              <12> on input line 86.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 73.
+(Font)              <8> on input line 86.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 73.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 73.
+(Font)              <6> on input line 86.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
 
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 73.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
 
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+(c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/Users/kenijia/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-1-1.pdf, id=18, 301.1
-25pt x 544.0325pt>
+{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
+x.map}]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-1-1.pdf, id=68, 469.7
+55pt x 650.43pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-1-1.pdf Graphic 
 file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-1-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-1-1.pdf  used on input line 182.
-(pdftex.def)             Requested size: 301.13803pt x 544.05608pt.
-[2] [3 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-1-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-3-1.pdf, id=44, 453.6
-95pt x 351.3125pt>
+nk-1-1.pdf  used on input line 195.
+(pdftex.def)             Requested size: 469.75386pt x 650.4284pt.
+
+LaTeX Warning: Float too large for page by 59.94283pt on input line 201.
+
+[2] [3pdfTeX warning (ext4): destination with the same identifier (name{figure.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.224 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-1-1.
+pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-3-1.pdf, id=89, 469.7
+55pt x 361.35pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-3-1.pdf Graphic 
 file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-3-1.pdf  used on input line 235.
-(pdftex.def)             Requested size: 453.6939pt x 351.31163pt.
-[4 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-3-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-4-1.pdf, id=62, 453.6
-95pt x 313.17pt>
+nk-3-1.pdf  used on input line 251.
+(pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
+[4pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.272 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-3-1.pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-4-1.pdf, id=103, 469.
+755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-4-1.pdf Graphic 
 file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-4-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-4-1.pdf  used on input line 271.
-(pdftex.def)             Requested size: 453.6939pt x 313.16922pt.
-[5 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-4-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-5-1.pdf, id=79, 393.4
-7pt x 285.065pt>
+nk-4-1.pdf  used on input line 287.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[5pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.316 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-4-1.pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-5-1.pdf, id=118, 469.
+755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-5-1.pdf Graphic 
 file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-5-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-5-1.pdf  used on input line 303.
-(pdftex.def)             Requested size: 393.46902pt x 285.0643pt.
-[6 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-5-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-7-1.pdf, id=93, 401.5
-pt x 265.99374pt>
+nk-5-1.pdf  used on input line 319.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.326 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-5-1.
+pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-7-1.pdf, id=130, 469.
+755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-7-1.pdf Graphic 
 file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-7-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-7-1.pdf  used on input line 326.
-(pdftex.def)             Requested size: 401.5235pt x 266.00931pt.
-[7 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-7-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-8-1.pdf, id=108, 401.
-5pt x 302.12875pt>
+nk-7-1.pdf  used on input line 342.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[7pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.349 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-7-1.
+pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-8-1.pdf, id=143, 469.
+755pt x 361.35pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-8-1.pdf Graphic 
 file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-8-1.pdf  used on input line 351.
-(pdftex.def)             Requested size: 401.49901pt x 302.128pt.
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-9-1.pdf, id=109, 401.
-5pt x 229.85875pt>
+nk-8-1.pdf  used on input line 367.
+(pdftex.def)             Requested size: 469.75386pt x 361.34912pt.
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-9-1.pdf, id=144, 469.
+755pt x 289.08pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-9-1.pdf Graphic 
 file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-9-1.pdf  used on input line 370.
-(pdftex.def)             Requested size: 401.5235pt x 229.8722pt.
-[8 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-8-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-10-1.pdf, id=123, 401
-.5pt x 265.99374pt>
+nk-9-1.pdf  used on input line 386.
+(pdftex.def)             Requested size: 469.75386pt x 289.07928pt.
+[8pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.393 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-8-1.
+pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-10-1.pdf, id=157, 469
+.755pt x 266.9975pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-10-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-10-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-10-1.pdf  used on input line 395.
-(pdftex.def)             Requested size: 401.5235pt x 266.00931pt.
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-11-1.pdf, id=124, 401
-.5pt x 265.99374pt>
+nk-10-1.pdf  used on input line 411.
+(pdftex.def)             Requested size: 469.75386pt x 266.99683pt.
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-11-1.pdf, id=158, 469
+.755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-11-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-11-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-11-1.pdf  used on input line 417.
-(pdftex.def)             Requested size: 401.5235pt x 266.00931pt.
-[9 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-9-1.pdf>] [10 <.
-/CompiledTechnicalReport_files/figure-latex/unnamed-chunk-10-1.pdf> <./Compiled
-TechnicalReport_files/figure-latex/unnamed-chunk-11-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-12-1.pdf, id=161, 436
-.63126pt x 295.1025pt>
+nk-11-1.pdf  used on input line 433.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[9pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.440 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-9-1.
+pdf>] [10pdfTeX warning (ext4): destination with the same identifier (name{figu
+re.8}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.440 \newpage
+              pdfTeX warning (ext4): destination with the same identifier (name
+{figure.9}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.440 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-10-1
+.pdf> <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-11-1.pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-12-1.pdf, id=188, 469
+.755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-12-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-12-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-12-1.pdf  used on input line 439.
-(pdftex.def)             Requested size: 436.63019pt x 295.10176pt.
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf, id=162, 421
-.575pt x 294.09875pt>
+nk-12-1.pdf  used on input line 455.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf, id=189, 469
+.755pt x 266.9975pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-13-1.pdf  used on input line 456.
-(pdftex.def)             Requested size: 421.57396pt x 294.09802pt.
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf, id=163, 402
-.50375pt x 285.065pt>
+nk-13-1.pdf  used on input line 472.
+(pdftex.def)             Requested size: 469.75386pt x 266.99683pt.
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf, id=190, 469
+.755pt x 274.02374pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-14-1.pdf  used on input line 472.
-(pdftex.def)             Requested size: 402.50276pt x 285.0643pt.
-[11 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-12-1.pdf>] [12 
-<./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1.pdf> <./Compil
-edTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 496.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 496.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 496.
+nk-14-1.pdf  used on input line 488.
+(pdftex.def)             Requested size: 469.75386pt x 274.02307pt.
+[11pdfTeX warning (ext4): destination with the same identifier (name{figure.10}
+) has been already used, duplicate ignored
 
-Overfull \hbox (30.0215pt too wide) in paragraph at lines 496--508
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.495 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-12-1
+.pdf>] [12pdfTeX warning (ext4): destination with the same identifier (name{fig
+ure.11}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.495 \newpage
+              pdfTeX warning (ext4): destination with the same identifier (name
+{figure.12}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.495 \newpage
+               <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-13-1
+.pdf> <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-14-1.pdf>]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 512.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 512.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 512.
+
+Overfull \hbox (32.42139pt too wide) in paragraph at lines 512--524
  [][] 
  []
 
 
-Overfull \hbox (38.077pt too wide) in paragraph at lines 551--560
+Overfull \hbox (43.25464pt too wide) in paragraph at lines 567--576
  [][] 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[13]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf, id=211, 453
-.695pt x 315.1775pt>
+[13pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.588 
+      pdfTeX warning (ext4): destination with the same identifier (name{table.2
+}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.588 
+      ]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf, id=231, 469
+.755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-15-1.pdf  used on input line 617.
-(pdftex.def)             Requested size: 453.6939pt x 315.17673pt.
-[14] [15 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf>]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf, id=236, 464
-.73625pt x 315.1775pt>
+nk-15-1.pdf  used on input line 633.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[14pdfTeX warning (ext4): destination with the same identifier (name{table.3}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.660 
+      ] [15pdfTeX warning (ext4): destination with the same identifier (name{fi
+gure.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.660 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-15-1.pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf, id=253, 469
+.755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-18-1.pdf  used on input line 647.
-(pdftex.def)             Requested size: 464.74928pt x 315.18634pt.
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf, id=237, 453
-.695pt x 316.18124pt>
+nk-18-1.pdf  used on input line 663.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf, id=254, 469
+.755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-19-1.pdf  used on input line 664.
-(pdftex.def)             Requested size: 453.6939pt x 316.18047pt.
-[16 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf>] [17 
-<./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf>]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 6
-96.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-729.
-(/Users/kenijia/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [18]
-<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf, id=272, 463
-.7325pt x 316.18124pt>
+nk-19-1.pdf  used on input line 680.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[16pdfTeX warning (ext4): destination with the same identifier (name{figure.14}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.711 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-18-1.pdf>] [
+17pdfTeX warning (ext4): destination with the same identifier (name{figure.15})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.711 
+       <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-19-1.pdf>]
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf, id=276, 469
+.755pt x 325.215pt>
 File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf Graphic
  file (type pdf)
 <use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf>
 Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
-nk-22-1.pdf  used on input line 780.
-(pdftex.def)             Requested size: 463.73842pt x 316.18529pt.
-[19 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf>]
+nk-22-1.pdf  used on input line 757.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+[18] [19 <./CompiledTechnicalReport_files/figure-latex/unnamed-chunk-22-1.pdf>]
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 874--874
+[]|\T1/lmr/m/n/10 Variable
+ []
 
-! LaTeX Error: Illegal character in array arg.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.892 ...{tabular}{| m{3.2cm} | m{2cm} | m{50mm}|}
-                                                   
+Underfull \hbox (badness 1320) in paragraph at lines 884--885
+[]|\T1/lmr/m/n/10 Indicator that re-spon-dent has
+ []
+
+
+Underfull \hbox (badness 1320) in paragraph at lines 890--891
+[]|\T1/lmr/m/n/10 Indicator that re-spon-dent has
+ []
+
+
+Underfull \hbox (badness 6300) in paragraph at lines 892--893
+[]|\T1/lmr/m/n/10 If re-spon-dent was con-tacted
+ []
+
+<CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf, id=301, 469
+.755pt x 325.215pt>
+File: CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf Graphic
+ file (type pdf)
+<use CompiledTechnicalReport_files/figure-latex/unnamed-chunk-23-1.pdf>
+Package pdftex.def Info: CompiledTechnicalReport_files/figure-latex/unnamed-chu
+nk-23-1.pdf  used on input line 917.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 921.
+[21pdfTeX warning (ext4): destination with the same identifier (name{table.4}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.921 \end{document}
+                    ] [22pdfTeX warning (ext4): destination with the same ident
+ifier (name{figure.16}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.921 \end{document}
+                     <./CompiledTechnicalReport_files/figure-latex/unnamed-chun
+k-23-1.pdf>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 921.
+(./CompiledTechnicalReport.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 921.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 921.
+Package rerunfilecheck Info: File `CompiledTechnicalReport.out' has not changed
+.
+(rerunfilecheck)             Checksum: 4BD9A5FE99C9FB4E558155EE52C000A2;2706.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 921.
+ ) 
 Here is how much of TeX's memory you used:
- 10189 strings out of 481271
- 152834 string characters out of 5915349
- 439196 words of memory out of 5000000
- 26857 multiletter control sequences out of 15000+600000
- 443342 words of font info for 65 fonts, out of 8000000 for 9000
+ 12103 strings out of 482913
+ 179917 string characters out of 5957672
+ 432218 words of memory out of 5000000
+ 27056 multiletter control sequences out of 15000+600000
+ 571732 words of font info for 61 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 68i,11n,70p,264b,410s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,13n,37p,488b,325s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-math
+it.enc}{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm
+-rm.enc}{c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/l
+m-ec.enc}<c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/
+lm/lmbx10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/pu
+blic/lm/lmbx12.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/fonts/typ
+e1/public/lm/lmmi10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/font
+s/type1/public/lm/lmmi7.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-dist/
+fonts/type1/public/lm/lmr10.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/texmf-d
+ist/fonts/type1/public/lm/lmr12.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX/tex
+mf-dist/fonts/type1/public/lm/lmr17.pfb><c:/Users/nmobl/AppData/Roaming/TinyTeX
+/texmf-dist/fonts/type1/public/lm/lmr7.pfb>
+Output written on CompiledTechnicalReport.pdf (22 pages, 876363 bytes).
+PDF statistics:
+ 366 PDF objects out of 1000 (max. 8388607)
+ 297 compressed objects within 3 object streams
+ 72 named destinations out of 1000 (max. 500000)
+ 190 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-!  ==> Fatal error occurred, no output PDF file produced!
