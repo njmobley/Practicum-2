@@ -435,7 +435,7 @@ ggplot(sample_n(training,sampleSize), aes(x = log_balance, y = price, colour = y
 ```
 
 
-Figure 15 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-morgatage loan due to the exorbanant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
+Figure 14 shows the association between categorical demographic predictors and their willingness to purchase the Toast-USB.  Variables representing education, default, and loan have a moderate relationship with willingness to purchase. Individuals with secondary and tertiary education have a higher favorable response rate, which could be dually attributable to access to more capital and cultural trends surrounding gourmet toast that are popular within this group.  Additionally, there is a moderate association between willingness to purchase, loan, and default.  We believe that these associations could be related, as individuals with secondary and tertiary education (specifically, individuals attended college) are more likely to have a non-morgatage loan due to the exorbanant cost of education in the United States.  The association of these three variables should be considered in the structure of the logistic model.
 
 ```{r fig.cap="Association categorical demographic predictors and willingness to purchase Toast-USB"}
 create_plots <- function(var) {
@@ -448,7 +448,7 @@ ggarrange(plotlist = plotList)
 
 ```
 
-The original dataset obtained by the DOE had 12 factors representing the job classification for individuals in the sample.  The job variable was recoded to represent more broad categories more closely related to profession-type.  Factor levels in the recoded dataset for profession-type include classifications of student, unknown employment, administration, white-collar, and blue-collar. Figure 16 represents the distribution of favorable response for each of the profession types.  There is no significant association between favorable response and profession type in this sample.  
+The original dataset obtained by the DOE had 12 factors representing the job classification for individuals in the sample.  The job variable was recoded to represent more broad categories more closely related to profession-type.  Factor levels in the recoded dataset for profession-type include classifications of student, unknown employment, administration, white-collar, and blue-collar. Figure 15 represents the distribution of favorable response for each of the profession types.  There is no significant association between favorable response and profession type in this sample.  
 
 ```{r fig.cap="Distribution of Recoded Job"}
 ggplot(training,aes(x = fct_reorder(job_reduced,job_reduced,.fun = 'length'),  fill = y)) + geom_bar(stat='count') + ggtitle("Recoded Job Counts") + xlab("Recoded Job")
