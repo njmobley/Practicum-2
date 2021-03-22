@@ -33,17 +33,17 @@ training = dat[trainIndexs,]
 testing = dat[-trainIndexs,]
 ```
 
-## Abstract: 
+## Abstract
 
 The popularity of toast as an American breakfast food as well as recent trends in technology have created a potential marketspace for the Toast-USB, which allows individuals to curate gourmet toast straight from their computer.  We performed a risk-benefit analysis on two samples obtained by our firm's Department of Experiments (DOE) to investigate the potential favorable response rate for the product as well as potential target demographic groups for the marketing campaign.  A series of logistic models were built to investigate the potential success of this product. We found that the best logistic model included demographic variables representing loan, age, default, and education as demographic indicators of interest.  However, the favorable response rate for the product was 12.14%, which was roughly half of the necessary response rate required for launch of the product.  Thus, based on this risk-benefit analysis, we do not recommend that Toast-Co move forward with this campaign.  However, we do have some actionable next-step suggestions for Toast-Co to implement to continue their exploration in this exciting market space. 
 
-## Introduction:
+## Introduction
 
 Toast has been a staple in the American breakfast for many decades. Avocado and hummus toast has also been the center of Millennial and Gen-Z dietary trends, creating a surge in the popularity of gourmet toast. The sustained popularity of toast as a breakfast food coupled with a recent drive in demand for gourmet toast created a potentially high-potential market space to combine toast with technology. Our client, Toast Co., is aiming to capitalize on a first-mover advantage and explore this new potential market space. Thus, Toast  Co.,  has  created  the Toast-USB which enables individuals to curate gourmet, artisanal toast right from their computer.  
 
 Our aim is to assist Toast Co. to make informed, data-driven decisions regarding the launch of Toast-USB. Toast Co. conducted a first round market analysis from five metropolitan areas (including Toronto, ON; New York City, NY, Philadelphia, PA; Dallas, TX, and San Francisco, CA). Preliminary results were so promising that our firm's DOE has conducted another larger-scale study to determine the likelihood of success of Toast-USB. During the course of this investigation, we will synthesize the key findings from the first and second study. This includes significant data processing to both reconcile the data of the first and second study, as well as to process demographic data such that it can be used in model analysis. Further exploratory analysis will be performed to investigate key demographic groups that are significant predictors of a favorable response rate. To perform a risk-benefit analysis on continuation of the campaign, we will build a series of logistic models using demographic predictors of interest, and use cross validation based on maximizing the likelihood ratio to select the model. The model selection should provide insight on which demographic groups should be targeted by the marketing campaign, should Toast Co. move forward with the launch. Next, we will predict the favorable response rate based on the selected model, and give a binary(Y/N) recommendation on launch of the product. Finally, we will determing an MSRP for the product using a simulation of the logistic model.
 
-# The Data
+## The Data
 
 The original dataset obtained from Toast Co.'s market analysis contained 421 observations of 8 variables, including 6 categorical variables and 2 numeric variables. The data used for supplementary analysis was provided by our firm's DOE where additional respondents were sampled from the same 5 major metropolitan areas to supplement the initial campaign, which gathered information on 45,211 observations for 16 different variables, including 9 categorical variables and 7 numeric variables. Variables relating to the demographic information of the respondents were all self reported, while variables pertaining to duration of contact and number of contacts were recorded by campaign administers. Description of all variables can be found in the data dictionary of the appendix.
 
@@ -106,10 +106,9 @@ raw_data$job = ordered(raw_data$job, levels = c("blue-collar", "management", "te
 ```
 
 
-## Specific Aims 1: To compare the demographic features of the sample from the first study to that of the second study qualitatively and quantitatively.
+## Comparison of Demographic Features for the Two Studies
 
-
-### Graphic Comparison for the First and Second Sample
+### Graphic Comparison for the First and Second Study
 
 We first compare the demographic features common in both studies, including two numeric variables age and non-mortgage loan balance, as well as five categorical variables job, education, marital status, mortgage and primary phone.
 
@@ -521,6 +520,8 @@ summary(bestMdl)
 ```
 
 
+### Generation of Logistic Models and Model Selection by Cross Validation
+
 Of the 15 logistic models that were generated using the four key demographic variables, we found that the multivariate logistic model regressing age, personal loan status, and education on response to Toast-USB had the maximum likelihood ratio.  The model summary also indicated that all of these predictors have a significant effect on the favorable response rate. Thus, we believe that education, loan status, and age will be demographic variables of interest to Toast-Co for strategizing their marketing campaign. Next,we used our selected logistic model to simulate a response rate using the testing set.  
 
 ```{r ResponseRate}
@@ -533,11 +534,10 @@ The favorable response rate for for the product was 12.14%, which is approximate
 
 ## Application of Model to Determine MSRP 
 
-From our previous section, we discovered that the logistic model containing personal loan status, education, and age as predictor variables performs the best predictions according to maximum likelihood ratio. Although the favorable response is below the break even rate, we still determined which MSRP value would be able to maximize revenue. To generate a range of reasonable prices, we selected the minimum and maximum value of price answered in the survey. The lowest value responded value was 0, so we started our search at 1 USD. The maximum responded price was 168 USD.  Thus, the range for reasonable prices was determined to be [1-168 USD].  To find the maximum price we performed the following simulation:
-For each potential MSRP Value:
+From our previous section, we discovered that the logistic model containing personal loan status, education, and age as predictor variables performs the best predictions according to maximum likelihood ratio. Although the favorable response is below the break even rate, we still determined which MSRP value would be able to maximize revenue. To generate a range of reasonable prices, we selected the minimum and maximum value of price answered in the survey. The lowest value responded value was 0, so we started our search at 1 USD. The maximum responded price was 168 USD.  Thus, the range for reasonable prices was determined to be [1-168 USD].  To find the maximum price we performed the following simulation
 
 
-  Repeat the below following process 5 times and take the average:
+  For each potential MSRP Value, repeat the below following process 5 times and take the average:
   For each observation in our training set:
       1. Generate a probability they would purchase the product using the logistic model
       2. Compare that generated probability with a randomly generated number, if the random number is lower
@@ -588,7 +588,7 @@ ggplot(results, aes(x = msrp, y = revenue)) + geom_line(size = .8) +
 
 From the results of our simulation we can see that the estimated maximum MSRP Value would 46 USD. The simulation was ran on a test set containing 20,000 observations. From this we could estimate that for every 20,000 people that interact with our product we could estimate a revenue of approximately 60,000 USD. 
 
-## Conclusion:
+## Discussion and Conclusion:
 
 Toast is a staple in the American diet.  It is an extremely popular breakfast food, and in recent years has gained even more popularity, as artisanal toast is at the center of Millennial and Gen-Z dietary trends. Our client, ToastCo., has proposed the launch of the Toast-USB, which would allow amateursand toast connoisseurs alike to create culinary-grade toast straight from theircomputer. Our aim was was to assist Toast-Co. to make data-driven, insightful decisions regarding the launch and campaign strategy for this product.  In particular, we has three specific aims for the analysis.
 
@@ -601,7 +601,7 @@ Toast is a staple in the American diet.  It is an extremely popular breakfast fo
 
 In the intitial analysis, we compared the demographic features of the first and second study. For the two numeric variables common in both studies, we obtained distribution plots and 95% confidence intervals of age and non-mortgage loan balance in the second study, and then compared them to the mean of age and non-mortgage loan balance in the second study. The results suggests that based on age and non-mortgage loan balance, samples in the two studies are unlikely from the same population.
 
-We further compared the categorical variables common in both studies, including job, education, marital status, mortgage and primary phone. It turns out that students are overrepresented whereas blue collar workers are underrepresented in the first study, which is opposite to what we've observed in the second study. In comparison to the second study, individuals with education levels of college and more are overrepresented whereas married individuals or individuals with mortgage are underrepresented in the first study. Also, respondents using cell phone as the primary phone are slightly underrepresented in the first study. 
+We further compared the categorical variables common in both studies, including job, education, marital status, mortgage and primary phone. Students are overrepresented whereas blue collar workers are underrepresented in the first study, which is opposite to what we've observed in the second study. Individuals with education levels of college and more are overrepresented, whereas married individuals or individuals with mortgage are underrepresented in the first study. Also, respondents using cell phone as the primary phone are slightly underrepresented in the first study. 
 
 There are two categorical variables only present in the first study, including gender and race. White males appear to overrepresent the respondents. For the the second study, people with no personal loan take up a great proportion.
 
