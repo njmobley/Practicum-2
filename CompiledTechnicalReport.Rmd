@@ -49,8 +49,7 @@ The original dataset obtained from Toast Co.'s market analysis contained 421 obs
 
 ### Examining Missing Data
 
-From the given data there are 45,211 observations. However there are 17,216 (38.10%) observations that contain one or more missing values. Certain categorical variables
-had missing values with no clear pattern of missingness. These variables included job, education, contact, previous days from contact, personal loan status, default status, marital status, and education. With these variables we decided to add another category termed "Unknown" to represent observations where the respondents elected to either not respond or were unable to provide adequate information. However we still needed to address observations that had missing values in the continuous variables.
+From the given data there are 45,211 observations. However there are 17,216 (38.10%) observations that contain one or more missing values. Certain categorical variables had missing values with no clear pattern of missingness. These variables included job, education, contact, previous days from contact, personal loan status, default status, marital status, and education. With these variables we decided to add another category termed "Unknown" to represent observations where the respondents elected to either not respond or were unable to provide adequate information. However we still needed to address observations that had missing values in the continuous variables.
 
 We first wanted to understand if the continuous variables were missing in any distinct pattern. From Figure 1, it appears that the data is missing at random. In Figure 1, the red cells represent variables that are missing for a specific pattern, while the numbers on the left represent how many instances that pattern appeared in the data set. The number at the bottom of the graphic represents the total number of times the variable of the column was missing. The graphic suggests that we only observed 3 rows in which the pattern had 3 missing variables at once. These three patterns only appeared 13 times in our data set. The infrequency of these patterns signify that these patterns did occur randomly. Furthermore, there were 6 distinct patterns that were missing 2 or more variables with a total of 439 occurrences. Since all the patterns of missing data occurred with a low frequency, it is assumed that all of our missing values are missing at random. This reinforces that the quality of sampling and surveying conducted by the DOE, as well as gives us the freedom to either delete or impute the missing values without the worry of skewing the data inappropriately.
 
@@ -61,8 +60,7 @@ plot
 
 ### Imputing Continous Variables
 
-After determining that the four variables containing missing values (balance, campaign, age, and duration) were all missing at random, we decided to address this issue by performing a single imputation of the median to replace the missing values.
-We conducted an imputation, as opposed to deleting all observations with missing data in an attempt to preserve the information of the other 15 variables in these 7,964 observations.
+After determining that the four variables containing missing values (balance, campaign, age, and duration) were all missing at random, we decided to address this issue by performing a single imputation of the median to replace the missing values. We conducted an imputation, as opposed to deleting all observations with missing data in an attempt to preserve the information of the other 15 variables in these 7,964 observations.
 
 We determined that the median, as opposed to the mean, was the appropriate measurement to impute the values since all the variables of interest except age where all right-skewed. Because the variables were skewed, replacing the missing values with the mean would have drastically shifted the imputed data sets distributions farther to the right than expected. This median is not susceptible to skewness meaning the new imputed distributions will be representative of the original data set.
 
@@ -601,7 +599,14 @@ Toast is a staple in the American diet.  It is an extremely popular breakfast fo
   3. Determing an MSRP that will maximize revenue for the product.
 
 
-For the intitial analysis, we compared the demographic and campaign-specific features of the first and second study.  *NIJIA WILL SYNTHESIZE THIS*
+In the intitial analysis, we compared the demographic features of the first and second study. For the two numeric variables common in both studies, we obtained distribution plots and 95% confidence intervals of age and non-mortgage loan balance in the second study, and then compared them to the mean of age and non-mortgage loan balance in the second study. The results suggests that based on age and non-mortgage loan balance, samples in the two studies are unlikely from the same population.
+
+We further compared the categorical variables common in both studies, including job, education, marital status, mortgage and primary phone. It turns out that students are overrepresented whereas blue collars are underrepresented in the first study, which is opposite to what we've observed in the second study. In comparison to the second study, individuals with education levels of college and more are overrepresented whereas married individuals or individuals with mortgage are underrepresented in the first study. Also, respondents using cell phone as the primary phone are slightly underrepresented in the first study. 
+
+There are two categorical variables only present in the first study, including gender and race. White males appear to overrepresent the respondents. For the the second study, people with no personal loan take up a great proportion.
+
+After that, likelihood ratio tests have verified that there is significant evidence that response to buy the product are associated with all the demographic variables in both studies, and that the components of respondents in the first study are significantly different from that in the well randomized second study.
+
 
 *alli discusses the second and third 
 
