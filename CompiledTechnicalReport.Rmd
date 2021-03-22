@@ -1,6 +1,6 @@
 ---
 title: "Risk Benefit Analysis for Toast-USB Launch"
-author: "Alli McCarty, Nick Mobley, Nijia Ke"
+author: "Allison McCarty, Nicholas Mobley, Nijia Ke"
 date: "3/18/2021"
 output: pdf_document
 ---
