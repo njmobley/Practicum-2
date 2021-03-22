@@ -395,7 +395,7 @@ Since for response is statistically associated with each of the five categorical
     \begin{tabular}{ |c | c | c | c | c |}
     \hline
         Variable & Levels before interacted with Response & \(G2\) & df & P-value \\ \hline
-        Job & White Collar, Blue Collar, Student, House, Unemployed or unknown & 861348.2 & 9 & < 0.001 \\ \hline
+        Job & White Collar, Blue Collar, Student, House, Unemployed or unknown & 86,1348.2 & 9 & < 0.001 \\ \hline
         Education & College and more, Lower than College & 82,340.45 & 3 & < 0.001 \\ \hline
         Marital & Married, Not married & 82,723.05 & 3 & < 0.001 \\ \hline
         Mortgage & Mortgage, No Mortgage & 80,419.45 & 3 & <0.001 \\ \hline
