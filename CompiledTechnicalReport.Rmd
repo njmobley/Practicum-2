@@ -406,7 +406,7 @@ Since for response is statistically associated with each of the five categorical
 
 
 
-### Exploratory Data Analysis for Modeling Process
+## Exploratory Data Analysis for Modeling Process
 
 For the model analysis of this study, we were interested in creating a logistic model to estimate the likelihood that a person would buy the product based off of their demographic information. This is in effort to create a generalized model that can be used to predict the success of the Toast-USB.
 
@@ -462,7 +462,7 @@ ggplot(training,aes(x = fct_reorder(job_reduced,job_reduced,.fun = 'length'),  f
 
 After exploratory analysis, we believe that default status, education, personal loan status, and age are demographic variables of interest that could be utilized in the logistic model.  For the statistical analysis portion, we aim to build a logistic model that uses relevant demographic variables to predict a favorable response to the Toast-USB and indicate if Toast-Co. should move forward with the launch of the produce.
 
-## Model Process
+### Generation of Logistic Models and Model Selection by Cross Validation
 
 We identified that default status, education, personal loan status, and age were potentially significant indicators of willingness to purchase in the exploratory analysis.  Our aim for the analysis was to 1) predict the success of the Toast-USB and 2) indicate which demographic groups should be targeted in the marketing campaign. To investigate these endpoints, we generated a function that build a multivariate logistic models representing every combination of the four aforementioned variables. Interaction terms were not included, as none of these variables demonstrated significant collinearity. We partitioned the data into a test and a train set, both of which represented half of the original dataset (non-overlapping) to be used for cross validation. Using the train-set, we generated 15 potential logistic models representing combinations of these four predictors.  Next, we generated a function to cross-validate the models using the test-set to select the model with the maximal likelihood ratio. 
 
@@ -519,8 +519,6 @@ bestMdl = glm(bestFormula, data = training, family = binomial)
 summary(bestMdl)
 ```
 
-
-### Generation of Logistic Models and Model Selection by Cross Validation
 
 Of the 15 logistic models that were generated using the four key demographic variables, we found that the multivariate logistic model regressing age, personal loan status, and education on response to Toast-USB had the maximum likelihood ratio.  The model summary also indicated that all of these predictors have a significant effect on the favorable response rate. Thus, we believe that education, loan status, and age will be demographic variables of interest to Toast-Co for strategizing their marketing campaign. Next,we used our selected logistic model to simulate a response rate using the testing set.  
 
