@@ -444,19 +444,25 @@ create_plots <- function(var) {
     xlab(var)
 }
 
-plotList = lapply(categoricalColumns[-c(2,3)],create_plots)
+#plotList = lapply(categoricalColumns[-c(2,3)],create_plots)
 
+plotList = lapply(list("marital","job"),create_plots)
 
-
-ggarrange(plotlist = plotList) %>%
+ggarrange(plotlist = plotList,nrow = 2) %>%
   annotate_figure(top = text_grob("Categorical Demographic Predictors and willingness to Purchase"))
 
+create_plots("job") + ggtitle("Marital Demographic Distribution")
+
+```
+
+```{r}
+create_plots(list("marital","") + ggtitle("Education Demographic Distribution")
 ```
 
 The original dataset obtained by the DOE had 12 factors representing the job classification for individuals in the sample.  The job variable was recoded to represent more broad categories more closely related to profession-type.  Factor levels in the recoded dataset for profession-type include classifications of student, unknown employment, administration, white-collar, and blue-collar. Figure 15 represents the distribution of favorable response for each of the profession types.  There is no significant association between favorable response and profession type in this sample.  
 
 ```{r fig.cap="Distribution of Recoded Job"}
-ggplot(training,aes(x = fct_reorder(job_reduced,job_reduced,.fun = 'length'),  fill = y)) + geom_bar(stat='count') + ggtitle("Recoded Job Counts") + xlab("Recoded Job")
+ggplot(training,aes(x = fct_reorder(job_reduced,job_reduced,.fun = 'length'),  fill = y)) + geom_bar(stat='count') + ggtitle("Job Demographic Distribution") + xlab("Job Title")
 ```
 
 After exploratory analysis, we believe that default status, education, personal loan status, and age are demographic variables of interest that could be utilized in the logistic model.  For the statistical analysis portion, we aim to build a logistic model that uses relevant demographic variables to predict a favorable response to the Toast-USB and indicate if Toast-Co. should move forward with the launch of the produce.
@@ -516,6 +522,22 @@ bestFormula = "y~education+loan+age"
 bestMdl = glm(bestFormula, data = training, family = binomial)
 ```
 
+
+```{r}
+result = data.frame(
+  var = c("primary","secondary","tertiary"),
+  val = c(-0.540276,-0.205732,0.198480),
+  neg = c("neg","neg","pos")
+)
+result2 = data.frame(
+  var = c("no","yes"),
+  val = c(0.059699,-0.673313),
+  neg = c("pos","neg")
+)
+ggplot(result2, aes(x = var, y = val, fill = neg)) + geom_bar(stat = 'identity') +
+  ylab("Coefficient") + xlab("Has a Loan") + ggtitle("Intercept Coefficients of having Loan")
+
+```
 
 Of the 15 logistic models that were generated using the four key demographic variables, we found that the multivariate logistic model regressing age, personal loan status, and education on response to Toast-USB had the maximum likelihood ratio. The model summary also indicated that all of these predictors have a significant effect on the favorable response rate. Thus, we believe that education, loan status, and age will be demographic variables of interest to Toast-Co for strategizing their marketing campaign. Next,we used our selected logistic model to simulate a response rate using the testing set.  
 

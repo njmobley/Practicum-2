@@ -58,7 +58,8 @@ imputedData = imputedData %>%
                           labels = c("<5","5-10","10-15",">15")),
     education = factor(education, levels = c("Unknown","primary","secondary","tertiary")),
     default = as.factor(default),
-    loan = as.factor(loan)
+    loan = as.factor(loan),
+    loan = relevel(loan,ref = "Unkown")
   )
 raw_cont = raw_data %>%
   select(balance,campaign,age,duration)
