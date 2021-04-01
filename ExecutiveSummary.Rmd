@@ -3,8 +3,8 @@ title: "Executive Summary of Risk Benefit Analysis for Toast-USB Launch"
 author: "Allison McCarty, Nicholas Mobley, Nijia Ke"
 date: "4/1/2021"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 
